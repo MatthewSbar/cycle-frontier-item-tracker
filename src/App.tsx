@@ -295,6 +295,9 @@ function App() {
                 <div>Damn, you got all the upgrades. Nice.</div>
               )}
             <div
+            style={{
+              display: 'none'
+            }}
               className={`item-list ${
                 viewMode === "items" ? "item-list-show" : undefined
               }`}
