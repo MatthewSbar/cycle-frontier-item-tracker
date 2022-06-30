@@ -168,15 +168,15 @@ function App() {
   }, [questProgress, upgradeProgress]);
 
   useEffect(() => {
-      window.addEventListener("resize", updateWidth);
-      return () => window.removeEventListener("resize", updateWidth);
-  }, [])
+    window.addEventListener("resize", updateWidth);
+    return () => window.removeEventListener("resize", updateWidth);
+  }, []);
 
   useEffect(() => {
-    if (width > 768 && viewMode === 'items') {
-      setViewMode('quest')
+    if (width > 768 && viewMode === "items") {
+      setViewMode("quest");
     }
-  })
+  });
 
   return (
     <>
@@ -294,14 +294,18 @@ function App() {
               allUpgradesComplete() && (
                 <div>Damn, you got all the upgrades. Nice.</div>
               )}
-              <div className={`item-list ${viewMode === 'items' ? 'item-list-show' : undefined}`}>
-            <ItemList
-              questProgress={questProgress}
-              search={search}
-              setSearch={setSearch}
-              itemsNeeded={itemsNeeded}
-            />
-          </div>
+            <div
+              className={`item-list ${
+                viewMode === "items" ? "item-list-show" : undefined
+              }`}
+            >
+              <ItemList
+                questProgress={questProgress}
+                search={search}
+                setSearch={setSearch}
+                itemsNeeded={itemsNeeded}
+              />
+            </div>
           </div>
           <div className={`item-list`}>
             <ItemList
