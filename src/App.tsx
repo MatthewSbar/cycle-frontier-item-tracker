@@ -121,7 +121,7 @@ function App() {
       window.localStorage.removeItem("questProgress");
       window.localStorage.removeItem("upgradeProgress");
       window.localStorage.removeItem("showCompleted");
-      window.location.href = "/";
+      window.location.href = "https://matthewsbar.github.io/cycle-frontier-item-tracker/";
     }
   };
 
@@ -323,7 +323,7 @@ function App() {
       </main>
 
       <footer className="footer">
-        <a href="https://github.com/matthewsbar">Github</a> ·{" "}
+        <a href="https://github.com/MatthewSbar/cycle-frontier-item-tracker">Github</a> ·{" "}
         <a href="https://www.patreon.com/Vedgy">Patreon</a> ·{" "}
         <a href="https://vedgy.bandcamp.com/">Check out my mixtape</a> ·{" "}
         <button className="delete-button" onClick={() => flushLocalData()}>
