@@ -1,9 +1,16 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import { ItemName, QuestProgress, UpgradeProgress, ViewMode, Faction } from "./types";
+import {
+  ItemName,
+  QuestProgress,
+  UpgradeProgress,
+  ViewMode,
+  Faction,
+} from "./types";
 import { quests, upgrades, items } from "./data";
 import { QuestListing } from "./components/quest-listing";
 import { UpgradeTree } from "./components/upgrade-tree";
+import { ItemList } from "./components/item-list";
 
 function App() {
   const clearQuestProgress = (): QuestProgress => {
@@ -18,15 +25,15 @@ function App() {
 
   const clearUpgradeProgress = (): UpgradeProgress => {
     const allUpgrades: UpgradeProgress = {
-      'Quarters': [],
-      'Generate Kmarks': [],
-      'Kmark Passive Cap': [],
-      'Generate Aurum': [],
-      'Aurum Passive Cap': [],
-      'Supply Crate': [],
-      'Stash': [],
-      'Safe Pockets': [],
-      'Workbench': []
+      Quarters: [],
+      "Generate Kmarks": [],
+      "Kmark Passive Cap": [],
+      "Generate Aurum": [],
+      "Aurum Passive Cap": [],
+      "Supply Crate": [],
+      Stash: [],
+      "Safe Pockets": [],
+      Workbench: [],
     };
 
     upgrades.forEach((upgrade) => {
@@ -82,33 +89,41 @@ function App() {
   };
 
   const getLocalHideData = (): boolean => {
-    const localData = localStorage.getItem("showCompleted")
+    const localData = localStorage.getItem("showCompleted");
     if (localData) {
-      return localData === "show" ? true : false
+      return localData === "show" ? true : false;
     }
-    return false
-  }
+    return false;
+  };
 
   const campaignComplete = (campaign: Faction): boolean => {
-    return quests.filter(q => q.campaign === campaign).every(q => questProgress[q.name] === q.parts.length)
-  }
+    return quests
+      .filter((q) => q.campaign === campaign)
+      .every((q) => questProgress[q.name] === q.parts.length);
+  };
 
   const allQuestsComplete = (): boolean => {
-    return campaignComplete('ICA') && campaignComplete('Korolev') && campaignComplete('Osirus')
-  }
+    return (
+      campaignComplete("ICA") &&
+      campaignComplete("Korolev") &&
+      campaignComplete("Osirus")
+    );
+  };
 
   const allUpgradesComplete = (): boolean => {
-    return upgrades.every(u => u.stages.every((s, i) => upgradeProgress[u.tree][i] === s.levels.length))
-  }
+    return upgrades.every((u) =>
+      u.stages.every((s, i) => upgradeProgress[u.tree][i] === s.levels.length)
+    );
+  };
 
   const flushLocalData = () => {
-    if (window.confirm('Are you sure you want to remove all your data?')) {
-      window.localStorage.removeItem('questProgress')
-      window.localStorage.removeItem('upgradeProgress')
-      window.localStorage.removeItem('showCompleted')
-      window.location.href = "/"
+    if (window.confirm("Are you sure you want to remove all your data?")) {
+      window.localStorage.removeItem("questProgress");
+      window.localStorage.removeItem("upgradeProgress");
+      window.localStorage.removeItem("showCompleted");
+      window.location.href = "/";
     }
-  }
+  };
 
   const getLocalUpgradeData = (): UpgradeProgress => {
     const localData = localStorage.getItem("upgradeProgress");
@@ -119,10 +134,15 @@ function App() {
   };
 
   const handleToggleShowCompleted = () => {
-    const newState = !showCompleted
-    setShowCompleted(newState)
-    window.localStorage.setItem('showCompleted', newState ? 'show' : 'hide')
-  }
+    const newState = !showCompleted;
+    setShowCompleted(newState);
+    window.localStorage.setItem("showCompleted", newState ? "show" : "hide");
+  };
+  const [width, setWidth] = useState(window.innerWidth);
+
+  const updateWidth = () => {
+    setWidth(window.innerWidth);
+  };
 
   const [questProgress, setQuestProgress] = useState<QuestProgress>(
     getLocalQuestData()
@@ -147,6 +167,17 @@ function App() {
     );
   }, [questProgress, upgradeProgress]);
 
+  useEffect(() => {
+      window.addEventListener("resize", updateWidth);
+      return () => window.removeEventListener("resize", updateWidth);
+  }, [])
+
+  useEffect(() => {
+    if (width > 768 && viewMode === 'items') {
+      setViewMode('quest')
+    }
+  })
+
   return (
     <>
       <header>
@@ -169,10 +200,18 @@ function App() {
                 >
                   Upgrades
                 </h2>
+                <h2
+                  className={`item-list-button ${
+                    viewMode !== "items" ? "inactive" : undefined
+                  }`}
+                  onClick={() => setViewMode("items")}
+                >
+                  Items
+                </h2>
               </div>
               <div className="main-nav">
                 <h2 onClick={() => handleToggleShowCompleted()}>
-                  ⚙️{showCompleted ? "Hide completed" : "Show completed"}
+                  {showCompleted ? "Hide completed" : "Show completed"}
                 </h2>
 
                 <h2 className="patreon-link">
@@ -184,7 +223,9 @@ function App() {
             {viewMode === "quest" && (showCompleted || !allQuestsComplete()) && (
               <div className="quest-columns">
                 <div className="quests">
-                  {(!campaignComplete('Korolev') || showCompleted) && <h3>Korolev</h3>}
+                  {(!campaignComplete("Korolev") || showCompleted) && (
+                    <h3>Korolev</h3>
+                  )}
                   {quests
                     .filter((quest) => quest.campaign === "Korolev")
                     .map((quest) => (
@@ -198,7 +239,9 @@ function App() {
                     ))}
                 </div>
                 <div className="quests">
-                {(!campaignComplete('Osirus') || showCompleted) && <h3>Osirus</h3>}
+                  {(!campaignComplete("Osirus") || showCompleted) && (
+                    <h3>Osirus</h3>
+                  )}
                   {quests
                     .filter((quest) => quest.campaign === "Osirus")
                     .map((quest) => (
@@ -212,7 +255,7 @@ function App() {
                     ))}
                 </div>
                 <div className="quests">
-                {(!campaignComplete('ICA') || showCompleted) && <h3>ICA</h3>}
+                  {(!campaignComplete("ICA") || showCompleted) && <h3>ICA</h3>}
                   {quests
                     .filter((quest) => quest.campaign === "ICA")
                     .map((quest) => (
@@ -227,67 +270,46 @@ function App() {
                 </div>
               </div>
             )}
-            {viewMode === "quest" && (!showCompleted && allQuestsComplete()) && (
+            {viewMode === "quest" && !showCompleted && allQuestsComplete() && (
               <div>Damn, you did all the quests. Nice.</div>
             )}
-            {viewMode === "upgrade" && (showCompleted || !allUpgradesComplete()) && (
-              <div className="upgrade-grid">
-                {upgrades.map((upgrade) => (
-                  <div key={upgrade.tree} className="upgrade-column">
-                    <UpgradeTree
-                      upgrade={upgrade}
-                      upgradeProgress={upgradeProgress}
-                      setUpgradeProgress={setUpgradeProgress}
-                      showCompleted={showCompleted}
-                      name={upgrade.tree}
-                    />
-                  </div>
-                ))}
-              </div>
-            )}
-            {viewMode === "upgrade" && (!showCompleted && allUpgradesComplete()) && (
-              <div>
-                Damn, you got all the upgrades. Nice.
-              </div>
-            )}
-          </div>
-
-          <div className="item-list">
-            <div className="search-wrapper">
-              <input
-                type="text"
-                onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search for items"
-              />
-            </div>
-            <div>💀🗑️ = Item must be dead dropped</div>
-            <hr />
-            {Object.keys(itemsNeeded)
-              .sort()
-              .map((key) => {
-                if (
-                  search.length === 0 ||
-                  key.toLocaleLowerCase().includes(search.toLocaleLowerCase())
-                ) {
-                  return (
-                    <div key={key}>
-                      {key}: {itemsNeeded[key as ItemName]}{" "}
-                      {quests
-                        .filter(
-                          (quest) =>
-                            quest.parts.length > questProgress[quest.name]
-                        )
-                        .some((quest) =>
-                          quest.parts.some((part) =>
-                            part.dropItems?.some((item) => item.item === key)
-                          )
-                        )
-                        ? "💀🗑️"
-                        : null}
+            {viewMode === "upgrade" &&
+              (showCompleted || !allUpgradesComplete()) && (
+                <div className="upgrade-grid">
+                  {upgrades.map((upgrade) => (
+                    <div key={upgrade.tree} className="upgrade-column">
+                      <UpgradeTree
+                        upgrade={upgrade}
+                        upgradeProgress={upgradeProgress}
+                        setUpgradeProgress={setUpgradeProgress}
+                        showCompleted={showCompleted}
+                        name={upgrade.tree}
+                      />
                     </div>
-                  );
-                }
-              })}
+                  ))}
+                </div>
+              )}
+            {viewMode === "upgrade" &&
+              !showCompleted &&
+              allUpgradesComplete() && (
+                <div>Damn, you got all the upgrades. Nice.</div>
+              )}
+              <div className={`item-list ${viewMode === 'items' ? 'item-list-show' : undefined}`}>
+            <ItemList
+              questProgress={questProgress}
+              search={search}
+              setSearch={setSearch}
+              itemsNeeded={itemsNeeded}
+            />
+          </div>
+          </div>
+          <div className={`item-list`}>
+            <ItemList
+              questProgress={questProgress}
+              search={search}
+              setSearch={setSearch}
+              itemsNeeded={itemsNeeded}
+            />
           </div>
         </div>
         <hr />
@@ -297,7 +319,9 @@ function App() {
         <a href="https://github.com/matthewsbar">Github</a> ·{" "}
         <a href="https://www.patreon.com/Vedgy">Patreon</a> ·{" "}
         <a href="https://vedgy.bandcamp.com/">Check out my mixtape</a> ·{" "}
-        <button className="delete-button" onClick={() => flushLocalData()}>🚽 Flush local data</button>
+        <button className="delete-button" onClick={() => flushLocalData()}>
+          🚽 Flush local data
+        </button>
       </footer>
     </>
   );

@@ -182,3 +182,43 @@ footer {
 .main-content {
   flex-grow: 1;
 }
+
+.item-list-button {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  nav {
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+  }
+
+  h2 {
+    border-radius: 8px;
+    background-color: #525276;
+    margin: 0 16px 0 0;
+    padding: 8px 16px;
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 24px;
+  }
+
+  .item-list-button {
+    display: block;
+  }
+
+  .item-list {
+    display: none;
+  }
+
+  .item-list-show {
+    display: block;
+    border-left: none;
+    padding: 0;
+  }
+}
