@@ -1,38 +1,184 @@
-.App {
+body {
+  background: #27272a;
+  color: #dbdbdb;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+ul {
+  list-style-type: none;
+}
+
+input {
+  display: inline;
+}
+
+h2 {
+  border-radius: 8px 8px 0 0;
+  background-color: #525276;
+  margin: 0 16px 0 0;
+  padding: 8px 16px;
+  font-size: 20px;
+}
+
+h3 {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h4 {
+  font-size: 18px;
+  display: inline;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+hr {
+  border-color: #838383;
+  margin: -1px 0 16px 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 100%;
+}
+
+input[type="text"] {
+  margin: 16px 0;
+  border: none;
+  line-height: 32px;
+  padding-left: 8px;
+  border-radius: 4px;
+  font-size: 16px;
+  position: sticky;
+  top: 0;
+}
+
+button {
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  font-size: 16px;
+}
+
+button:disabled {
+  filter: grayscale(1);
+  cursor: not-allowed;
+}
+
+a:visited {
+  color: #dbdbdb;
+}
+
+svg {
+  height: 1rem;
+  width: 1rem;
+  fill: rgb(255, 66, 77);
+}
+
+footer {
+  margin-bottom: 32px;
+}
+
+.app {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.quest-columns {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.quests {
   display: flex;
   flex-direction: column;
+}
+
+.quest-listing {
+  border-radius: 4px;
+  margin: 16px;
+  padding: 16px;
+  width: 320px;
+}
+
+.korolev {
+  background-color: #855a0f;
+}
+
+.osirus {
+  background-color: #586c32;
+}
+
+.ica {
+  background-color: #4b6193;
+}
+
+.inline-flex {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  line-height: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.checkmark {
+  position: absolute;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.checkmark-wrapper {
+  position: relative;
+  left: 20px;
+}
+
+.item-list {
+  border-left: 1px solid #838383;
+  padding-left: 32px;
+}
+
+.inactive {
+  background-color: #35354e;
+}
+
+.tree {
+  background-color: #4b6193;
+}
+
+.upgrade-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.upgrade-level {
+  background-color: white;
+  color: black;
+  padding: 0 8px;
+  font-weight: bold;
+  border-radius: 20px;
+  margin: 0 8px;
+}
+
+.patreon-link {
+  background-color: #a33211;
+}
+
+.patreon-link a {
+  text-decoration: none;
+}
+
+.main-nav {
+  display: flex;
+}
+
+.delete-button {
+  background-color: red;
+  border-radius: 8px;
+  color: #fff;
+  padding: 0 8px;
+  line-height: 32px;
+}
+
+.main-content {
+  flex-grow: 1;
 }
