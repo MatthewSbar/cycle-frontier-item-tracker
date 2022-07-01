@@ -255,7 +255,7 @@ export const quests: Quest[] = [
       },
       {
         description:
-          'Kill 10 creatures at Starport. Kill 10 Creatures at "jungle favela"(?)',
+          'Kill 10 creatures at Starport. Kill 10 Creatures at Favela',
         deliverItems: [
           {
             item: "Spinal Base",
@@ -736,22 +736,7 @@ export const quests: Quest[] = [
         ],
       },
       {
-        description: "Kill 4 Creatures at Power Plant",
-        deliverItems: [
-          {
-            item: "Fusion Cartridge Batteries",
-            quantity: 8,
-          },
-        ],
-      },
-      {
         description: "Visit House on Stilts at North Uplink",
-        deliverItems: [
-          {
-            item: "Rare Data Drive",
-            quantity: 3,
-          },
-        ],
       },
       {
         deliverItems: [
@@ -1303,6 +1288,12 @@ export const quests: Quest[] = [
     name: "Lost Knowledge",
     campaign: "Osirus",
     parts: [
+      {
+        description: 'Kill 3 Creatures at Crashed Ship. Deliver the Flight Recorder.'
+      },
+      {
+        description: 'Visit Favela. Kill 3 Players with an Osirus Weapon.'
+      }
       {
         deliverItems: [
           {
