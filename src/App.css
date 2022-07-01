@@ -14,12 +14,18 @@ input {
   display: inline;
 }
 
-h2 {
+h2, .patreon-link {
   border-radius: 8px 8px 0 0;
   background-color: #525276;
   margin: 0 16px 0 0;
   padding: 8px 16px;
   font-size: 20px;
+  cursor: pointer;
+  transition: background-color 200ms linear;
+}
+
+h2.inactive:hover {
+  background-color: #3a3a59;
 }
 
 h3 {
@@ -177,10 +183,12 @@ footer {
 
 .patreon-link {
   background-color: #a33211;
+  text-decoration: none;
+  font-weight: 700;
 }
 
-.patreon-link a {
-  text-decoration: none;
+.patreon-link:hover {
+  background-color: #be340b;
 }
 
 .main-nav {
