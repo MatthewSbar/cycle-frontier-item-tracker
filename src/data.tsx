@@ -143,6 +143,9 @@ export const quests: Quest[] = [
         description: "Kill a player with a Korolev Weapon",
       },
       {
+        description: 'Collect 3 miner cameras at the Dig Site.'
+      }
+      {
         deliverItems: [
           {
             item: "Shard Slicer",
@@ -689,6 +692,12 @@ export const quests: Quest[] = [
     campaign: "ICA",
     parts: [
       {
+        description: 'Find the SOS sign'
+      },
+      {
+        description: 'Enter the Water Facility Loot Room. Deliver the Sign of Life.'
+      },
+      {
         deliverItems: [
           {
             item: "Zero Systems CPU",
@@ -708,7 +717,7 @@ export const quests: Quest[] = [
         deliverItems: [
           {
             item: "Uncommon Data Drive",
-            quantity: 2,
+            quantity: 3,
           },
         ],
       },
@@ -736,20 +745,6 @@ export const quests: Quest[] = [
         ],
       },
       {
-        dropItems: [
-          {
-            item: "Miniature Reactor",
-            quantity: 1,
-            dropLocation: "Main Office",
-          },
-          {
-            item: "Valuable Data Drive",
-            quantity: 1,
-            dropLocation: "Main Office",
-          },
-        ],
-      },
-      {
         description: "Visit House on Stilts at North Uplink",
         deliverItems: [
           {
@@ -758,6 +753,28 @@ export const quests: Quest[] = [
           },
         ],
       },
+      {
+        deliverItems: [
+          {
+            item: 'Fusion Cartridge Batteries',
+            quantity: 8
+          }
+        ]
+      },
+      {
+        dropItems: [
+          {
+            item: 'Valuable Data Drive',
+            quantity: 1,
+            dropLocation: 'Main Office'
+          },
+          {
+            item: 'Miniature Reactor',
+            quantity: 1,
+            dropLocation: 'Main Office'
+          }
+        ]
+      }
     ],
   },
   {
