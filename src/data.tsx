@@ -849,6 +849,12 @@ export const quests: Quest[] = [
       {
         description:
           "Visit Osiris Wildlife Preserve. Visit Skeleton Observation.",
+          deliverItems: [
+            {
+              item: "Co-TEC MultiTool",
+              quantity: 3,
+            },
+          ],
       },
       {
         description:
@@ -857,14 +863,6 @@ export const quests: Quest[] = [
       {
         description:
           "Enter Geothermal Plant Office. Deliver notes on Meteor Experiment - 2.",
-      },
-      {
-        deliverItems: [
-          {
-            item: "Co-TEC MultiTool",
-            quantity: 3,
-          },
-        ],
       },
       {
         description: "Kill 3 Players with an Assault Rifle",
