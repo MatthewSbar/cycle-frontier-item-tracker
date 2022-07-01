@@ -1293,7 +1293,7 @@ export const quests: Quest[] = [
       },
       {
         description: 'Visit Favela. Kill 3 Players with an Osirus Weapon.'
-      }
+      },
       {
         deliverItems: [
           {
