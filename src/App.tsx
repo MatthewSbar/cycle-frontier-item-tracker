@@ -89,11 +89,11 @@ function App() {
   };
 
   const getLocalHideData = (): boolean => {
-    const localData = localStorage.getItem("showCompleted");
-    if (localData) {
-      return localData === "show" ? true : false;
+    const localData = localStorage.getItem("showCompleted") === "show";
+    if (!localData) {
+      return true
     }
-    return false;
+    return localStorage.getItem("showCompleted") === "show";
   };
 
   const campaignComplete = (campaign: Faction): boolean => {
