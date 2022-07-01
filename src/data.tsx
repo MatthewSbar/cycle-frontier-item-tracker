@@ -1865,7 +1865,7 @@ export const upgrades: Upgrade[] = [
             items: [
               {
                 item: "Aluminum Scrap",
-                quantity: 5,
+                quantity: 18,
               },
               {
                 item: "Co-TEC MultiTool",
