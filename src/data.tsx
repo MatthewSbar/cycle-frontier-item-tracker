@@ -1856,7 +1856,7 @@ export const upgrades: Upgrade[] = [
               },
               {
                 item: "Heavy Strider Flesh",
-                quantity: 3,
+                quantity: 5,
               },
             ],
             kMarks: 8000,
