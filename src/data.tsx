@@ -144,7 +144,7 @@ export const quests: Quest[] = [
       },
       {
         description: 'Collect 3 miner cameras at the Dig Site.'
-      }
+      },
       {
         deliverItems: [
           {
