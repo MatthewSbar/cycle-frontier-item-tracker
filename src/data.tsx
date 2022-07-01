@@ -3015,23 +3015,6 @@ export const upgrades: Upgrade[] = [
           {
             items: [
               {
-                item: "Nickel",
-                quantity: 8,
-              },
-              {
-                item: "Flawed Veltecite",
-                quantity: 5,
-              },
-              {
-                item: "ICA Scrip",
-                quantity: 2,
-              },
-            ],
-            kMarks: 2200,
-          },
-          {
-            items: [
-              {
                 item: "Fusion Cartridge Batteries",
                 quantity: 2,
               },
