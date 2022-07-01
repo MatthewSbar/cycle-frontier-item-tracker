@@ -52,7 +52,7 @@ export const QuestListing = ({
         <summary>
           <h4>
             {questCompleted() ? (
-              <Checkmark offsetTop={-40} offsetLeft={-50} fontSize={32} />
+              <Checkmark offsetTop={-34} offsetLeft={-50} fontSize={40} />
             ) : null}
             {quest.name}
           </h4>
@@ -63,7 +63,9 @@ export const QuestListing = ({
               onClick={() => handleQuestPartChange(0)}
               disabled={questProgress[quest.name] === 0}
             >
-              ⏪
+              <span className="material-symbols-outlined negative">
+                fast_rewind
+              </span>
             </button>
             <button
               onClick={() =>
@@ -71,22 +73,27 @@ export const QuestListing = ({
               }
               disabled={questProgress[quest.name] === 0}
             >
-              ➖
+              <span className="material-symbols-outlined negative">remove</span>
             </button>
-            <span className="upgrade-level">{questProgress[quest.name]}</span>
+            <span className="upgrade-level">
+              {questProgress[quest.name]} /{" "}
+              {quests.find((q) => q.name === quest.name)!.parts.length}
+            </span>
             <button
               onClick={() =>
                 handleQuestPartChange(questProgress[quest.name] + 1)
               }
               disabled={questCompleted()}
             >
-              ➕
+              <span className="material-symbols-outlined positive">add</span>
             </button>
             <button
               onClick={(e) => maxQuest(e, quest.name)}
               disabled={questCompleted()}
             >
-              ⏩
+              <span className="material-symbols-outlined positive">
+                fast_forward
+              </span>
             </button>
           </div>
         </summary>
@@ -96,14 +103,14 @@ export const QuestListing = ({
             (!partCompleted(i) || showCompleted) && (
               <div key={quest.name + i}>
                 Part {i + 1}:
-                <ul>
+                <ul className="task-list">
                   {part.description && (
                     <li>
                       {partCompleted(i) ? (
                         <Checkmark
                           offsetLeft={-24}
                           offsetTop={0}
-                          fontSize={16}
+                          fontSize={20}
                         />
                       ) : null}
                       {part.description}
@@ -116,7 +123,7 @@ export const QuestListing = ({
                           <Checkmark
                             offsetLeft={-24}
                             offsetTop={0}
-                            fontSize={16}
+                            fontSize={20}
                           />
                         ) : null}
                         Deliver {item.quantity} {item.item}
@@ -129,7 +136,7 @@ export const QuestListing = ({
                           <Checkmark
                             offsetLeft={-24}
                             offsetTop={0}
-                            fontSize={16}
+                            fontSize={20}
                           />
                         ) : null}
                         Drop {item.quantity} {item.item} at {item.dropLocation}

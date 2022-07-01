@@ -85,7 +85,9 @@ export const UpgradeTree = ({
                           handleUpdateUpgradeProgress(upgrade.tree, i, 0)
                         }
                       >
-                        ⏪
+                        <span className="material-symbols-outlined negative">
+                          fast_rewind
+                        </span>
                       </button>
                       <button
                         disabled={upgradeProgress[upgrade.tree][i] === 0}
@@ -97,10 +99,17 @@ export const UpgradeTree = ({
                           )
                         }
                       >
-                        ➖
+                        <span className="material-symbols-outlined negative">
+                          remove
+                        </span>
                       </button>{" "}
                       <span className="upgrade-level">
-                        {upgradeProgress[upgrade.tree][i]}
+                        {upgradeProgress[upgrade.tree][i]} /{" "}
+                        {
+                          upgrades.find((u) => u.tree === upgrade.tree)?.stages[
+                            i
+                          ].levels.length
+                        }
                       </span>
                       <button
                         disabled={
@@ -117,7 +126,9 @@ export const UpgradeTree = ({
                           )
                         }
                       >
-                        ➕
+                        <span className="material-symbols-outlined positive">
+                          add
+                        </span>
                       </button>
                       <button
                         disabled={stageCompleted(i)}
@@ -129,7 +140,9 @@ export const UpgradeTree = ({
                           )
                         }
                       >
-                        ⏩
+                        <span className="material-symbols-outlined positive">
+                          fast_forward
+                        </span>
                       </button>
                     </span>
                   </summary>
@@ -144,7 +157,7 @@ export const UpgradeTree = ({
                               <Checkmark
                                 offsetLeft={-70}
                                 offsetTop={0}
-                                fontSize={16}
+                                fontSize={20}
                               />
                             )}
                             <ul>

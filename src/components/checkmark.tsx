@@ -14,12 +14,12 @@ export const Checkmark = ({ offsetLeft, offsetTop, fontSize }: Props) => {
       }}
     >
       <span
-        className="checkmark"
+        className="checkmark material-symbols-outlined"
         style={{
           fontSize: `${fontSize}px`,
         }}
       >
-        ✔️
+        done
       </span>
     </span>
   );

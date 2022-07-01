@@ -3,6 +3,7 @@ body {
   color: #dbdbdb;
   max-width: 80%;
   margin: 0 auto;
+  transition: all 0.3s ease;
 }
 
 ul {
@@ -59,11 +60,22 @@ button {
   margin: 0;
   border: 0;
   font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover span.positive {
+  color: #2de92d;
+}
+button:hover span.negative {
+  color: #7a0006;
 }
 
 button:disabled {
-  filter: grayscale(1);
   cursor: not-allowed;
+}
+
+button:disabled span {
+  color: rgba(0, 0, 0, 0.5) !important;
 }
 
 a,
@@ -120,12 +132,15 @@ footer {
 
 .inline-flex {
   display: flex;
-  align-items: center;
-  line-height: 20px;
+  align-items: flex-start;
+  line-height: 24px;
+  gap: 4px;
 }
 
 .checkmark {
   position: absolute;
+  background-color: white;
+  border-radius: 25px;
 }
 
 .checkmark-wrapper {
@@ -175,7 +190,7 @@ footer {
 .delete-button {
   background-color: red;
   border-radius: 8px;
-  color: #fff;
+  color: #dbdbdb;
   padding: 0 8px;
   line-height: 32px;
 }
@@ -190,6 +205,18 @@ footer {
 
 .item-list-mobile {
   display: none;
+}
+
+.material-symbols-outlined {
+  color: #dbdbdb;
+}
+
+.material-symbols-outlined.checkmark {
+  color: #00a715;
+}
+
+.task-list li {
+  margin-bottom: 8px;
 }
 
 @media (max-width: 1200px) {

@@ -40,6 +40,8 @@ function App() {
       allUpgrades[upgrade.tree] = upgrade.stages.map((stage) => 0);
     });
 
+    allUpgrades.Quarters = [1];
+
     return allUpgrades;
   };
 

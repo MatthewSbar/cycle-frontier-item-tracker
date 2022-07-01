@@ -1792,6 +1792,10 @@ export const upgrades: Upgrade[] = [
       {
         levels: [
           {
+            items: [],
+            kMarks: 0,
+          },
+          {
             items: [
               {
                 item: "Hardened Metals",
@@ -3738,6 +3742,10 @@ export const upgrades: Upgrade[] = [
             ],
             kMarks: 872,
           },
+        ],
+      },
+      {
+        levels: [
           {
             items: [
               {
@@ -3755,6 +3763,10 @@ export const upgrades: Upgrade[] = [
             ],
             kMarks: 13566,
           },
+        ],
+      },
+      {
+        levels: [
           {
             items: [
               {
@@ -3772,6 +3784,10 @@ export const upgrades: Upgrade[] = [
             ],
             kMarks: 133581,
           },
+        ],
+      },
+      {
+        levels: [
           {
             items: [
               {
@@ -3789,6 +3805,10 @@ export const upgrades: Upgrade[] = [
             ],
             kMarks: 211058,
           },
+        ],
+      },
+      {
+        levels: [
           {
             items: [
               {
