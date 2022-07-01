@@ -91,7 +91,7 @@ function App() {
   const getLocalHideData = (): boolean => {
     const localData = localStorage.getItem("showCompleted") === "show";
     if (!localData) {
-      return true
+      return true;
     }
     return localStorage.getItem("showCompleted") === "show";
   };
