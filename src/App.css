@@ -188,6 +188,10 @@ footer {
   display: none;
 }
 
+.item-list-mobile {
+  display: none;
+}
+
 @media (max-width: 1200px) {
   nav {
     flex-wrap: wrap;

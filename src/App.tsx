@@ -296,10 +296,7 @@ function App() {
                 <div>Damn, you got all the upgrades. Nice.</div>
               )}
             <div
-              style={{
-                display: "none",
-              }}
-              className={`item-list ${
+              className={`item-list item-list-mobile ${
                 viewMode === "items" ? "item-list-show" : undefined
               }`}
             >
@@ -311,7 +308,7 @@ function App() {
               />
             </div>
           </div>
-          <div className={`item-list`}>
+          <div className={`item-list item-list-desktop`}>
             <ItemList
               questProgress={questProgress}
               search={search}
