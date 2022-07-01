@@ -1,4 +1,29 @@
-# Getting Started with Create React App
+# The Cycle: Frontier - Item Tracker
+
+This app is designed to keep track of what items are needed for quests and upgrades in The Cycle: Frontier. Once you know how many of everything you need, you know what you can rest easy selling or giving to your friends. It also serves as a comprehensive quest objective list. It was built using create-react-app with Typescript. Data is stored in local browser storage. There are no analytics. While this app is open source, I do not give anyone permission to fork or reuse this code for purposes other than education or contributing to this project.
+
+## Known issues.
+
+- Some items may have incorrect names. Let me know if an item doesn't use its in-game name.
+
+## Upcoming features
+
+- Icons for items
+- Better
+
+## Support this project
+
+Consider supporting me via [Patreon](https://www.patreon.com/Vedgy)
+
+## Pull Requests and issues
+
+Feel free to submit pull requests if you know your way around JSON/React and Github issues if you don't.
+
+## Legal Stuff
+
+I have no rights to anything related to The Cycle: Frontier. If Yaeger wants to sue me, I will face God and walk backwards into hell.
+
+# Here's some boilerplate CRA stuff
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -11,36 +36,4 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
 ### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
