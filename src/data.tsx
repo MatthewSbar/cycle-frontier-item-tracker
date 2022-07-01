@@ -4089,7 +4089,6 @@ export const items = {
   Textiles: 0,
   "Salvaged Insulation": 0,
   "Smart Mesh": 0,
-  "Laser Drill Control Unit": 0,
   "Magnetic Field Stabilizer": 0,
   "Co-TEC MultiTool": 0,
   Gyroscope: 0,
