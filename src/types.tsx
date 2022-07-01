@@ -77,7 +77,6 @@ export type ItemName =
   | "Textiles"
   | "Salvaged Insulation"
   | "Smart Mesh"
-  | "Laser Drill Control Unit"
   | "Magnetic Field Stabilizer"
   | "Co-TEC MultiTool"
   | "Gyroscope"
