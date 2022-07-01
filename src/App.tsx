@@ -195,13 +195,13 @@ function App() {
                   onClick={() => setViewMode("quest")}
                   className={viewMode !== "quest" ? "inactive" : undefined}
                 >
-                  Quests
+                  Missions
                 </h2>
                 <h2
                   onClick={() => setViewMode("upgrade")}
                   className={viewMode !== "upgrade" ? "inactive" : undefined}
                 >
-                  Upgrades
+                  Quarters
                 </h2>
                 <h2
                   className={`item-list-button ${

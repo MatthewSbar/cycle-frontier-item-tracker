@@ -849,12 +849,12 @@ export const quests: Quest[] = [
       {
         description:
           "Visit Osiris Wildlife Preserve. Visit Skeleton Observation.",
-          deliverItems: [
-            {
-              item: "Co-TEC MultiTool",
-              quantity: 3,
-            },
-          ],
+        deliverItems: [
+          {
+            item: "Co-TEC MultiTool",
+            quantity: 3,
+          },
+        ],
       },
       {
         description:
