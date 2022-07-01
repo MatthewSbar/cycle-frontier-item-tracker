@@ -121,7 +121,8 @@ function App() {
       window.localStorage.removeItem("questProgress");
       window.localStorage.removeItem("upgradeProgress");
       window.localStorage.removeItem("showCompleted");
-      window.location.href = "https://matthewsbar.github.io/cycle-frontier-item-tracker/";
+      window.location.href =
+        "https://matthewsbar.github.io/cycle-frontier-item-tracker/";
     }
   };
 
@@ -295,9 +296,9 @@ function App() {
                 <div>Damn, you got all the upgrades. Nice.</div>
               )}
             <div
-            style={{
-              display: 'none'
-            }}
+              style={{
+                display: "none",
+              }}
               className={`item-list ${
                 viewMode === "items" ? "item-list-show" : undefined
               }`}
@@ -323,8 +324,10 @@ function App() {
       </main>
 
       <footer className="footer">
-        <a href="https://github.com/MatthewSbar/cycle-frontier-item-tracker">Github</a> ·{" "}
-        <a href="https://www.patreon.com/Vedgy">Patreon</a> ·{" "}
+        <a href="https://github.com/MatthewSbar/cycle-frontier-item-tracker">
+          Github
+        </a>{" "}
+        · <a href="https://www.patreon.com/Vedgy">Patreon</a> ·{" "}
         <a href="https://vedgy.bandcamp.com/">Check out my mixtape</a> ·{" "}
         <button className="delete-button" onClick={() => flushLocalData()}>
           🚽 Flush local data

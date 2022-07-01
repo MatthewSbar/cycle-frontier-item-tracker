@@ -29,7 +29,8 @@ export const quests: Quest[] = [
         ],
       },
       {
-        description: "Visit Water Facility. Kill 3 Creatures at Water Facility.",
+        description:
+          "Visit Water Facility. Kill 3 Creatures at Water Facility.",
       },
       {
         deliverItems: [
@@ -143,7 +144,7 @@ export const quests: Quest[] = [
         description: "Kill a player with a Korolev Weapon",
       },
       {
-        description: 'Collect 3 miner cameras at the Dig Site.'
+        description: "Collect 3 miner cameras at the Dig Site.",
       },
       {
         deliverItems: [
@@ -247,7 +248,8 @@ export const quests: Quest[] = [
     campaign: "Korolev",
     parts: [
       {
-        description: "Visit Geothermal Plant. Visit Skeleton Observation. Visit Hay Fields.",
+        description:
+          "Visit Geothermal Plant. Visit Skeleton Observation. Visit Hay Fields.",
       },
       {
         description:
@@ -255,7 +257,7 @@ export const quests: Quest[] = [
       },
       {
         description:
-          'Kill 10 creatures at Starport. Kill 10 Creatures at Favela',
+          "Kill 10 creatures at Starport. Kill 10 Creatures at Favela",
         deliverItems: [
           {
             item: "Spinal Base",
@@ -268,12 +270,12 @@ export const quests: Quest[] = [
           {
             item: "Biological Sampler",
             quantity: 1,
-            dropLocation: 'East Collection Point'
+            dropLocation: "East Collection Point",
           },
           {
             item: "Sampler Container",
             quantity: 2,
-            dropLocation: 'East Collection Point'
+            dropLocation: "East Collection Point",
           },
         ],
       },
@@ -290,8 +292,9 @@ export const quests: Quest[] = [
           "Kill 5 creatures at Greens Project. Kill 10 creatures at Pinnacle Labs",
       },
       {
-        description: 'Find the missing engineer. Kill 3 creatures near the missing engineer. Deliver evidence of Letium.'
-      }
+        description:
+          "Find the missing engineer. Kill 3 creatures near the missing engineer. Deliver evidence of Letium.",
+      },
     ],
   },
   {
@@ -378,7 +381,7 @@ export const quests: Quest[] = [
         ],
       },
       {
-        description: 'Visit Greens Prospect.'
+        description: "Visit Greens Prospect.",
       },
       {
         dropItems: [
@@ -426,7 +429,8 @@ export const quests: Quest[] = [
         ],
       },
       {
-        description: 'Visit Starport Landing Pad Uplink. Visit Skeleton Observation.'
+        description:
+          "Visit Starport Landing Pad Uplink. Visit Skeleton Observation.",
       },
       {
         deliverItems: [
@@ -437,14 +441,14 @@ export const quests: Quest[] = [
         ],
       },
       {
-        description: 'Visit Waterfall Lab. Deliver Letium Bio Samples',
+        description: "Visit Waterfall Lab. Deliver Letium Bio Samples",
         deliverItems: [
           {
-            item: 'Letium',
-            quantity: 10
-          }
-        ]
-      }
+            item: "Letium",
+            quantity: 10,
+          },
+        ],
+      },
     ],
   },
   {
@@ -502,84 +506,86 @@ export const quests: Quest[] = [
         ],
       },
       {
-        description: "Visit the Crashed Drill. Find the Old Drill Head. Delivery the Laser Drill Control Unit.",
+        description:
+          "Visit the Crashed Drill. Find the Old Drill Head. Delivery the Laser Drill Control Unit.",
       },
       {
-        description: 'Kill 3 Players with a Shotgun. Kill 25 Striders with a Shotgun.'
+        description:
+          "Kill 3 Players with a Shotgun. Kill 25 Striders with a Shotgun.",
       },
       {
         deliverItems: [
           {
-            item: 'Magnetic Field Stabilizer',
-            quantity: 10
+            item: "Magnetic Field Stabilizer",
+            quantity: 10,
           },
           {
-            item :'Circuit Board',
-            quantity: 10
+            item: "Circuit Board",
+            quantity: 10,
           },
           {
-            item: 'Co-TEC MultiTool',
-            quantity: 5
-          }
-        ]
+            item: "Co-TEC MultiTool",
+            quantity: 5,
+          },
+        ],
       },
       {
         dropItems: [
           {
-            item: 'Pure Focus Crystal',
+            item: "Pure Focus Crystal",
             quantity: 3,
-            dropLocation: 'Pinnacle Lab'
+            dropLocation: "Pinnacle Lab",
           },
           {
-            item: 'Pure Veltecite',
+            item: "Pure Veltecite",
             quantity: 1,
-            dropLocation: 'Pinnacle Lab'
-          }
-        ]
+            dropLocation: "Pinnacle Lab",
+          },
+        ],
       },
       {
         deliverItems: [
           {
-            item: 'Gyroscope',
-            quantity: 1
+            item: "Gyroscope",
+            quantity: 1,
           },
           {
-            item: 'Miniature Reactor',
-            quantity: 5
+            item: "Miniature Reactor",
+            quantity: 5,
           },
           {
-            item: 'Copper Wire',
-            quantity: 15
-          }
-        ]
+            item: "Copper Wire",
+            quantity: 15,
+          },
+        ],
       },
       {
         deliverItems: [
           {
-            item: 'Osirus Scrip',
-            quantity: 20
+            item: "Osirus Scrip",
+            quantity: 20,
           },
           {
-            item: 'Veltecite Heart',
-            quantity: 1
+            item: "Veltecite Heart",
+            quantity: 1,
           },
           {
-            item: 'Old Currency',
-            quantity: 8000
-          }
-        ]
+            item: "Old Currency",
+            quantity: 8000,
+          },
+        ],
       },
       {
-        description: 'Kill 6 Players.'
+        description: "Kill 6 Players.",
       },
       {
         deliverItems: [
           {
-            item: 'Meteor Core',
-            quantity: 2
-          }
-        ]
-      }
+            item: "Meteor Core",
+            quantity: 2,
+          },
+        ],
+      },
     ],
   },
   {
@@ -596,7 +602,7 @@ export const quests: Quest[] = [
     campaign: "Korolev",
     parts: [
       {
-        description: 'Find a Letium Gas Vent.',
+        description: "Find a Letium Gas Vent.",
         deliverItems: [
           {
             item: "Letium",
@@ -646,7 +652,8 @@ export const quests: Quest[] = [
         ],
       },
       {
-        description: "Visit Woodcutter Camp. Kill 5 creatures at Woodcutter Camp.",
+        description:
+          "Visit Woodcutter Camp. Kill 5 creatures at Woodcutter Camp.",
         deliverItems: [
           {
             item: "Azure Tree Bark",
@@ -707,10 +714,11 @@ export const quests: Quest[] = [
     campaign: "ICA",
     parts: [
       {
-        description: 'Find the SOS sign'
+        description: "Find the SOS sign",
       },
       {
-        description: 'Enter the Water Facility Loot Room. Deliver the Sign of Life.'
+        description:
+          "Enter the Water Facility Loot Room. Deliver the Sign of Life.",
       },
       {
         deliverItems: [
@@ -729,7 +737,7 @@ export const quests: Quest[] = [
         ],
       },
       {
-        description: 'Visit Southeast Uplink.',
+        description: "Visit Southeast Uplink.",
         deliverItems: [
           {
             item: "Uncommon Data Drive",
@@ -738,7 +746,7 @@ export const quests: Quest[] = [
         ],
       },
       {
-        description: 'Visit Comms Base.',
+        description: "Visit Comms Base.",
         dropItems: [
           {
             item: "Radio Equipment",
@@ -756,35 +764,34 @@ export const quests: Quest[] = [
         description: "Visit House on Stilts.",
         deliverItems: [
           {
-            item: 'Rare Data Drive',
-            quantity: 3
-          }
-        ]
+            item: "Rare Data Drive",
+            quantity: 3,
+          },
+        ],
       },
       {
-        description: 'Kill 4 Creatures at Power Plant.',
+        description: "Kill 4 Creatures at Power Plant.",
         deliverItems: [
           {
-            
-            item: 'Fusion Cartridge Batteries',
-            quantity: 8
-          }
-        ]
+            item: "Fusion Cartridge Batteries",
+            quantity: 8,
+          },
+        ],
       },
       {
         dropItems: [
           {
-            item: 'Valuable Data Drive',
+            item: "Valuable Data Drive",
             quantity: 1,
-            dropLocation: 'Main Office'
+            dropLocation: "Main Office",
           },
           {
-            item: 'Miniature Reactor',
+            item: "Miniature Reactor",
             quantity: 1,
-            dropLocation: 'Main Office'
-          }
-        ]
-      }
+            dropLocation: "Main Office",
+          },
+        ],
+      },
     ],
   },
   {
@@ -840,13 +847,16 @@ export const quests: Quest[] = [
         ],
       },
       {
-        description: 'Visit Osiris Wildlife Preserve. Visit Skeleton Observation.'
+        description:
+          "Visit Osiris Wildlife Preserve. Visit Skeleton Observation.",
       },
       {
-        description: 'Visit Power Plant Office. Enter Power Plant Office. Deliver Notes on Meteor Experiment 1.'
+        description:
+          "Visit Power Plant Office. Enter Power Plant Office. Deliver Notes on Meteor Experiment 1.",
       },
       {
-        description: 'Enter Geothermal Plant Office. Deliver notes on Meteor Experiment - 2.'
+        description:
+          "Enter Geothermal Plant Office. Deliver notes on Meteor Experiment - 2.",
       },
       {
         deliverItems: [
@@ -887,7 +897,7 @@ export const quests: Quest[] = [
             dropLocation: "Stockpile",
           },
         ],
-      }
+      },
     ],
   },
   {
@@ -914,7 +924,8 @@ export const quests: Quest[] = [
         ],
       },
       {
-        description: "Visit Greens Prospect. Kill 5 Creatures with a Sniper Rifle at Greens Prospect",
+        description:
+          "Visit Greens Prospect. Kill 5 Creatures with a Sniper Rifle at Greens Prospect",
       },
       {
         deliverItems: [
@@ -939,10 +950,12 @@ export const quests: Quest[] = [
     campaign: "ICA",
     parts: [
       {
-        description: "Visit Pumpkin Fields. Kill 10 Creatures at Pumpkin Fields.",
+        description:
+          "Visit Pumpkin Fields. Kill 10 Creatures at Pumpkin Fields.",
       },
       {
-        description: "Visit Geothermal Plant. Kill 2 players with an ICA weapon",
+        description:
+          "Visit Geothermal Plant. Kill 2 players with an ICA weapon",
         deliverItems: [
           {
             item: "Sampler Container",
@@ -1022,7 +1035,8 @@ export const quests: Quest[] = [
         ],
       },
       {
-        description: 'Visit the Abandoned Oil Field. Kill 5 creatures at Abandoned Oil Field. Deliver Old Oil Pump Parts.'
+        description:
+          "Visit the Abandoned Oil Field. Kill 5 creatures at Abandoned Oil Field. Deliver Old Oil Pump Parts.",
       },
       {
         deliverItems: [
@@ -1083,7 +1097,7 @@ export const quests: Quest[] = [
             quantity: 2,
           },
         ],
-      }
+      },
     ],
   },
   {
@@ -1231,7 +1245,8 @@ export const quests: Quest[] = [
     campaign: "Osirus",
     parts: [
       {
-        description: "Visit Science Campus. Kill 5 Creatures at Science Campus.",
+        description:
+          "Visit Science Campus. Kill 5 Creatures at Science Campus.",
         deliverItems: [
           {
             item: "Optic Glass",
@@ -1240,10 +1255,11 @@ export const quests: Quest[] = [
         ],
       },
       {
-        description: "Visit Lake. Kill 10 Striders at Lake. Kill 3 Rattlers at Lake.",
+        description:
+          "Visit Lake. Kill 10 Striders at Lake. Kill 3 Rattlers at Lake.",
       },
       {
-        description: 'Visit the archaelogy Site. Deliver 3 Old Bones.'
+        description: "Visit the archaelogy Site. Deliver 3 Old Bones.",
       },
       {
         description: "Kill 1 Player with an Orsirus weapon.",
@@ -1284,10 +1300,11 @@ export const quests: Quest[] = [
         ],
       },
       {
-        description: 'Visit the Extinct Creatures Lab. Deliver the Warden Skull.'
-      },     
+        description:
+          "Visit the Extinct Creatures Lab. Deliver the Warden Skull.",
+      },
       {
-        description: 'Visit Greens Prospect.',
+        description: "Visit Greens Prospect.",
         dropItems: [
           {
             item: "Resin Gun",
@@ -1303,7 +1320,7 @@ export const quests: Quest[] = [
     campaign: "Osirus",
     parts: [
       {
-        description: 'Visit Waterfall Lab. Visit Vaccine Lab.',
+        description: "Visit Waterfall Lab. Visit Vaccine Lab.",
         deliverItems: [
           {
             item: "Medical Supplies",
@@ -1334,7 +1351,7 @@ export const quests: Quest[] = [
     campaign: "Osirus",
     parts: [
       {
-        description: 'Visit Nutrion Farms Processing.',
+        description: "Visit Nutrion Farms Processing.",
         deliverItems: [
           {
             item: "Rattler Skin",
@@ -1347,13 +1364,15 @@ export const quests: Quest[] = [
         ],
       },
       {
-        description: 'Visit Crashed Ship. Deliver Flight Recorder. Kill 3 Creatures at Crashed Ship.'
+        description:
+          "Visit Crashed Ship. Deliver Flight Recorder. Kill 3 Creatures at Crashed Ship.",
       },
       {
-        description: 'Visit Favela. Kill 3 Players with an Osirus Weapon.'
+        description: "Visit Favela. Kill 3 Players with an Osirus Weapon.",
       },
       {
-        description: "Visit Cave south of Fallen Tree. Kill 5 Creatures near Mysterious Cave Entrance. Kill 5 Creatures at Forest Crystal Seal",
+        description:
+          "Visit Cave south of Fallen Tree. Kill 5 Creatures near Mysterious Cave Entrance. Kill 5 Creatures at Forest Crystal Seal",
         deliverItems: [
           {
             item: "Clear Veltecite",
@@ -1362,9 +1381,8 @@ export const quests: Quest[] = [
         ],
       },
       {
-        description: 'Find the lost scientist. Deliver his notebook.'
+        description: "Find the lost scientist. Deliver his notebook.",
       },
-
     ],
   },
   {
@@ -1380,8 +1398,8 @@ export const quests: Quest[] = [
         ],
       },
       {
-        description: 'Find the frozen scientist.'
-      }
+        description: "Find the frozen scientist.",
+      },
     ],
   },
   {
@@ -1415,9 +1433,9 @@ export const quests: Quest[] = [
             quantity: 10,
           },
           {
-            item: 'Gyroscope',
-            quantity: 1
-          }
+            item: "Gyroscope",
+            quantity: 1,
+          },
         ],
       },
     ],
@@ -1626,7 +1644,7 @@ export const quests: Quest[] = [
     campaign: "Osirus",
     parts: [
       {
-        description: 'Visit Southeast Uplink. Visit North Uplink.',
+        description: "Visit Southeast Uplink. Visit North Uplink.",
         deliverItems: [
           {
             item: "Valuable Data Drive",
@@ -1635,7 +1653,8 @@ export const quests: Quest[] = [
         ],
       },
       {
-        description: 'Visit Starport Landing Pad Uplink. Visit Skeleton Observation Uplink.'
+        description:
+          "Visit Starport Landing Pad Uplink. Visit Skeleton Observation Uplink.",
       },
       {
         deliverItems: [
@@ -1753,7 +1772,8 @@ export const quests: Quest[] = [
     campaign: "Osirus",
     parts: [
       {
-        description: "Enter Mysterious Cave. Kill 15 Creatures at Mysterious Cave",
+        description:
+          "Enter Mysterious Cave. Kill 15 Creatures at Mysterious Cave",
         deliverItems: [
           {
             item: "Elite Crusher Heart",
