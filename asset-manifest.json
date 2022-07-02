@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/cycle-frontier-item-tracker/static/css/main.21c6ac9e.css",
-    "main.js": "/cycle-frontier-item-tracker/static/js/main.4d75289b.js",
+    "main.js": "/cycle-frontier-item-tracker/static/js/main.683c9f65.js",
     "static/js/787.854bb5df.chunk.js": "/cycle-frontier-item-tracker/static/js/787.854bb5df.chunk.js",
     "index.html": "/cycle-frontier-item-tracker/index.html",
     "main.21c6ac9e.css.map": "/cycle-frontier-item-tracker/static/css/main.21c6ac9e.css.map",
-    "main.4d75289b.js.map": "/cycle-frontier-item-tracker/static/js/main.4d75289b.js.map",
+    "main.683c9f65.js.map": "/cycle-frontier-item-tracker/static/js/main.683c9f65.js.map",
     "787.854bb5df.chunk.js.map": "/cycle-frontier-item-tracker/static/js/787.854bb5df.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.21c6ac9e.css",
-    "static/js/main.4d75289b.js"
+    "static/js/main.683c9f65.js"
   ]
 }
