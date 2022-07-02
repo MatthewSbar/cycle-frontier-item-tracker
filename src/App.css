@@ -54,7 +54,7 @@ nav {
   max-width: 100%;
   position: sticky;
   top: 0;
-  border-bottom: 2px solid #838383;;
+  border-bottom: 2px solid #838383;
   background-color: rgb(39, 39, 42);
   z-index: 1;
   padding-top: 1rem;
@@ -248,7 +248,8 @@ footer {
     flex-direction: column-reverse;
   }
 
-  h2, .patreon-link {
+  h2,
+  .patreon-link {
     border-radius: 8px;
     background-color: #525276;
     margin: 0 16px 0 0;

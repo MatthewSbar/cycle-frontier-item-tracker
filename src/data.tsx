@@ -294,7 +294,7 @@ export const quests: Quest[] = [
       {
         description:
           "Kill 5 creatures at Greens Project. Kill 10 creatures at Pinnacle Labs",
-      }
+      },
     ],
   },
   {
