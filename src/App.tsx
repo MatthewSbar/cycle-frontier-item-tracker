@@ -217,9 +217,12 @@ function App() {
                   {showCompleted ? "Hide completed" : "Show completed"}
                 </h2>
 
-                <h2 className="patreon-link">
-                  <a href="https://www.patreon.com/Vedgy">Patreon</a>
-                </h2>
+                <a
+                  className="patreon-link"
+                  href="https://www.patreon.com/Vedgy"
+                >
+                  Patreon
+                </a>
               </div>
             </nav>
             <hr />
