@@ -234,13 +234,17 @@ footer {
     flex-direction: column-reverse;
   }
 
-  h2 {
+  h2, .patreon-link {
     border-radius: 8px;
     background-color: #525276;
     margin: 0 16px 0 0;
     padding: 8px 16px;
     font-size: 16px;
     margin-bottom: 16px;
+  }
+
+  .patreon-link {
+    background-color: #a33211;
   }
 }
 
