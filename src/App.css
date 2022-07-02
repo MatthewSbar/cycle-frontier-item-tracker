@@ -14,6 +14,10 @@ input {
   display: inline;
 }
 
+h1 {
+  margin: 1rem 0 0 0;
+}
+
 h2,
 .patreon-link {
   border-radius: 8px 8px 0 0;
@@ -48,6 +52,12 @@ nav {
   flex-direction: row;
   justify-content: space-between;
   max-width: 100%;
+  position: sticky;
+  top: 0;
+  border-bottom: 2px solid #838383;;
+  background-color: rgb(39, 39, 42);
+  z-index: 1;
+  padding-top: 1rem;
 }
 
 input[type="text"] {
@@ -111,6 +121,8 @@ footer {
 .quest-columns {
   display: flex;
   flex-wrap: wrap;
+  position: sticky;
+  top: 60px;
 }
 
 .quests {
@@ -171,6 +183,8 @@ footer {
 .upgrade-grid {
   display: flex;
   flex-wrap: wrap;
+  position: sticky;
+  top: 60px;
 }
 
 .upgrade-level {

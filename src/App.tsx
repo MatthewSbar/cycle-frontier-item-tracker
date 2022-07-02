@@ -225,7 +225,6 @@ function App() {
                 </a>
               </div>
             </nav>
-            <hr />
             {viewMode === "quest" && (showCompleted || !allQuestsComplete()) && (
               <div className="quest-columns">
                 <div className="quests">
