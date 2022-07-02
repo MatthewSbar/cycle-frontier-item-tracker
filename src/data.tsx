@@ -382,8 +382,6 @@ export const quests: Quest[] = [
       },
       {
         description: "Visit Greens Prospect.",
-      },
-      {
         dropItems: [
           {
             item: "Clear Veltecite",
@@ -394,6 +392,15 @@ export const quests: Quest[] = [
             item: "Pure Veltecite",
             quantity: 2,
             dropLocation: "Stockpile",
+          },
+        ],
+      },
+      {
+        description: "Visit Waterfall Lab. Deliver Letium Bio Samples",
+        deliverItems: [
+          {
+            item: "Letium",
+            quantity: 10,
           },
         ],
       },
@@ -431,21 +438,10 @@ export const quests: Quest[] = [
       {
         description:
           "Visit Starport Landing Pad Uplink. Visit Skeleton Observation.",
-      },
-      {
         deliverItems: [
           {
             item: "Unique Data Drive",
             quantity: 1,
-          },
-        ],
-      },
-      {
-        description: "Visit Waterfall Lab. Deliver Letium Bio Samples",
-        deliverItems: [
-          {
-            item: "Letium",
-            quantity: 10,
           },
         ],
       },
