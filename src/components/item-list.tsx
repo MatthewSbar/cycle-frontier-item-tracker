@@ -26,6 +26,7 @@ export const ItemList = ({
       <div>💀🗑️ = Item must be dead dropped</div>
       <hr />
       {Object.keys(itemsNeeded)
+        .filter(key => itemsNeeded[key as ItemName] > 0)
         .sort()
         .map((key) => {
           if (

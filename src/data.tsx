@@ -382,8 +382,6 @@ export const quests: Quest[] = [
       },
       {
         description: "Visit Greens Prospect.",
-      },
-      {
         dropItems: [
           {
             item: "Clear Veltecite",
@@ -394,6 +392,15 @@ export const quests: Quest[] = [
             item: "Pure Veltecite",
             quantity: 2,
             dropLocation: "Stockpile",
+          },
+        ],
+      },
+      {
+        description: "Visit Waterfall Lab. Deliver Letium Bio Samples",
+        deliverItems: [
+          {
+            item: "Letium",
+            quantity: 10,
           },
         ],
       },
@@ -431,21 +438,10 @@ export const quests: Quest[] = [
       {
         description:
           "Visit Starport Landing Pad Uplink. Visit Skeleton Observation.",
-      },
-      {
         deliverItems: [
           {
             item: "Unique Data Drive",
             quantity: 1,
-          },
-        ],
-      },
-      {
-        description: "Visit Waterfall Lab. Deliver Letium Bio Samples",
-        deliverItems: [
-          {
-            item: "Letium",
-            quantity: 10,
           },
         ],
       },
@@ -1856,7 +1852,7 @@ export const upgrades: Upgrade[] = [
               },
               {
                 item: "Heavy Strider Flesh",
-                quantity: 3,
+                quantity: 5,
               },
             ],
             kMarks: 8000,
@@ -1865,7 +1861,7 @@ export const upgrades: Upgrade[] = [
             items: [
               {
                 item: "Aluminum Scrap",
-                quantity: 5,
+                quantity: 18,
               },
               {
                 item: "Co-TEC MultiTool",
@@ -2994,23 +2990,6 @@ export const upgrades: Upgrade[] = [
               },
             ],
             kMarks: 1400,
-          },
-          {
-            items: [
-              {
-                item: "Nickel",
-                quantity: 8,
-              },
-              {
-                item: "Flawed Veltecite",
-                quantity: 5,
-              },
-              {
-                item: "ICA Scrip",
-                quantity: 2,
-              },
-            ],
-            kMarks: 2200,
           },
           {
             items: [
