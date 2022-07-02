@@ -14,7 +14,8 @@ input {
   display: inline;
 }
 
-h2, .patreon-link {
+h2,
+.patreon-link {
   border-radius: 8px 8px 0 0;
   background-color: #525276;
   margin: 0 16px 0 0;
