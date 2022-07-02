@@ -257,6 +257,10 @@ export const quests: Quest[] = [
       },
       {
         description:
+          "Find the missing engineer. Kill 3 creatures near the missing engineer. Deliver evidence of Letium.",
+      },
+      {
+        description:
           "Kill 10 creatures at Starport. Kill 10 Creatures at Favela",
         deliverItems: [
           {
@@ -290,11 +294,7 @@ export const quests: Quest[] = [
       {
         description:
           "Kill 5 creatures at Greens Project. Kill 10 creatures at Pinnacle Labs",
-      },
-      {
-        description:
-          "Find the missing engineer. Kill 3 creatures near the missing engineer. Deliver evidence of Letium.",
-      },
+      }
     ],
   },
   {
