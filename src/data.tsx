@@ -1902,7 +1902,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 20,
               },
               {
-                item: "Crusher Flesh",
+                item: "Crusher Hide",
                 quantity: 5,
               },
             ],
