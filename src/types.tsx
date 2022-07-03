@@ -7,6 +7,7 @@ export type Quest = {
 export type Faction = "Korolev" | "Osirus" | "ICA";
 
 export type ViewMode = "quest" | "upgrade" | "items";
+export type ItemSource = "quest" | "upgrade";
 
 type Part = {
   dropItems?: ItemHandin[];

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import {
   ItemName,
+  ItemSource,
   QuestProgress,
   UpgradeProgress,
   ViewMode,
@@ -48,37 +49,42 @@ function App() {
   const countItemsNeeded = (): Record<ItemName, number> => {
     const itemsNeededCopy: Record<ItemName, number> = { ...items };
 
-    quests.forEach((quest) => {
-      quest.parts.forEach((part, i) => {
-        if (questProgress[quest.name] > i) {
-          return;
-        }
-        part.deliverItems?.forEach((item) => {
-          itemsNeededCopy[item.item] =
-            itemsNeededCopy[item.item] + item.quantity;
-        });
-
-        part.dropItems?.forEach((item) => {
-          itemsNeededCopy[item.item] =
-            itemsNeededCopy[item.item] + item.quantity;
-        });
-      });
-    });
-
-    upgrades.forEach((upgrade) => {
-      upgrade.stages.forEach((stage, i) => {
-        stage.levels.forEach((level, j) => {
-          if (upgradeProgress[upgrade.tree][i] > j) {
+    if (omittedItems !== "quest") {
+      quests.forEach((quest) => {
+        quest.parts.forEach((part, i) => {
+          if (questProgress[quest.name] > i) {
             return;
           }
-          level.items.forEach((item) => {
+          part.deliverItems?.forEach((item) => {
             itemsNeededCopy[item.item] =
-              itemsNeededCopy[item.item] + item.quantity;
+                itemsNeededCopy[item.item] + item.quantity;
           });
-          itemsNeededCopy["Kmarks"] = itemsNeededCopy["Kmarks"] + level.kMarks;
+
+          part.dropItems?.forEach((item) => {
+            itemsNeededCopy[item.item] =
+                itemsNeededCopy[item.item] + item.quantity;
+          });
         });
       });
-    });
+    }
+
+    if (omittedItems !== "upgrade") {
+      upgrades.forEach((upgrade) => {
+        upgrade.stages.forEach((stage, i) => {
+          stage.levels.forEach((level, j) => {
+            if (upgradeProgress[upgrade.tree][i] > j) {
+              return;
+            }
+            level.items.forEach((item) => {
+              itemsNeededCopy[item.item] =
+                  itemsNeededCopy[item.item] + item.quantity;
+            });
+            itemsNeededCopy["Kmarks"] = itemsNeededCopy["Kmarks"] + level.kMarks;
+          });
+        });
+      });
+    }
+
     return itemsNeededCopy;
   };
 
@@ -153,6 +159,7 @@ function App() {
   const [upgradeProgress, setUpgradeProgress] = useState<UpgradeProgress>(
     getLocalUpgradeData()
   );
+  const [omittedItems, setOmittedItems] = useState<ItemSource | null>(null);
   const [itemsNeeded, setItemsNeeded] = useState<Record<ItemName, number>>(
     countItemsNeeded()
   );
@@ -181,6 +188,10 @@ function App() {
     }
   });
 
+  useEffect(() => {
+    setItemsNeeded(countItemsNeeded());
+  }, [omittedItems]);
+
   return (
     <>
       <header>
@@ -196,12 +207,26 @@ function App() {
                   className={viewMode !== "quest" ? "inactive" : undefined}
                 >
                   Missions
+                  <i
+                    title={"Toggle items"}
+                    onClick={event => { event.stopPropagation(); setOmittedItems(omittedItems !== "quest" ? "quest" : null) }}
+                    className={omittedItems === "quest" ? "toggled" : undefined}
+                  >
+                    👁
+                  </i>
                 </h2>
                 <h2
                   onClick={() => setViewMode("upgrade")}
                   className={viewMode !== "upgrade" ? "inactive" : undefined}
                 >
                   Quarters
+                  <i
+                    title={"Toggle items"}
+                    onClick={event => { event.stopPropagation(); setOmittedItems(omittedItems !== "upgrade" ? "upgrade" : null) } }
+                    className={omittedItems === "upgrade" ? "toggled" : undefined}
+                  >
+                    👁
+                  </i>
                 </h2>
                 <h2
                   className={`item-list-button ${
