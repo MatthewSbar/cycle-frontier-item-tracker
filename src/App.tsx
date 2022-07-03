@@ -175,7 +175,7 @@ function App() {
       "upgradeProgress",
       JSON.stringify(upgradeProgress)
     );
-  }, [questProgress, upgradeProgress]);
+  }, [questProgress, upgradeProgress, omittedItems]);
 
   useEffect(() => {
     window.addEventListener("resize", updateWidth);
@@ -187,10 +187,6 @@ function App() {
       setViewMode("quest");
     }
   });
-
-  useEffect(() => {
-    setItemsNeeded(countItemsNeeded());
-  }, [omittedItems]);
 
   return (
     <>
