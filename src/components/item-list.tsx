@@ -37,7 +37,7 @@ export const ItemList = ({
           Only showing items from:
           <ul className="quest-list">
             {focusQuests.map((questName) => (
-              <li>
+              <li key={questName}>
                 {questName} - part {questProgress[questName] + 1}
               </li>
             ))}

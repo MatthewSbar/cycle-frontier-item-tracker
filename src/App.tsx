@@ -196,11 +196,7 @@ function App() {
   );
 
   const getLocalOmittedData = (): ItemSource => {
-    const localData = localStorage.getItem("omittedItems");
-    if (!localData) {
-      return null;
-    }
-    return localData as ItemSource
+    return localStorage.getItem("omittedItems") as ItemSource
   }
 
   const handleSetOmittedItems = (e: React.MouseEvent<HTMLElement, MouseEvent>, newState: string) => {

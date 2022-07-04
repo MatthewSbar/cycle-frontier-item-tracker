@@ -151,7 +151,7 @@ export const UpgradeTree = ({
                     {stage.levels.map(
                       (level, j) =>
                         (!levelCompleted(i, j) || showCompleted) && (
-                          <li>
+                          <li key={j}>
                             level {j + 1}
                             {levelCompleted(i, j) && (
                               <Checkmark
