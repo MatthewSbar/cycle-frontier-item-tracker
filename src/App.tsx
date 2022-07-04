@@ -57,12 +57,12 @@ function App() {
           }
           part.deliverItems?.forEach((item) => {
             itemsNeededCopy[item.item] =
-                itemsNeededCopy[item.item] + item.quantity;
+              itemsNeededCopy[item.item] + item.quantity;
           });
 
           part.dropItems?.forEach((item) => {
             itemsNeededCopy[item.item] =
-                itemsNeededCopy[item.item] + item.quantity;
+              itemsNeededCopy[item.item] + item.quantity;
           });
         });
       });
@@ -77,9 +77,10 @@ function App() {
             }
             level.items.forEach((item) => {
               itemsNeededCopy[item.item] =
-                  itemsNeededCopy[item.item] + item.quantity;
+                itemsNeededCopy[item.item] + item.quantity;
             });
-            itemsNeededCopy["Kmarks"] = itemsNeededCopy["Kmarks"] + level.kMarks;
+            itemsNeededCopy["Kmarks"] =
+              itemsNeededCopy["Kmarks"] + level.kMarks;
           });
         });
       });
@@ -205,7 +206,12 @@ function App() {
                   Missions
                   <i
                     title={"Toggle items"}
-                    onClick={event => { event.stopPropagation(); setOmittedItems(omittedItems !== "quest" ? "quest" : null) }}
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      setOmittedItems(
+                        omittedItems !== "quest" ? "quest" : null
+                      );
+                    }}
                     className={omittedItems === "quest" ? "toggled" : undefined}
                   >
                     👁
@@ -218,8 +224,15 @@ function App() {
                   Quarters
                   <i
                     title={"Toggle items"}
-                    onClick={event => { event.stopPropagation(); setOmittedItems(omittedItems !== "upgrade" ? "upgrade" : null) } }
-                    className={omittedItems === "upgrade" ? "toggled" : undefined}
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      setOmittedItems(
+                        omittedItems !== "upgrade" ? "upgrade" : null
+                      );
+                    }}
+                    className={
+                      omittedItems === "upgrade" ? "toggled" : undefined
+                    }
                   >
                     👁
                   </i>
