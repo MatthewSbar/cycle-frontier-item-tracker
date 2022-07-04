@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/cycle-frontier-item-tracker/static/css/main.4c11c426.css",
-    "main.js": "/cycle-frontier-item-tracker/static/js/main.1c9b710a.js",
+    "main.css": "/cycle-frontier-item-tracker/static/css/main.16d87e97.css",
+    "main.js": "/cycle-frontier-item-tracker/static/js/main.412f48cb.js",
     "static/js/787.854bb5df.chunk.js": "/cycle-frontier-item-tracker/static/js/787.854bb5df.chunk.js",
     "index.html": "/cycle-frontier-item-tracker/index.html",
-    "main.4c11c426.css.map": "/cycle-frontier-item-tracker/static/css/main.4c11c426.css.map",
-    "main.1c9b710a.js.map": "/cycle-frontier-item-tracker/static/js/main.1c9b710a.js.map",
+    "main.16d87e97.css.map": "/cycle-frontier-item-tracker/static/css/main.16d87e97.css.map",
+    "main.412f48cb.js.map": "/cycle-frontier-item-tracker/static/js/main.412f48cb.js.map",
     "787.854bb5df.chunk.js.map": "/cycle-frontier-item-tracker/static/js/787.854bb5df.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4c11c426.css",
-    "static/js/main.1c9b710a.js"
+    "static/css/main.16d87e97.css",
+    "static/js/main.412f48cb.js"
   ]
 }
