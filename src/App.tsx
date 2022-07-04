@@ -46,10 +46,41 @@ function App() {
     return allUpgrades;
   };
 
+  const getLocalFocusData = (): string[] => {
+    const localData = localStorage.getItem("focusQuests");
+    if (!localData) {
+      return [];
+    }
+    return JSON.parse(localData) as string[];
+  };
+
+  const [focusQuests, setFocusQuests] = useState<string[]>(getLocalFocusData());
+
   const countItemsNeeded = (): Record<ItemName, number> => {
     const itemsNeededCopy: Record<ItemName, number> = { ...items };
 
+    // Skip if quests are all hidden
     if (omittedItems !== "quest") {
+      // Only look at focused quests if any are selected
+      if (focusQuests.length > 0) {
+        focusQuests.forEach((questName) => {
+          const part = quests.find((q) => q.name === questName)?.parts[
+            questProgress[questName]
+          ];
+          part?.deliverItems?.forEach(
+            (item) =>
+              (itemsNeededCopy[item.item] =
+                itemsNeededCopy[item.item] + item.quantity)
+          );
+          part?.dropItems?.forEach(
+            (item) =>
+              (itemsNeededCopy[item.item] =
+                itemsNeededCopy[item.item] + item.quantity)
+          );
+        });
+        return itemsNeededCopy;
+      }
+
       quests.forEach((quest) => {
         quest.parts.forEach((part, i) => {
           if (questProgress[quest.name] > i) {
@@ -68,6 +99,7 @@ function App() {
       });
     }
 
+    // Skip if upgrades are all hidden
     if (omittedItems !== "upgrade") {
       upgrades.forEach((upgrade) => {
         upgrade.stages.forEach((stage, i) => {
@@ -130,6 +162,8 @@ function App() {
       window.localStorage.removeItem("questProgress");
       window.localStorage.removeItem("upgradeProgress");
       window.localStorage.removeItem("showCompleted");
+      window.localStorage.removeItem("focusQuests");
+      window.localStorage.removeItem("omittedItems")
       window.location.href =
         "https://matthewsbar.github.io/cycle-frontier-item-tracker/";
     }
@@ -160,12 +194,31 @@ function App() {
   const [upgradeProgress, setUpgradeProgress] = useState<UpgradeProgress>(
     getLocalUpgradeData()
   );
-  const [omittedItems, setOmittedItems] = useState<ItemSource | null>(null);
+
+  const getLocalOmittedData = (): ItemSource => {
+    const localData = localStorage.getItem("omittedItems");
+    if (!localData) {
+      return null;
+    }
+    return localData as ItemSource
+  }
+
+  const handleSetOmittedItems = (e: React.MouseEvent<HTMLElement, MouseEvent>, newState: string) => {
+    e.stopPropagation()
+    if (omittedItems === newState) {
+      localStorage.removeItem("omittedItems")
+      setOmittedItems(null)
+      return
+    }
+    setOmittedItems(newState as ItemSource)
+    localStorage.setItem('omittedItems', newState)
+  }
+
+  const [omittedItems, setOmittedItems] = useState<ItemSource>(getLocalOmittedData());
   const [itemsNeeded, setItemsNeeded] = useState<Record<ItemName, number>>(
     countItemsNeeded()
   );
   const [showCompleted, setShowCompleted] = useState(getLocalHideData());
-
   const [search, setSearch] = useState<string>("");
   const [viewMode, setViewMode] = useState<ViewMode>("quest");
 
@@ -176,18 +229,21 @@ function App() {
       "upgradeProgress",
       JSON.stringify(upgradeProgress)
     );
-  }, [questProgress, upgradeProgress, omittedItems]);
+    window.localStorage.setItem("focusQuests", JSON.stringify(focusQuests));
+  }, [questProgress, upgradeProgress, omittedItems, focusQuests]);
 
+  // Track the width of the window so we can know if the below condition should be triggered
   useEffect(() => {
     window.addEventListener("resize", updateWidth);
     return () => window.removeEventListener("resize", updateWidth);
   }, []);
 
+  // If someone's viewing the mobile-only itemlist, then resizes their window big enough to not-need it, show the quest list
   useEffect(() => {
     if (width > 768 && viewMode === "items") {
       setViewMode("quest");
     }
-  });
+  }, [width]);
 
   return (
     <>
@@ -206,12 +262,7 @@ function App() {
                   Missions
                   <i
                     title={"Toggle items"}
-                    onClick={(event) => {
-                      event.stopPropagation();
-                      setOmittedItems(
-                        omittedItems !== "quest" ? "quest" : null
-                      );
-                    }}
+                    onClick={(e) => handleSetOmittedItems(e, 'quest')}
                     className={omittedItems === "quest" ? "toggled" : undefined}
                   >
                     👁
@@ -224,12 +275,7 @@ function App() {
                   Quarters
                   <i
                     title={"Toggle items"}
-                    onClick={(event) => {
-                      event.stopPropagation();
-                      setOmittedItems(
-                        omittedItems !== "upgrade" ? "upgrade" : null
-                      );
-                    }}
+                    onClick={(e) => handleSetOmittedItems(e, 'upgrade')}
                     className={
                       omittedItems === "upgrade" ? "toggled" : undefined
                     }
@@ -274,6 +320,8 @@ function App() {
                         questProgress={questProgress}
                         setQuestProgress={setQuestProgress}
                         showCompleted={showCompleted}
+                        setFocusQuests={setFocusQuests}
+                        focusQuests={focusQuests}
                       />
                     ))}
                 </div>
@@ -290,6 +338,8 @@ function App() {
                         questProgress={questProgress}
                         setQuestProgress={setQuestProgress}
                         showCompleted={showCompleted}
+                        setFocusQuests={setFocusQuests}
+                        focusQuests={focusQuests}
                       />
                     ))}
                 </div>
@@ -304,6 +354,8 @@ function App() {
                         questProgress={questProgress}
                         setQuestProgress={setQuestProgress}
                         showCompleted={showCompleted}
+                        setFocusQuests={setFocusQuests}
+                        focusQuests={focusQuests}
                       />
                     ))}
                 </div>
@@ -343,6 +395,8 @@ function App() {
                 search={search}
                 setSearch={setSearch}
                 itemsNeeded={itemsNeeded}
+                focusQuests={focusQuests}
+                omittedItems={omittedItems}
               />
             </div>
           </div>
@@ -352,6 +406,8 @@ function App() {
               search={search}
               setSearch={setSearch}
               itemsNeeded={itemsNeeded}
+              focusQuests={focusQuests}
+              omittedItems={omittedItems}
             />
           </div>
         </div>

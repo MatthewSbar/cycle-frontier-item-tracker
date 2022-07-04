@@ -44,7 +44,6 @@ h4 {
 
 hr {
   border-color: #838383;
-  margin: -1px 0 16px 0;
 }
 
 nav {
@@ -130,6 +129,10 @@ footer {
   flex-direction: column;
 }
 
+.quest-list {
+  list-style-type: circle;
+}
+
 .quest-listing {
   border-radius: 4px;
   margin: 16px;
@@ -156,13 +159,15 @@ footer {
   gap: 4px;
 }
 
-.checkmark {
+.checkmark,
+.focus {
   position: absolute;
   background-color: white;
   border-radius: 25px;
 }
 
-.checkmark-wrapper {
+.checkmark-wrapper,
+.focus-wrapper {
   position: relative;
   left: 20px;
 }
@@ -170,6 +175,8 @@ footer {
 .item-list {
   border-left: 1px solid #838383;
   padding-left: 32px;
+  max-width: 262px;
+  width: 262px;
 }
 
 .inactive {
@@ -238,8 +245,13 @@ footer {
   color: #00a715;
 }
 
+.material-symbols-outlined.star {
+  color: #e0ed20;
+}
+
 .task-list li {
   margin-bottom: 8px;
+  display: flex;
 }
 
 .main-nav i {
@@ -250,6 +262,10 @@ footer {
 
 .main-nav i.toggled {
   opacity: 0.75;
+}
+
+.completed {
+  opacity: 0.5;
 }
 
 /* Adds the 'slashed-eye' effect  */

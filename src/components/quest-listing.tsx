@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { quests } from "../data";
 import { Quest, QuestProgress } from "../types";
 import { Checkmark } from "./checkmark";
@@ -7,6 +8,8 @@ type Props = {
   questProgress: QuestProgress;
   setQuestProgress(questProgress: QuestProgress): void;
   showCompleted: boolean;
+  setFocusQuests(quest: string[]): void;
+  focusQuests: string[];
 };
 
 export const QuestListing = ({
@@ -14,6 +17,8 @@ export const QuestListing = ({
   questProgress,
   setQuestProgress,
   showCompleted,
+  setFocusQuests,
+  focusQuests,
 }: Props) => {
   const maxQuest = (e: React.MouseEvent, questName: string) => {
     e.preventDefault();
@@ -42,18 +47,40 @@ export const QuestListing = ({
     return questProgress[quest.name] > partNumber;
   };
 
+  const isFocused = (): boolean => {
+    return focusQuests.includes(quest.name);
+  };
+
+  const handleFocusToggle = () => {
+    const focusQuestsCopy = [...focusQuests];
+    if (isFocused()) {
+      setFocusQuests(focusQuestsCopy.filter((q) => q !== quest.name));
+    } else {
+      focusQuestsCopy.push(quest.name);
+      setFocusQuests(focusQuestsCopy);
+    }
+  };
+
+  const unfocusQuest = () => {
+    const focusQuestsCopy = [...focusQuests];
+    setFocusQuests(focusQuestsCopy.filter((q) => q !== quest.name));
+  };
+
+  useEffect(() => {
+    if (questCompleted() && isFocused()) {
+      unfocusQuest();
+    }
+  }, [questProgress[quest.name], focusQuests]);
+
   if (questCompleted() && !showCompleted) {
     return null;
   }
 
   return (
-    <div className={`quest-listing ${quest.campaign.toLocaleLowerCase()}`}>
+    <div className={`quest-listing ${quest.campaign.toLocaleLowerCase()} ${questCompleted() ? 'completed' : null}`}>
       <details>
         <summary>
           <h4>
-            {questCompleted() ? (
-              <Checkmark offsetTop={-34} offsetLeft={-50} fontSize={40} />
-            ) : null}
             {quest.name}
           </h4>
           <br />
@@ -96,6 +123,20 @@ export const QuestListing = ({
               </span>
             </button>
           </div>
+          <div>
+            {!questCompleted() && (
+              <button onClick={() => handleFocusToggle()}>
+                {isFocused() ? (
+                  <span className="material-symbols-outlined star">star</span>
+                ) : (
+                  <span className="material-symbols-outlined">grade</span>
+                )}
+              </button>
+            )}
+            {questCompleted() && (
+              <span className="material-symbols-outlined">done</span>
+            )}
+          </div>
         </summary>
         <br />
         {quest.parts.map(
@@ -107,11 +148,7 @@ export const QuestListing = ({
                   {part.description && (
                     <li>
                       {partCompleted(i) ? (
-                        <Checkmark
-                          offsetLeft={-24}
-                          offsetTop={0}
-                          fontSize={20}
-                        />
+                        <span className="material-symbols-outlined">done</span>
                       ) : null}
                       {part.description}
                     </li>
@@ -120,11 +157,7 @@ export const QuestListing = ({
                     part.deliverItems.map((item, j) => (
                       <li key={`${quest.name}${item.item}${j}`}>
                         {partCompleted(i) ? (
-                          <Checkmark
-                            offsetLeft={-24}
-                            offsetTop={0}
-                            fontSize={20}
-                          />
+                          <span className="material-symbols-outlined">done</span>
                         ) : null}
                         Deliver {item.quantity} {item.item}
                       </li>
@@ -133,11 +166,7 @@ export const QuestListing = ({
                     part.dropItems.map((item, j) => (
                       <li key={`${quest.name}${item.item}${j}`}>
                         {partCompleted(i) ? (
-                          <Checkmark
-                            offsetLeft={-24}
-                            offsetTop={0}
-                            fontSize={20}
-                          />
+                          <span className="material-symbols-outlined">done</span>
                         ) : null}
                         Drop {item.quantity} {item.item} at {item.dropLocation}
                       </li>
