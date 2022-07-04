@@ -242,6 +242,27 @@ footer {
   margin-bottom: 8px;
 }
 
+.main-nav i {
+  font-style: normal;
+  font-weight: 100;
+  margin-left: 0.5rem;
+}
+
+.main-nav i.toggled {
+  opacity: 0.75;
+}
+
+/* Adds the 'slashed-eye' effect  */
+.main-nav i.toggled::before {
+  content: "";
+  width: 22px;
+  height: 16px;
+  border-bottom: 2px solid #dbdbdb;
+  position: absolute;
+  transform: translate(-7px, 1px) rotate(-45deg);
+  user-select: none;
+}
+
 @media (max-width: 1200px) {
   nav {
     flex-wrap: wrap;
