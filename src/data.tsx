@@ -558,7 +558,7 @@ export const quests: Quest[] = [
       {
         deliverItems: [
           {
-            item: "Osirus Scrip",
+            item: "Osiris Scrip",
             quantity: 20,
           },
           {
@@ -1189,7 +1189,7 @@ export const quests: Quest[] = [
   },
   {
     name: "Dangerous Science",
-    campaign: "Osirus",
+    campaign: "Osiris",
     parts: [
       {
         description: "Kill 1 Strider.",
@@ -1236,7 +1236,7 @@ export const quests: Quest[] = [
   },
   {
     name: "Field Research",
-    campaign: "Osirus",
+    campaign: "Osiris",
     parts: [
       {
         description:
@@ -1311,7 +1311,7 @@ export const quests: Quest[] = [
   },
   {
     name: "Stimulating Developments",
-    campaign: "Osirus",
+    campaign: "Osiris",
     parts: [
       {
         description: "Visit Waterfall Lab. Visit Vaccine Lab.",
@@ -1342,7 +1342,7 @@ export const quests: Quest[] = [
   },
   {
     name: "Lost Knowledge",
-    campaign: "Osirus",
+    campaign: "Osiris",
     parts: [
       {
         description: "Visit Nutrion Farms Processing.",
@@ -1362,7 +1362,7 @@ export const quests: Quest[] = [
           "Visit Crashed Ship. Deliver Flight Recorder. Kill 3 Creatures at Crashed Ship.",
       },
       {
-        description: "Visit Favela. Kill 3 Players with an Osirus Weapon.",
+        description: "Visit Favela. Kill 3 Players with an Osiris Weapon.",
       },
       {
         description:
@@ -1381,7 +1381,7 @@ export const quests: Quest[] = [
   },
   {
     name: "Explosive Delivery",
-    campaign: "Osirus",
+    campaign: "Osiris",
     parts: [
       {
         deliverItems: [
@@ -1398,7 +1398,7 @@ export const quests: Quest[] = [
   },
   {
     name: "Laser Show",
-    campaign: "Osirus",
+    campaign: "Osiris",
     parts: [
       {
         deliverItems: [
@@ -1436,7 +1436,7 @@ export const quests: Quest[] = [
   },
   {
     name: "Storm Rider",
-    campaign: "Osirus",
+    campaign: "Osiris",
     parts: [
       {
         deliverItems: [
@@ -1462,7 +1462,7 @@ export const quests: Quest[] = [
   },
   {
     name: "The Needs of the One",
-    campaign: "Osirus",
+    campaign: "Osiris",
     parts: [
       {
         deliverItems: [
@@ -1514,7 +1514,7 @@ export const quests: Quest[] = [
   },
   {
     name: "Everything is Crystals",
-    campaign: "Osirus",
+    campaign: "Osiris",
     parts: [
       {
         deliverItems: [
@@ -1558,7 +1558,7 @@ export const quests: Quest[] = [
   },
   {
     name: "Path to Strong Medkits",
-    campaign: "Osirus",
+    campaign: "Osiris",
     parts: [
       {
         deliverItems: [
@@ -1601,7 +1601,7 @@ export const quests: Quest[] = [
   },
   {
     name: "Building a Better Death Ray",
-    campaign: "Osirus",
+    campaign: "Osiris",
     parts: [
       {
         deliverItems: [
@@ -1635,7 +1635,7 @@ export const quests: Quest[] = [
   },
   {
     name: "Satellite Master",
-    campaign: "Osirus",
+    campaign: "Osiris",
     parts: [
       {
         description: "Visit Southeast Uplink. Visit North Uplink.",
@@ -1681,7 +1681,7 @@ export const quests: Quest[] = [
   },
   {
     name: "Combat Ready",
-    campaign: "Osirus",
+    campaign: "Osiris",
     parts: [
       {
         description: "Kill 1 Crusher.",
@@ -1720,7 +1720,7 @@ export const quests: Quest[] = [
   },
   {
     name: "Orbital Repairs",
-    campaign: "Osirus",
+    campaign: "Osiris",
     parts: [
       {
         description: "Kill 15 Creatures at Pinnacle Labs",
@@ -1733,7 +1733,7 @@ export const quests: Quest[] = [
         ],
       },
       {
-        description: "Kill 6 Players with an Osirus weapon.",
+        description: "Kill 6 Players with an Osiris weapon.",
       },
       {
         deliverItems: [
@@ -1763,7 +1763,7 @@ export const quests: Quest[] = [
   },
   {
     name: "Breaking and Entering",
-    campaign: "Osirus",
+    campaign: "Osiris",
     parts: [
       {
         description:
@@ -1958,7 +1958,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 3,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 1,
               },
             ],
@@ -1971,7 +1971,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 3,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 2,
               },
             ],
@@ -1988,7 +1988,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 3,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 2,
               },
             ],
@@ -2005,7 +2005,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 3,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 3,
               },
             ],
@@ -2022,7 +2022,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 5,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 5,
               },
             ],
@@ -2043,7 +2043,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 3,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 6,
               },
             ],
@@ -2060,7 +2060,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 4,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 8,
               },
             ],
@@ -2073,7 +2073,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 1,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 9,
               },
             ],
@@ -2090,7 +2090,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 11,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 11,
               },
             ],
@@ -2107,7 +2107,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 8,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 14,
               },
             ],
@@ -2128,7 +2128,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 5,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 17,
               },
             ],
@@ -2145,7 +2145,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 2,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 21,
               },
             ],
@@ -2162,7 +2162,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 1,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 26,
               },
             ],
@@ -2179,7 +2179,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 9,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 31,
               },
             ],
@@ -2196,7 +2196,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 12,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 38,
               },
             ],
@@ -2217,7 +2217,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 4,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 58,
               },
             ],
@@ -2234,7 +2234,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 4,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 86,
               },
             ],
@@ -2251,7 +2251,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 2,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 130,
               },
             ],
@@ -2264,7 +2264,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 1,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 195,
               },
             ],
@@ -2277,7 +2277,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 1,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 292,
               },
             ],
@@ -2631,7 +2631,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 6,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 1,
               },
             ],
@@ -2644,7 +2644,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 3,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 2,
               },
             ],
@@ -2661,7 +2661,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 3,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 2,
               },
             ],
@@ -2678,7 +2678,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 5,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 3,
               },
             ],
@@ -2695,7 +2695,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 5,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 5,
               },
             ],
@@ -2716,7 +2716,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 5,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 6,
               },
             ],
@@ -2733,7 +2733,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 6,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 8,
               },
             ],
@@ -2750,7 +2750,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 10,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 9,
               },
             ],
@@ -2767,7 +2767,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 2750,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 11,
               },
             ],
@@ -2784,7 +2784,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 23,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 14,
               },
             ],
@@ -2805,7 +2805,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 12,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 17,
               },
             ],
@@ -2822,7 +2822,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 8,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 21,
               },
             ],
@@ -2839,7 +2839,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 21,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 26,
               },
             ],
@@ -2856,7 +2856,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 11,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 31,
               },
             ],
@@ -2869,7 +2869,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 6,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 38,
               },
             ],
@@ -2886,7 +2886,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 1,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 58,
               },
             ],
@@ -2903,7 +2903,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 11,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 86,
               },
             ],
@@ -2920,7 +2920,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 5,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 130,
               },
             ],
@@ -2937,7 +2937,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 5,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 195,
               },
             ],
@@ -2950,7 +2950,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 3,
               },
               {
-                item: "Osirus Scrip",
+                item: "Osiris Scrip",
                 quantity: 292,
               },
             ],
@@ -4073,7 +4073,7 @@ export const items = {
   Gyroscope: 0,
   "Miniature Reactor": 0,
   "Copper Wire": 0,
-  "Osirus Scrip": 0,
+  "Osiris Scrip": 0,
   "Korolev Scrip": 0,
   "ICA Scrip": 0,
   "Veltecite Heart": 0,
