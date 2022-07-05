@@ -77,12 +77,14 @@ export const QuestListing = ({
   }
 
   return (
-    <div className={`quest-listing ${quest.campaign.toLocaleLowerCase()} ${questCompleted() ? 'completed' : null}`}>
+    <div
+      className={`quest-listing ${quest.campaign.toLocaleLowerCase()} ${
+        questCompleted() ? "completed" : null
+      }`}
+    >
       <details>
         <summary>
-          <h4>
-            {quest.name}
-          </h4>
+          <h4>{quest.name}</h4>
           <br />
           <div className="inline-flex">
             <span>Parts completed: </span>
@@ -157,7 +159,9 @@ export const QuestListing = ({
                     part.deliverItems.map((item, j) => (
                       <li key={`${quest.name}${item.item}${j}`}>
                         {partCompleted(i) ? (
-                          <span className="material-symbols-outlined">done</span>
+                          <span className="material-symbols-outlined">
+                            done
+                          </span>
                         ) : null}
                         Deliver {item.quantity} {item.item}
                       </li>
@@ -166,7 +170,9 @@ export const QuestListing = ({
                     part.dropItems.map((item, j) => (
                       <li key={`${quest.name}${item.item}${j}`}>
                         {partCompleted(i) ? (
-                          <span className="material-symbols-outlined">done</span>
+                          <span className="material-symbols-outlined">
+                            done
+                          </span>
                         ) : null}
                         Drop {item.quantity} {item.item} at {item.dropLocation}
                       </li>

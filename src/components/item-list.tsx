@@ -37,7 +37,7 @@ export const ItemList = ({
           Only showing items from:
           <ul className="quest-list">
             {focusQuests.map((questName) => (
-              <li>
+              <li key={questName}>
                 {questName} - part {questProgress[questName] + 1}
               </li>
             ))}
@@ -47,7 +47,8 @@ export const ItemList = ({
       {omittedItems === "upgrade" ? (
         <div>Items needed for upgrades are currently hidden.</div>
       ) : null}
-      {omittedItems || (omittedItems === 'quest' && focusQuests.length > 0) && <hr />}
+      {omittedItems ||
+        (omittedItems === "quest" && focusQuests.length > 0 && <hr />)}
       {Object.keys(itemsNeeded)
         .filter((key) => itemsNeeded[key as ItemName] > 0)
         .sort()

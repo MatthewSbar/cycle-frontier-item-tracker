@@ -147,7 +147,7 @@ function App() {
     return (
       campaignComplete("ICA") &&
       campaignComplete("Korolev") &&
-      campaignComplete("Osirus")
+      campaignComplete("Osiris")
     );
   };
 
@@ -163,7 +163,7 @@ function App() {
       window.localStorage.removeItem("upgradeProgress");
       window.localStorage.removeItem("showCompleted");
       window.localStorage.removeItem("focusQuests");
-      window.localStorage.removeItem("omittedItems")
+      window.localStorage.removeItem("omittedItems");
       window.location.href =
         "https://matthewsbar.github.io/cycle-frontier-item-tracker/";
     }
@@ -196,25 +196,26 @@ function App() {
   );
 
   const getLocalOmittedData = (): ItemSource => {
-    const localData = localStorage.getItem("omittedItems");
-    if (!localData) {
-      return null;
-    }
-    return localData as ItemSource
-  }
+    return localStorage.getItem("omittedItems") as ItemSource;
+  };
 
-  const handleSetOmittedItems = (e: React.MouseEvent<HTMLElement, MouseEvent>, newState: string) => {
-    e.stopPropagation()
+  const handleSetOmittedItems = (
+    e: React.MouseEvent<HTMLElement, MouseEvent>,
+    newState: string
+  ) => {
+    e.stopPropagation();
     if (omittedItems === newState) {
-      localStorage.removeItem("omittedItems")
-      setOmittedItems(null)
-      return
+      localStorage.removeItem("omittedItems");
+      setOmittedItems(null);
+      return;
     }
-    setOmittedItems(newState as ItemSource)
-    localStorage.setItem('omittedItems', newState)
-  }
+    setOmittedItems(newState as ItemSource);
+    localStorage.setItem("omittedItems", newState);
+  };
 
-  const [omittedItems, setOmittedItems] = useState<ItemSource>(getLocalOmittedData());
+  const [omittedItems, setOmittedItems] = useState<ItemSource>(
+    getLocalOmittedData()
+  );
   const [itemsNeeded, setItemsNeeded] = useState<Record<ItemName, number>>(
     countItemsNeeded()
   );
@@ -262,7 +263,7 @@ function App() {
                   Missions
                   <i
                     title={"Toggle items"}
-                    onClick={(e) => handleSetOmittedItems(e, 'quest')}
+                    onClick={(e) => handleSetOmittedItems(e, "quest")}
                     className={omittedItems === "quest" ? "toggled" : undefined}
                   >
                     👁
@@ -275,7 +276,7 @@ function App() {
                   Quarters
                   <i
                     title={"Toggle items"}
-                    onClick={(e) => handleSetOmittedItems(e, 'upgrade')}
+                    onClick={(e) => handleSetOmittedItems(e, "upgrade")}
                     className={
                       omittedItems === "upgrade" ? "toggled" : undefined
                     }
@@ -326,11 +327,11 @@ function App() {
                     ))}
                 </div>
                 <div className="quests">
-                  {(!campaignComplete("Osirus") || showCompleted) && (
-                    <h3>Osirus</h3>
+                  {(!campaignComplete("Osiris") || showCompleted) && (
+                    <h3>Osiris</h3>
                   )}
                   {quests
-                    .filter((quest) => quest.campaign === "Osirus")
+                    .filter((quest) => quest.campaign === "Osiris")
                     .map((quest) => (
                       <QuestListing
                         key={quest.name}

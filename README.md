@@ -1,6 +1,6 @@
 # The Cycle: Frontier - Item Tracker
 
-This app is designed to keep track of what items are needed for quests and upgrades in The Cycle: Frontier. Once you know how many of everything you need, you know what you can rest easy selling or giving to your friends. It also serves as a comprehensive quest objective list. It was built using create-react-app with Typescript. Data is stored in local browser storage. There are no analytics. While this app is open source, I do not give anyone permission to fork or reuse this code for purposes other than education or contributing to this project.
+This app is designed to keep track of what items are needed for quests and upgrades in The Cycle: Frontier. Once you know how many of everything you need, you know what you can rest easy selling or giving to your friends. It also serves as a comprehensive quest objective list. It was built using create-react-app with Typescript. Data is stored in local browser storage. While this app is open source, I do not give anyone permission to fork or reuse this code for purposes other than education or contributing to this project.
 
 ## Known issues.
 
@@ -8,8 +8,8 @@ This app is designed to keep track of what items are needed for quests and upgra
 
 ## Upcoming features
 
-- Icons for items
-- Better
+- Icons and rarity for items
+- A way to show only items needed for the next N steps of an upgrade or quest
 
 ## Support this project
 

@@ -4,7 +4,7 @@ export type Quest = {
   parts: Part[];
 };
 
-export type Faction = "Korolev" | "Osirus" | "ICA";
+export type Faction = "Korolev" | "Osiris" | "ICA";
 
 export type ViewMode = "quest" | "upgrade" | "items";
 export type ItemSource = "quest" | "upgrade" | null;
@@ -85,7 +85,7 @@ export type ItemName =
   | "Gyroscope"
   | "Miniature Reactor"
   | "Copper Wire"
-  | "Osirus Scrip"
+  | "Osiris Scrip"
   | "Korolev Scrip"
   | "ICA Scrip"
   | "Veltecite Heart"
