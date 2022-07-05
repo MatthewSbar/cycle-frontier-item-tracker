@@ -147,7 +147,7 @@ function App() {
     return (
       campaignComplete("ICA") &&
       campaignComplete("Korolev") &&
-      campaignComplete("Osirus")
+      campaignComplete("Osiris")
     );
   };
 
@@ -322,11 +322,11 @@ function App() {
                     ))}
                 </div>
                 <div className="quests">
-                  {(!campaignComplete("Osirus") || showCompleted) && (
-                    <h3>Osirus</h3>
+                  {(!campaignComplete("Osiris") || showCompleted) && (
+                    <h3>Osiris</h3>
                   )}
                   {quests
-                    .filter((quest) => quest.campaign === "Osirus")
+                    .filter((quest) => quest.campaign === "Osiris")
                     .map((quest) => (
                       <QuestListing
                         key={quest.name}
