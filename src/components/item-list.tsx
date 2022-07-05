@@ -47,7 +47,8 @@ export const ItemList = ({
       {omittedItems === "upgrade" ? (
         <div>Items needed for upgrades are currently hidden.</div>
       ) : null}
-      {omittedItems || (omittedItems === 'quest' && focusQuests.length > 0) && <hr />}
+      {omittedItems ||
+        (omittedItems === "quest" && focusQuests.length > 0 && <hr />)}
       {Object.keys(itemsNeeded)
         .filter((key) => itemsNeeded[key as ItemName] > 0)
         .sort()
