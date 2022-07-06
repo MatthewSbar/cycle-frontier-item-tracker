@@ -4054,7 +4054,7 @@ export const upgrades: Upgrade[] = [
               },
               {
                 item: "Resin Gun",
-                quantity: 8,
+                quantity: 12,
               },
               {
                 item: "Korolev Scrip",
