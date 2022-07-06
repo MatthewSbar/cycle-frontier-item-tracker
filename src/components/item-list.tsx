@@ -1,7 +1,8 @@
 import { quests } from "../data";
 import { ItemName, ItemSource, QuestProgress } from "../types";
 
-const deadDrop = "💀🗑️";
+const deadDropIcons = "💀🗑️";
+const sellableIcon = "💰";
 
 type Props = {
   itemsNeeded: Record<ItemName, number>;
@@ -35,7 +36,7 @@ export const ItemList = ({
 
   const sellableList = (<div>
       <hr />
-      <div>💰 Sellable Items</div>
+      <div>{sellableIcon} Sellable Items</div>
       <hr />
       {Object.keys(itemsNeeded)
         .filter((key) => itemsNeeded[key as ItemName] === 0)
@@ -50,7 +51,7 @@ export const ItemList = ({
 
   const header = (<div>
     <hr />
-    <div>{deadDrop}️ = Item must be dead dropped</div>
+    <div>{deadDropIcons}️ = Item must be dead dropped</div>
     {omittedItems !== null ? (<div>
       <div>{omittedItems.charAt(0).toUpperCase() + omittedItems.slice(1)} items are currently hidden.</div>
     </div>) : null}
@@ -85,7 +86,7 @@ export const ItemList = ({
                     part.dropItems?.some((item) => item.item === key)
                   )
                 )
-                ? deadDrop
+                ? deadDropIcons
                 : null}
             </div>
           );
