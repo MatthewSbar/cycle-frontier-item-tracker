@@ -17,7 +17,7 @@ Consider supporting me via [Patreon](https://www.patreon.com/Vedgy)
 
 ## Pull Requests and issues
 
-Feel free to submit pull requests if you know your way around JSON/React and Github issues if you don't.
+Feel free to submit pull requests if you know your way around JSON/React and GitHub issues if you don't.
 
 ## Legal Stuff
 
