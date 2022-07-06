@@ -1,4 +1,4 @@
-import { Quest, Upgrade } from "./types";
+import { MissionName, Quest, Upgrade } from "./types";
 
 export const quests: Quest[] = [
   {
@@ -6,6 +6,8 @@ export const quests: Quest[] = [
     campaign: "Korolev",
     parts: [
       {
+        name: "Welcome to the Workforce",
+        requires: null,
         deliverItems: [
           {
             item: "Nickel",
@@ -14,9 +16,13 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Sometimes violence IS the answer",
+        requires: "Welcome to the Workforce",
         description: "Kill 3 Striders",
       },
       {
+        name: "Spare Parts",
+        requires: "Sometimes violence IS the answer",
         deliverItems: [
           {
             item: "Compound Sheets",
@@ -29,10 +35,14 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Contaminated Waters",
+        requires: "Spare Parts",
         description:
           "Visit Water Facility. Kill 3 Creatures at Water Facility.",
       },
       {
+        name: "Company Identity",
+        requires: "Contaminated Waters",
         deliverItems: [
           {
             item: "Flawed Veltecite",
@@ -51,6 +61,8 @@ export const quests: Quest[] = [
     campaign: "Korolev",
     parts: [
       {
+        name: "Mineral Master",
+        requires: "Company Identity",
         deliverItems: [
           {
             item: "Altered Nickel",
@@ -63,6 +75,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Inevitable Automation",
+        requires: "Mineral Master",
         deliverItems: [
           {
             item: "Compound Sheets",
@@ -75,9 +89,13 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Tools of the Trade",
+        requires: "Inevitable Automation",
         description: "Kill 10 Rattlers with a Korolev weapon",
       },
       {
+        name: "Very Fast Moving Parts",
+        requires: "Tools of the Trade",
         dropItems: [
           {
             item: "Metallic Alloys",
@@ -92,6 +110,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Final Touches",
+        requires: "Very Fast Moving Parts",
         deliverItems: [
           {
             item: "Titan Ore",
@@ -114,9 +134,13 @@ export const quests: Quest[] = [
     campaign: "Korolev",
     parts: [
       {
+        name: "Spring Cleaning",
+        requires: "Company Identity",
         description: "Kill 3 Striders at Dig Site. Kill 1 Rattler at Dig Site",
       },
       {
+        name: "Through the Optic Glass",
+        requires: "Spring Cleaning",
         deliverItems: [
           {
             item: "Cloudy Veltecite",
@@ -129,6 +153,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "A Pinch of Pure Power",
+        requires: "Through the Optic Glass",
         deliverItems: [
           {
             item: "Brittle Titan Ore",
@@ -141,12 +167,18 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Aggressive Marketing",
+        requires: "A Pinch of Pure Power",
         description: "Kill a player with a Korolev Weapon",
       },
       {
+        name: "Miners' Strike",
+        requires: "Aggressive Marketing",
         description: "Collect 3 miner cameras at the Dig Site.",
       },
       {
+        name: "Zero Waste",
+        requires: "Miners' Strike",
         deliverItems: [
           {
             item: "Shard Slicer",
@@ -159,9 +191,13 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "For all the Trees",
+        requires: "Zero Waste",
         description: "Kill 8 creatures in The Jungle",
       },
       {
+        name: "From Above",
+        requires: "For all the Trees",
         deliverItems: [
           {
             item: "Meteor Fragment",
@@ -174,6 +210,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Thick Skinned",
+        requires: "From Above",
         description: "Kill 1 marauder",
         deliverItems: [
           {
@@ -189,6 +227,8 @@ export const quests: Quest[] = [
     campaign: "Korolev",
     parts: [
       {
+        name: "Active Scan",
+        requires: "Spring Cleaning",
         deliverItems: [
           {
             item: "Clear Veltecite",
@@ -211,6 +251,8 @@ export const quests: Quest[] = [
     campaign: "Korolev",
     parts: [
       {
+        name: "A Titanic Request",
+        requires: "Through the Optic Glass",
         description: "Kill 1 Player",
         deliverItems: [
           {
@@ -220,6 +262,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "A Heavy Conscience",
+        requires: "A Titanic Request",
         deliverItems: [
           {
             item: "Titan Ore",
@@ -234,6 +278,8 @@ export const quests: Quest[] = [
     campaign: "Korolev",
     parts: [
       {
+        name: "Clear Focus",
+        requires: "Thick Skinned",
         deliverItems: [
           {
             item: "Pure Focus Crystal",
@@ -248,18 +294,26 @@ export const quests: Quest[] = [
     campaign: "Korolev",
     parts: [
       {
+        name: "Site Seeing",
+        requires: "Thick Skinned",
         description:
           "Visit Geothermal Plant. Visit Skeleton Observation. Visit Hay Fields.",
       },
       {
+        name: "Stormbringer",
+        requires: "Site Seeing",
         description:
           "Kill 15 Creatured with the PKR Maelstrom. Kill 2 Players with the PKR Maelstrom.",
       },
       {
+        name: "The Missing Engineer",
+        requires: "Stormbringer",
         description:
           "Find the missing engineer. Kill 3 creatures near the missing engineer. Deliver evidence of Letium.",
       },
       {
+        name: "Rapid Gentrification",
+        requires: "The Missing Engineer",
         description:
           "Kill 10 creatures at Starport. Kill 10 Creatures at Favela",
         deliverItems: [
@@ -270,6 +324,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Supply Drop",
+        requires: "Rapid Gentrification",
         dropItems: [
           {
             item: "Biological Sampler",
@@ -284,6 +340,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Messenger Service",
+        requires: "Supply Drop",
         deliverItems: [
           {
             item: "Valuable Data Drive",
@@ -292,6 +350,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Clearing the Way",
+        requires: "Messenger Service",
         description:
           "Kill 5 creatures at Greens Project. Kill 10 creatures at Pinnacle Labs",
       },
@@ -302,10 +362,14 @@ export const quests: Quest[] = [
     campaign: "Korolev",
     parts: [
       {
+        name: "Forest Clearing",
+        requires: "Stormbringer",
         description:
           "Kill 3 Rattlers in the Jungle. Kill 1 Marauder in the Jungle.",
       },
       {
+        name: "Time for More Work? Part 2",
+        requires: "Forest Clearing",
         deliverItems: [
           {
             item: "Jewellery",
@@ -314,9 +378,13 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Show Them How It's Done",
+        requires: "Time for More Work? Part 2",
         description: "Kill 3 Players with an SMG.",
       },
       {
+        name: "A Pick Me Up",
+        requires: "Show Them How It's Done",
         dropItems: [
           {
             item: "Restoration Shield (Green)",
@@ -337,6 +405,8 @@ export const quests: Quest[] = [
     campaign: "Korolev",
     parts: [
       {
+        name: "Shopping List",
+        requires: "Clearing the Way",
         deliverItems: [
           {
             item: "Optic Glass",
@@ -353,6 +423,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Don't Dig Too Deep",
+        requires: "Shopping List",
         description: "Visit Dig Site. Kill 6 Creatures at Dig Site.",
         deliverItems: [
           {
@@ -362,6 +434,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Just a Call Away",
+        requires: "Don't Dig Too Deep",
         dropItems: [
           {
             item: "Radio Equipment",
@@ -381,6 +455,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Collaborative Research",
+        requires: "Just a Call Away",
         description: "Visit Greens Prospect.",
         dropItems: [
           {
@@ -396,18 +472,18 @@ export const quests: Quest[] = [
         ],
       },
       {
-        description: "Visit Waterfall Lab. Deliver Letium Bio Samples",
-        deliverItems: [
-          {
-            item: "Letium",
-            quantity: 10,
-          },
-        ],
+        name: "Lab Heist",
+        requires: "Collaborative Research",
+        description: "Visit Waterfall Lab. Deliver 5 Letium Bio Samples",
       },
       {
+        name: "It's All About Branding",
+        requires: "Lab Heist",
         description: "Kill 30 Creatures or Players with a Korolev weapon.",
       },
       {
+        name: "It's in the Blood",
+        requires: "It's All About Branding",
         deliverItems: [
           {
             item: "Hardened Bone Plates",
@@ -420,6 +496,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Fresh Meat",
+        requires: "It's in the Blood",
         deliverItems: [
           {
             item: "Marauder Flesh",
@@ -436,6 +514,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Trek for Data",
+        requires: "Fresh Meat",
         description:
           "Visit Starport Landing Pad Uplink. Visit Skeleton Observation.",
         deliverItems: [
@@ -452,6 +532,8 @@ export const quests: Quest[] = [
     campaign: "Korolev",
     parts: [
       {
+        name: "Order Refill",
+        requires: "Just a Call Away",
         deliverItems: [
           {
             item: "Resin Gun",
@@ -464,6 +546,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Exotic Leathers",
+        requires: "Order Refill",
         deliverItems: [
           {
             item: "Rattler Skin",
@@ -486,6 +570,8 @@ export const quests: Quest[] = [
     campaign: "Korolev",
     parts: [
       {
+        name: "Building Blocks",
+        requires: "Trek for Data",
         deliverItems: [
           {
             item: "Compound Sheets",
@@ -502,14 +588,20 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Salvage Ops",
+        requires: "Building Blocks",
         description:
           "Visit the Crashed Drill. Find the Old Drill Head. Delivery the Laser Drill Control Unit.",
       },
       {
+        name: "Pattern Testing",
+        requires: "Salvage Ops",
         description:
           "Kill 3 Players with a Shotgun. Kill 25 Striders with a Shotgun.",
       },
       {
+        name: "Custom Rig",
+        requires: "Pattern Testing",
         deliverItems: [
           {
             item: "Magnetic Field Stabilizer",
@@ -526,6 +618,9 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Expensive Tastes",
+        requires: "Custom Rig",
+        description: "Kill 8 creatures at Pinaccle Labs",
         dropItems: [
           {
             item: "Pure Focus Crystal",
@@ -540,6 +635,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Delicate Parts",
+        requires: "Expensive Tastes",
         deliverItems: [
           {
             item: "Gyroscope",
@@ -556,6 +653,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "This is Goodbye",
+        requires: "Delicate Parts",
         deliverItems: [
           {
             item: "Osiris Scrip",
@@ -572,9 +671,13 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "This isn't Science",
+        requires: "This is Goodbye",
         description: "Kill 6 Players.",
       },
       {
+        name: "Unlimited Power",
+        requires: "This isn't Science",
         deliverItems: [
           {
             item: "Meteor Core",
@@ -589,6 +692,8 @@ export const quests: Quest[] = [
     campaign: "Korolev",
     parts: [
       {
+        name: "Tough as Nails",
+        requires: "This is Goodbye",
         description: "Kill 1 Crusher.",
       },
     ],
@@ -598,13 +703,9 @@ export const quests: Quest[] = [
     campaign: "Korolev",
     parts: [
       {
-        description: "Find a Letium Gas Vent.",
-        deliverItems: [
-          {
-            item: "Letium",
-            quantity: 10,
-          },
-        ],
+        name: "The Test Run",
+        requires: "Unlimited Power",
+        description: "Find a Letium Gas Vent. Deliver 10 Flaked Letium",
       },
     ],
   },
@@ -613,6 +714,8 @@ export const quests: Quest[] = [
     campaign: "ICA",
     parts: [
       {
+        name: "Simple Needs",
+        requires: null,
         deliverItems: [
           {
             item: "Compound Sheets",
@@ -621,6 +724,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Don't Forget to Recycle",
+        requires: "Simple Needs",
         deliverItems: [
           {
             item: "Hardened Metals",
@@ -633,9 +738,13 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Animal Control",
+        requires: "Don't Forget to Recycle",
         description: "Visit Lagoon. Kill 3 creatures at Lagoon",
       },
       {
+        name: "Basic Needs",
+        requires: "Animal Control",
         deliverItems: [
           {
             item: "Metallic Alloys",
@@ -648,6 +757,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "The Forester",
+        requires: "Basic Needs",
         description:
           "Visit Woodcutter Camp. Kill 5 creatures at Woodcutter Camp.",
         deliverItems: [
@@ -664,6 +775,8 @@ export const quests: Quest[] = [
     campaign: "ICA",
     parts: [
       {
+        name: "Audiophiles Beware Part 1",
+        requires: "The Forester",
         dropItems: [
           {
             item: "Frag Grenade",
@@ -673,6 +786,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Audiophiles Beware Part 2",
+        requires: "Audiophiles Beware Part 1",
         deliverItems: [
           {
             item: "Copper Wire",
@@ -685,6 +800,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Audiophiles Beware Part 3",
+        requires: "Audiophiles Beware Part 2",
         dropItems: [
           {
             item: "Radio Equipment",
@@ -710,13 +827,19 @@ export const quests: Quest[] = [
     campaign: "ICA",
     parts: [
       {
+        name: "SOS Sign",
+        requires: "The Forester",
         description: "Find the SOS sign",
       },
       {
+        name: "Old Friend",
+        requires: "SOS Sign",
         description:
           "Enter the Water Facility Loot Room. Deliver the Sign of Life.",
       },
       {
+        name: "Doing the Work Part 2",
+        requires: "Old Friend",
         deliverItems: [
           {
             item: "Zero Systems CPU",
@@ -733,6 +856,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Doing the Work Part 3",
+        requires: "Doing the Work Part 2",
         description: "Visit Southeast Uplink.",
         deliverItems: [
           {
@@ -742,6 +867,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Doing the Work Part 4",
+        requires: "Doing the Work Part 3",
         description: "Visit Comms Base.",
         dropItems: [
           {
@@ -757,6 +884,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "The Stranded Prospector",
+        requires: "Doing the Work Part 4",
         description: "Visit House on Stilts.",
         deliverItems: [
           {
@@ -766,6 +895,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Doing the Work Part 5",
+        requires: "The Stranded Prospector",
         description: "Kill 4 Creatures at Power Plant.",
         deliverItems: [
           {
@@ -775,6 +906,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Doing the Work Part 6",
+        requires: "Doing the Work Part 5",
         dropItems: [
           {
             item: "Valuable Data Drive",
@@ -795,6 +928,8 @@ export const quests: Quest[] = [
     campaign: "ICA",
     parts: [
       {
+        name: "Toxic Love Part 1",
+        requires: "The Stranded Prospector",
         dropItems: [
           {
             item: "Rare Data Drive",
@@ -809,6 +944,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Toxic Love Part 2",
+        requires: "Toxic Love Part 1",
         deliverItems: [
           {
             item: "Toxic Glands",
@@ -831,6 +968,8 @@ export const quests: Quest[] = [
     campaign: "ICA",
     parts: [
       {
+        name: "Project Fireball Part 1",
+        requires: "Doing the Work Part 6",
         deliverItems: [
           {
             item: "Meteor Fragment",
@@ -843,6 +982,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Project Fireball Part 2",
+        requires: "Project Fireball Part 1",
         description:
           "Visit Osiris Wildlife Preserve. Visit Skeleton Observation.",
         deliverItems: [
@@ -853,14 +994,20 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Plan B Part 1",
+        requires: "Project Fireball Part 2",
         description:
           "Visit Power Plant Office. Enter Power Plant Office. Deliver Notes on Meteor Experiment 1.",
       },
       {
+        name: "Plan B Part 2",
+        requires: "Plan B Part 1",
         description:
           "Enter Geothermal Plant Office. Deliver notes on Meteor Experiment - 2.",
       },
       {
+        name: "Project Fireball Part 3",
+        requires: "Plan B Part 2",
         description: "Kill 3 Players with an Assault Rifle",
         deliverItems: [
           {
@@ -870,10 +1017,14 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Project Fireball Part 4",
+        requires: "Project Fireball Part 3",
         description:
           "Kill 10 Creatures at the Lake. Kill 10 Creatures at Starport",
       },
       {
+        name: "Project Fireball Part 5",
+        requires: "Project Fireball Part 4",
         dropItems: [
           {
             item: "Miniature Reactor",
@@ -899,6 +1050,8 @@ export const quests: Quest[] = [
     campaign: "ICA",
     parts: [
       {
+        name: "Working for the Community Part 1",
+        requires: "Project Fireball Part 3",
         dropItems: [
           {
             item: "Pale Ivy Blossom",
@@ -918,10 +1071,14 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Working for the Community Part 2",
+        requires: "Working for the Community Part 1",
         description:
           "Visit Greens Prospect. Kill 5 Creatures with a Sniper Rifle at Greens Prospect",
       },
       {
+        name: "Working for the Community Part 3",
+        requires: "Working for the Community Part 2",
         deliverItems: [
           {
             item: "Smart Mesh",
@@ -944,10 +1101,14 @@ export const quests: Quest[] = [
     campaign: "ICA",
     parts: [
       {
+        name: "Never Give Up Part 1",
+        requires: "Project Fireball Part 5",
         description:
           "Visit Pumpkin Fields. Kill 10 Creatures at Pumpkin Fields.",
       },
       {
+        name: "Never Give Up Part 2",
+        requires: "Never Give Up Part 1",
         description:
           "Visit Geothermal Plant. Kill 2 players with an ICA weapon",
         deliverItems: [
@@ -958,6 +1119,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Never Give Up Part 3",
+        requires: "Never Give Up Part 2",
         description: "Kill 10 Creatures at Skeleton Observation Site",
         deliverItems: [
           {
@@ -977,13 +1140,19 @@ export const quests: Quest[] = [
     campaign: "ICA",
     parts: [
       {
+        name: "Private Business Part 1",
+        requires: "Never Give Up Part 3",
         description: "Kill 3 Players with a Pistol",
       },
       {
+        name: "Private Business Part 2",
+        requires: "Private Business Part 1",
         description:
           "Kill 8 Creatures at Base Camp. Kill 8 Creatures at Power Plant. Kill 8 Creatures at Water Facility.",
       },
       {
+        name: "Private Business Part 3",
+        requires: "Private Business Part 2",
         deliverItems: [
           {
             item: "Hardened Bone Plates",
@@ -1002,6 +1171,8 @@ export const quests: Quest[] = [
     campaign: "ICA",
     parts: [
       {
+        name: "Back to Basics? Part 1",
+        requires: "Never Give Up Part 3",
         dropItems: [
           {
             item: "Polymetallic Prefabricate",
@@ -1021,6 +1192,9 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Back to Basics? Part 2",
+        requires: "Back to Basics? Part 1",
+        description: "Visit Starport Landing Pad Uplink",
         deliverItems: [
           {
             item: "Unique Data Drive",
@@ -1029,10 +1203,14 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Abandoned Oil Field",
+        requires: "Back to Basics? Part 2",
         description:
           "Visit the Abandoned Oil Field. Kill 5 creatures at Abandoned Oil Field. Deliver Old Oil Pump Parts.",
       },
       {
+        name: "Back to Basics? Part 3",
+        requires: "Abandoned Oil Field",
         deliverItems: [
           {
             item: "Metallic Alloys",
@@ -1049,6 +1227,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Back to Basics? Part 4",
+        requires: "Back to Basics? Part 3",
         description: "Kill 8 Marauders.",
         deliverItems: [
           {
@@ -1058,6 +1238,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Back to Basics? Part 5",
+        requires: "Back to Basics? Part 4",
         deliverItems: [
           {
             item: "Circuit Board",
@@ -1074,9 +1256,13 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Back to Basics? Part 6",
+        requires: "Back to Basics? Part 5",
         description: "Kill 6 Players with an ICA weapon.",
       },
       {
+        name: "Back to Basics? Part 7",
+        requires: "Back to Basics? Part 6",
         deliverItems: [
           {
             item: "Miniature Reactor",
@@ -1099,6 +1285,8 @@ export const quests: Quest[] = [
     campaign: "ICA",
     parts: [
       {
+        name: "An Eye for Oil Part 1",
+        requires: "Back to Basics? Part 7",
         deliverItems: [
           {
             item: "Radio Equipment",
@@ -1115,6 +1303,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "An Eye for Oil Part 2",
+        requires: "An Eye for Oil Part 1",
         deliverItems: [
           {
             item: "Circuit Board",
@@ -1137,9 +1327,13 @@ export const quests: Quest[] = [
     campaign: "ICA",
     parts: [
       {
+        name: "Put to the Test Part 1",
+        requires: "An Eye for Oil Part 2",
         description: "Kill 1 Crusher",
       },
       {
+        name: "Put to the Test Part 2",
+        requires: "Put to the Test Part 1",
         deliverItems: [
           {
             item: "Oil Tank",
@@ -1154,6 +1348,8 @@ export const quests: Quest[] = [
     campaign: "ICA",
     parts: [
       {
+        name: "The Community Needs You Part 1",
+        requires: "Back to Basics? Part 3",
         deliverItems: [
           {
             item: "Textiles",
@@ -1170,10 +1366,14 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "The Community Needs You Part 2",
+        requires: "The Community Needs You Part 1",
         description:
           "Kill 3 Rattlers at Woodcutter Camp. Kill 3 Rattlers at Water Facility. Kill 3 Rattlers at Power Plant.",
       },
       {
+        name: "The Community Needs You Part 3",
+        requires: "The Community Needs You Part 2",
         deliverItems: [
           {
             item: "Rattler Skin",
@@ -1192,9 +1392,13 @@ export const quests: Quest[] = [
     campaign: "Osiris",
     parts: [
       {
+        name: "Prove your Worth",
+        requires: null,
         description: "Kill 1 Strider.",
       },
       {
+        name: "The Real Wetwork",
+        requires: "Prove your Worth",
         deliverItems: [
           {
             item: "Waterweed Filament",
@@ -1203,6 +1407,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Fertile Grounds",
+        requires: "The Real Wetwork",
         description: "Visit Swamp. Kill 5 Striders at Swamp.",
         deliverItems: [
           {
@@ -1212,6 +1418,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Tick-Tock",
+        requires: "Fertile Grounds",
         description: "Kill 7 Blast Ticks.",
         deliverItems: [
           {
@@ -1221,6 +1429,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Papers, Please",
+        requires: "Tick-Tock",
         deliverItems: [
           {
             item: "Rattler Skin",
@@ -1239,6 +1449,8 @@ export const quests: Quest[] = [
     campaign: "Osiris",
     parts: [
       {
+        name: "Field Research Part 1",
+        requires: "Papers, Please",
         description:
           "Visit Science Campus. Kill 5 Creatures at Science Campus.",
         deliverItems: [
@@ -1249,16 +1461,24 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Field Research Part 2",
+        requires: "Field Research Part 1",
         description:
           "Visit Lake. Kill 10 Striders at Lake. Kill 3 Rattlers at Lake.",
       },
       {
+        name: "Old Bones",
+        requires: "Field Research Part 2",
         description: "Visit the archaeology Site. Deliver 3 Old Bones.",
       },
       {
+        name: "Field Research Part 3",
+        requires: "Old Bones",
         description: "Kill 1 Player with an Orsirus weapon.",
       },
       {
+        name: "Field Research Part 4",
+        requires: "Field Research Part 3",
         dropItems: [
           {
             item: "Biological Sampler",
@@ -1273,6 +1493,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Field Research Part 5",
+        requires: "Field Research Part 4",
         description: "Visit Vaccine Labs. Kill 15 Creatures at Vaccine Labs.",
         deliverItems: [
           {
@@ -1282,9 +1504,13 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Field Research Part 6",
+        requires: "Field Research Part 5",
         description: "Kill 3 Players with an SMG.",
       },
       {
+        name: "Field Research Part 7",
+        requires: "Field Research Part 6",
         description: "Visit the Jungle. Kill 2 Rattlers in the Jungle.",
         deliverItems: [
           {
@@ -1294,10 +1520,14 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Extinct Creatures",
+        requires: "Field Research Part 7",
         description:
           "Visit the Extinct Creatures Lab. Deliver the Warden Skull.",
       },
       {
+        name: "Field Research Part 8",
+        requires: "Extinct Creatures",
         description: "Visit Greens Prospect.",
         dropItems: [
           {
@@ -1314,6 +1544,8 @@ export const quests: Quest[] = [
     campaign: "Osiris",
     parts: [
       {
+        name: "Stimulating Developments Part 1",
+        requires: "Field Research Part 2",
         description: "Visit Waterfall Lab. Visit Vaccine Lab.",
         deliverItems: [
           {
@@ -1323,6 +1555,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Stimulating Developments Part 2",
+        requires: "Stimulating Developments Part 1",
         deliverItems: [
           {
             item: "Blue Runner Egg",
@@ -1345,6 +1579,8 @@ export const quests: Quest[] = [
     campaign: "Osiris",
     parts: [
       {
+        name: "Lost Knowledge Part 1",
+        requires: "Field Research Part 8",
         description: "Visit Nutrion Farms Processing.",
         deliverItems: [
           {
@@ -1358,13 +1594,19 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Crashed Osiris Freighter",
+        requires: "Lost Knowledge Part 1",
         description:
           "Visit Crashed Ship. Deliver Flight Recorder. Kill 3 Creatures at Crashed Ship.",
       },
       {
+        name: "Lost Knowledge Part 2",
+        requires: "Crashed Osiris Freighter",
         description: "Visit Favela. Kill 3 Players with an Osiris Weapon.",
       },
       {
+        name: "Lost Knowledge Part 3",
+        requires: "Lost Knowledge Part 2",
         description:
           "Visit Cave south of Fallen Tree. Kill 5 Creatures near Mysterious Cave Entrance. Kill 5 Creatures at Forest Crystal Seal",
         deliverItems: [
@@ -1375,6 +1617,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Lost Scientist",
+        requires: "Lost Knowledge Part 3",
         description: "Find the lost scientist. Deliver his notebook.",
       },
     ],
@@ -1384,6 +1628,8 @@ export const quests: Quest[] = [
     campaign: "Osiris",
     parts: [
       {
+        name: "Explosive Delivery Part 1",
+        requires: "Lost Scientist",
         deliverItems: [
           {
             item: "Derelict Explosives",
@@ -1392,6 +1638,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Frozen",
+        requires: "Explosive Delivery Part 1",
         description: "Find the frozen scientist.",
       },
     ],
@@ -1401,6 +1649,8 @@ export const quests: Quest[] = [
     campaign: "Osiris",
     parts: [
       {
+        name: "Laser Show Part 1",
+        requires: "Frozen",
         deliverItems: [
           {
             item: "Fusion Cartridge Batteries",
@@ -1417,6 +1667,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Laser Show Part 2",
+        requires: "Laser Show Part 1",
         deliverItems: [
           {
             item: "Optic Glass",
@@ -1439,6 +1691,8 @@ export const quests: Quest[] = [
     campaign: "Osiris",
     parts: [
       {
+        name: "Storm Rider Part 1",
+        requires: "Field Research Part 8",
         deliverItems: [
           {
             item: "Glowy Brightcap Mushroom",
@@ -1447,9 +1701,13 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Storm Rider Part 2",
+        requires: "Storm Rider Part 1",
         description: "Kill 15 Creatures at Starport.",
       },
       {
+        name: "Storm Rider Part 3",
+        requires: "Storm Rider Part 2",
         dropItems: [
           {
             item: "Charged Spinal Base",
@@ -1465,6 +1723,8 @@ export const quests: Quest[] = [
     campaign: "Osiris",
     parts: [
       {
+        name: "The Needs of the One Part 1",
+        requires: "Frozen",
         deliverItems: [
           {
             item: "Brightcap Mushroom",
@@ -1481,6 +1741,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "The Needs of the One Part 2",
+        requires: "The Needs of the One Part 1",
         deliverItems: [
           {
             item: "Waterweed Filament",
@@ -1493,6 +1755,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "The Needs of the One Part 3",
+        requires: "The Needs of the One Part 2",
         description: "Kill 5 Marauders.",
         deliverItems: [
           {
@@ -1502,6 +1766,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "The Needs of the One Part 4",
+        requires: "The Needs of the One Part 3",
         description: "Kill 5 Players",
         deliverItems: [
           {
@@ -1517,6 +1783,8 @@ export const quests: Quest[] = [
     campaign: "Osiris",
     parts: [
       {
+        name: "Everything is Crystals Part 1",
+        requires: "Laser Show Part 2",
         deliverItems: [
           {
             item: "Pure Veltecite",
@@ -1529,6 +1797,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Everything is Crystals Part 2",
+        requires: "Everything is Crystals Part 1",
         deliverItems: [
           {
             item: "Portable Lab",
@@ -1545,6 +1815,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Everything is Crystals Part 3",
+        requires: "Everything is Crystals Part 2",
         description: "Visit Pinnacle Labs. Kill 10 Creatures at Pinnacle Labs",
         dropItems: [
           {
@@ -1561,6 +1833,8 @@ export const quests: Quest[] = [
     campaign: "Osiris",
     parts: [
       {
+        name: "Path to Strong Medkits Part 1",
+        requires: "Laser Show Part 2",
         deliverItems: [
           {
             item: "Marauder Flesh",
@@ -1577,6 +1851,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Path to Strong Medkits Part 2",
+        requires: "Path to Strong Medkits Part 1",
         deliverItems: [
           {
             item: "Pale Ivy Blossom",
@@ -1589,6 +1865,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Path to Strong Medkits Part 3",
+        requires: "Path to Strong Medkits Part 2",
         dropItems: [
           {
             item: "Old Medicine",
@@ -1604,6 +1882,8 @@ export const quests: Quest[] = [
     campaign: "Osiris",
     parts: [
       {
+        name: "Building a better Death Ray Part 1",
+        requires: "Path to Strong Medkits Part 3",
         deliverItems: [
           {
             item: "Dustbloom",
@@ -1620,6 +1900,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Building a better Death Ray Part 2",
+        requires: "Building a better Death Ray Part 1",
         deliverItems: [
           {
             item: "Veltecite Heart",
@@ -1638,6 +1920,8 @@ export const quests: Quest[] = [
     campaign: "Osiris",
     parts: [
       {
+        name: "Satellite Master Part 1",
+        requires: "Building a better Death Ray Part 2",
         description: "Visit Southeast Uplink. Visit North Uplink.",
         deliverItems: [
           {
@@ -1647,10 +1931,10 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Satellite Master Part 2",
+        requires: "Satellite Master Part 1",
         description:
           "Visit Starport Landing Pad Uplink. Visit Skeleton Observation Uplink.",
-      },
-      {
         deliverItems: [
           {
             item: "Unique Data Drive",
@@ -1659,6 +1943,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Satellite Master Part 3",
+        requires: "Satellite Master Part 2",
         dropItems: [
           {
             item: "Radio Equipment",
@@ -1684,6 +1970,8 @@ export const quests: Quest[] = [
     campaign: "Osiris",
     parts: [
       {
+        name: "Combat Ready Part 1",
+        requires: "Satellite Master Part 3",
         description: "Kill 1 Crusher.",
         deliverItems: [
           {
@@ -1693,6 +1981,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Combat Ready Part 2",
+        requires: "Combat Ready Part 1",
         deliverItems: [
           {
             item: "Portable Lab",
@@ -1709,6 +1999,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Combat Ready Part 3",
+        requires: "Combat Ready Part 2",
         deliverItems: [
           {
             item: "Dustbloom",
@@ -1723,6 +2015,8 @@ export const quests: Quest[] = [
     campaign: "Osiris",
     parts: [
       {
+        name: "Orbital Repairs Part 1",
+        requires: "Satellite Master Part 3",
         description: "Kill 15 Creatures at Pinnacle Labs",
         dropItems: [
           {
@@ -1733,9 +2027,13 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Orbital Repairs Part 2",
+        requires: "Orbital Repairs Part 1",
         description: "Kill 6 Players with an Osiris weapon.",
       },
       {
+        name: "Orbital Repairs Part 3",
+        requires: "Orbital Repairs Part 2",
         deliverItems: [
           {
             item: "Hardened Bone Plates",
@@ -1752,6 +2050,8 @@ export const quests: Quest[] = [
         ],
       },
       {
+        name: "Orbital Repairs Part 4",
+        requires: "Orbital Repairs Part 3",
         deliverItems: [
           {
             item: "Crusher Hide",
@@ -1766,6 +2066,8 @@ export const quests: Quest[] = [
     campaign: "Osiris",
     parts: [
       {
+        name: "Breaking and Entering Part 1",
+        requires: "Orbital Repairs Part 4",
         description:
           "Enter Mysterious Cave. Kill 15 Creatures at Mysterious Cave",
         deliverItems: [
