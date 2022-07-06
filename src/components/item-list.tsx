@@ -21,7 +21,6 @@ export const ItemList = ({
   focusQuests,
   omittedItems,
 }: Props) => {
-  const searchCount = search.length;
   const itemsNeededCount = Object.keys(itemsNeeded).length;
   const itemsCompletedCount = Object.keys(itemsNeeded).filter((key) => itemsNeeded[key as ItemName] === 0).length;
   const focusQuestsCount = focusQuests.length;
@@ -36,13 +35,13 @@ export const ItemList = ({
 
   const sellableList = (<div>
       <hr />
-      <div>{sellableIcon} Sellable Items</div>
+      <div>{sellableIcon} Sellable items</div>
       <hr />
       {Object.keys(itemsNeeded)
         .filter((key) => itemsNeeded[key as ItemName] === 0)
         .sort()
         .map((key) => {
-          if (searchCount === 0 || key.toLocaleLowerCase().includes(search.toLocaleLowerCase())) {
+          if (search.length === 0 || key.toLocaleLowerCase().includes(search.toLocaleLowerCase())) {
             return (<div key={key}>{key}</div>);
           }
         })
@@ -75,7 +74,7 @@ export const ItemList = ({
       .filter((key) => itemsNeeded[key as ItemName] > 0)
       .sort()
       .map((key) => {
-        if (searchCount === 0 || key.toLocaleLowerCase().includes(search.toLocaleLowerCase())) {
+        if (search.length === 0 || key.toLocaleLowerCase().includes(search.toLocaleLowerCase())) {
           return (
             <div key={key}>
               {key}: {itemsNeeded[key as ItemName]}{" "}
