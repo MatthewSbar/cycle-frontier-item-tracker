@@ -277,7 +277,7 @@ export const quests: Quest[] = [
             dropLocation: "East Collection Point",
           },
           {
-            item: "Sampler Container",
+            item: "Sample Container",
             quantity: 2,
             dropLocation: "East Collection Point",
           },
@@ -633,7 +633,7 @@ export const quests: Quest[] = [
         ],
       },
       {
-        description: "Visit Lagoon. Kill 3 creatured at Lagoon",
+        description: "Visit Lagoon. Kill 3 creatures at Lagoon",
       },
       {
         deliverItems: [
@@ -952,7 +952,7 @@ export const quests: Quest[] = [
           "Visit Geothermal Plant. Kill 2 players with an ICA weapon",
         deliverItems: [
           {
-            item: "Sampler Container",
+            item: "Sample Container",
             quantity: 5,
           },
         ],
@@ -1253,7 +1253,7 @@ export const quests: Quest[] = [
           "Visit Lake. Kill 10 Striders at Lake. Kill 3 Rattlers at Lake.",
       },
       {
-        description: "Visit the archaelogy Site. Deliver 3 Old Bones.",
+        description: "Visit the archaeology Site. Deliver 3 Old Bones.",
       },
       {
         description: "Kill 1 Player with an Orsirus weapon.",
@@ -1539,7 +1539,7 @@ export const quests: Quest[] = [
             quantity: 5,
           },
           {
-            item: "Sampler Container",
+            item: "Sample Container",
             quantity: 8,
           },
         ],
@@ -2376,7 +2376,7 @@ export const upgrades: Upgrade[] = [
           {
             items: [
               {
-                item: "Sampler Container",
+                item: "Sample Container",
                 quantity: 2,
               },
               {
@@ -3142,7 +3142,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 8,
               },
               {
-                item: "Sampler Container",
+                item: "Sample Container",
                 quantity: 10,
               },
               {
@@ -3484,7 +3484,7 @@ export const upgrades: Upgrade[] = [
           {
             items: [
               {
-                item: "Sampler Container",
+                item: "Sample Container",
                 quantity: 2,
               },
               {
@@ -3747,7 +3747,7 @@ export const upgrades: Upgrade[] = [
           {
             items: [
               {
-                item: "Sampler Container",
+                item: "Sample Container",
                 quantity: 8,
               },
               {
@@ -3883,7 +3883,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 10,
               },
               {
-                item: "Sampler Container",
+                item: "Sample Container",
                 quantity: 4,
               },
               {
@@ -4052,7 +4052,7 @@ export const items = {
   "Pure Focus Crystal": 0,
   "Spinal Base": 0,
   "Biological Sampler": 0,
-  "Sampler Container": 0,
+  "Sample Container": 0,
   "Valuable Data Drive": 0,
   Jewellery: 0,
   "Restoration Shield (Green)": 0,

@@ -62,7 +62,7 @@ export type ItemName =
   | "Pure Focus Crystal"
   | "Spinal Base"
   | "Biological Sampler"
-  | "Sampler Container"
+  | "Sample Container"
   | "Valuable Data Drive"
   | "Jewellery"
   | "Restoration Shield (Green)"
