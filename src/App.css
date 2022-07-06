@@ -289,10 +289,9 @@ footer {
   .patreon-link {
     border-radius: 8px;
     background-color: #525276;
-    margin: 0 16px 0 0;
     padding: 8px 16px;
     font-size: 16px;
-    margin-bottom: 16px;
+    margin: 0 16px 16px 0;
   }
 
   .patreon-link {

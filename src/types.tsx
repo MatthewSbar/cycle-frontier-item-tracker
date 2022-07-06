@@ -10,12 +10,12 @@ export type ViewMode = "quest" | "upgrade" | "items";
 export type ItemSource = "quest" | "upgrade" | null;
 
 type Part = {
-  dropItems?: ItemHandin[];
-  deliverItems?: ItemHandin[];
+  dropItems?: ItemHandIn[];
+  deliverItems?: ItemHandIn[];
   description?: string;
 };
 
-export type ItemHandin = {
+export type ItemHandIn = {
   item: ItemName;
   quantity: number;
   dropLocation?: DropLocation;
@@ -137,7 +137,7 @@ type UpgradeTree =
   | "Quarters";
 
 type UpgradeLevel = {
-  items: ItemHandin[];
+  items: ItemHandIn[];
   kMarks: number;
 };
 
