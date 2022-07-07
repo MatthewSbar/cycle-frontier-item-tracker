@@ -1,5 +1,5 @@
 import { quests } from "./data";
-import { MissionName, Part } from "./types";
+import { MissionName, Part, Quest } from "./types";
 
 export class QuestForest {
   private constructor(
@@ -9,7 +9,7 @@ export class QuestForest {
 
   /** Builds a quest forest from the {@link quests} data in data.tsx */
   static new(): QuestForest {
-    const questsCopy = [ ...quests ];
+    const questsCopy = JSON.parse(JSON.stringify(quests)) as Quest[];
 
     const roots: QuestTree[] = [];
     const questTreeMap = new Map<MissionName, QuestTree>();
