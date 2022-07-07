@@ -9,7 +9,7 @@ export class QuestForest {
 
   /** Builds a quest forest from the {@link quests} data in data.tsx */
   static new(): QuestForest {
-    const questsCopy = quests.slice();
+    const questsCopy = [ ...quests ];
 
     const roots: QuestTree[] = [];
     const questTreeMap = new Map<MissionName, QuestTree>();
