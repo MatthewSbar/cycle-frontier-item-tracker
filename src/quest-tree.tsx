@@ -48,7 +48,7 @@ export class QuestForest {
    * @param completeQuestParts - A set of completed quest part name
    * @param depth
    */
-  findIncompleteQuestParts(completeQuestParts: Set<MissionName>, depth: number | null = null): Part[] {
+  findIncompleteQuestParts(completeQuestParts: Set<MissionName>, depth = Number.MAX_SAFE_INTEGER): Part[] {
     const isQuestPartComplete = (part: Part) => !completeQuestParts.has(part.name);
 
     return this.roots
@@ -67,15 +67,13 @@ class QuestTree {
   ) {
   }
 
-  getParts(depth: number | null = null): Part[] {
-    if (depth !== null && depth <= 1) {
+  getParts(depth = Number.MAX_SAFE_INTEGER): Part[] {
+    if (depth <= 1) {
       return [ this.part ];
     }
 
-    const nextDepth = depth === null ? null : depth - 1;
-
     return this.subtrees
-      .map(subtree => subtree.getParts(nextDepth))
+      .map(subtree => subtree.getParts(depth - 1))
       .flat()
       .concat(this.part);
   }
