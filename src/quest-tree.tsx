@@ -44,15 +44,15 @@ export class QuestForest {
   }
 
   /**
-   * returns the first incomplete quests found in the tree, up to a certain depth, or until the end of the tree if depth is null.
-   * @param completeQuests - A set of mission names
+   * returns the first incomplete quest parts found in the tree, up to a certain depth, or until the end of the tree if depth is null.
+   * @param completeQuestParts - A set of completed quest part name
    * @param depth
    */
-  findIncompleteQuests(completeQuests: Set<MissionName>, depth: number | null = null): Part[] {
-    const isMissionIncomplete = (part: Part) => !completeQuests.has(part.name);
+  findIncompleteQuestParts(completeQuestParts: Set<MissionName>, depth: number | null = null): Part[] {
+    const isQuestPartComplete = (part: Part) => !completeQuestParts.has(part.name);
 
     return this.roots
-      .map(root => root.findFirsts(isMissionIncomplete))
+      .map(root => root.findFirsts(isQuestPartComplete))
       .flat()
       .map(incompleteQuestTree => incompleteQuestTree.getParts(depth))
       .flat();

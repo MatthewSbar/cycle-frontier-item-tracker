@@ -13,38 +13,40 @@ test("renders learn react link", () => {
 test("quest forest", () => {
   const questForest = QuestForest.new();
 
-  const completeMissions = new Set<MissionName>();
+  const completeQuestPartNames = new Set<MissionName>();
 
   // test that the three starter quests are returned when there are no missions marked complete
-  const starterQuests = questForest.findIncompleteQuests(completeMissions, 1);
+  const starterQuestParts = questForest.findIncompleteQuestParts(completeQuestPartNames, 1);
 
-  expect(starterQuests.length).toEqual(3);
+  expect(starterQuestParts.length).toEqual(3);
 
-  expect(starterQuests.find(quest => quest.name === "Welcome to the Workforce")).toBeTruthy();
-  expect(starterQuests.find(quest => quest.name === "Simple Needs")).toBeTruthy();
-  expect(starterQuests.find(quest => quest.name === "Prove your Worth")).toBeTruthy();
+  expect(starterQuestParts.find(part => part.name === "Welcome to the Workforce")).toBeTruthy();
+  expect(starterQuestParts.find(part => part.name === "Simple Needs")).toBeTruthy();
+  expect(starterQuestParts.find(part => part.name === "Prove your Worth")).toBeTruthy();
 
   // test depth of 2, test multi-child quests ("Company Identity" is required by "Mineral Master", "Spring Cleaning")
-  completeMissions.add("Welcome to the Workforce");
-  completeMissions.add("Sometimes violence IS the answer");
-  completeMissions.add("Spare Parts");
-  completeMissions.add("Contaminated Waters");
+  completeQuestPartNames.add("Welcome to the Workforce");
+  completeQuestPartNames.add("Sometimes violence IS the answer");
+  completeQuestPartNames.add("Spare Parts");
+  completeQuestPartNames.add("Contaminated Waters");
 
-  const quests = questForest.findIncompleteQuests(completeMissions, 2);
+  const questParts = questForest.findIncompleteQuestParts(completeQuestPartNames, 2);
 
-  expect(quests.length).toEqual(7);
+  expect(questParts.length).toEqual(7);
 
-  expect(quests.find(quest => quest.name === "Company Identity")).toBeTruthy();
-  expect(quests.find(quest => quest.name === "Mineral Master")).toBeTruthy();
-  expect(quests.find(quest => quest.name === "Spring Cleaning")).toBeTruthy();
-  expect(quests.find(quest => quest.name === "Simple Needs")).toBeTruthy();
-  expect(quests.find(quest => quest.name === "Don't Forget to Recycle")).toBeTruthy();
-  expect(quests.find(quest => quest.name === "Prove your Worth")).toBeTruthy();
-  expect(quests.find(quest => quest.name === "The Real Wetwork")).toBeTruthy();
+  expect(questParts.find(part => part.name === "Company Identity")).toBeTruthy();
+  expect(questParts.find(part => part.name === "Mineral Master")).toBeTruthy();
+  expect(questParts.find(part => part.name === "Spring Cleaning")).toBeTruthy();
+  expect(questParts.find(part => part.name === "Simple Needs")).toBeTruthy();
+  expect(questParts.find(part => part.name === "Don't Forget to Recycle")).toBeTruthy();
+  expect(questParts.find(part => part.name === "Prove your Worth")).toBeTruthy();
+  expect(questParts.find(part => part.name === "The Real Wetwork")).toBeTruthy();
 
 
   // test infinite depth with no completed quests (should just return all quests)
-  const allQuests = questForest.findIncompleteQuests(new Set());
+  const allQuestParts = questForest.findIncompleteQuestParts(new Set());
 
-  expect(allQuests.length).toEqual(157);
+  const questPartCount = quests.reduce((count, quest) => count + quest.parts.length, 0);
+
+  expect(allQuestParts.length).toEqual(questPartCount);
 });
