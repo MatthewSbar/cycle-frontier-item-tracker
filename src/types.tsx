@@ -9,7 +9,7 @@ export type Faction = "Korolev" | "Osiris" | "ICA";
 export type ViewMode = "quest" | "upgrade" | "items";
 export type ItemSource = "quest" | "upgrade" | null;
 
-type Part = {
+export type Part = {
   dropItems?: ItemHandin[];
   deliverItems?: ItemHandin[];
   description?: string;
