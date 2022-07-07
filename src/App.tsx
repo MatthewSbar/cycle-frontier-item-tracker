@@ -6,12 +6,13 @@ import {
   QuestProgress,
   UpgradeProgress,
   ViewMode,
-  Faction,
+  Faction, MissionName, Part,
 } from "./types";
 import { quests, upgrades, items } from "./data";
 import { QuestListing } from "./components/quest-listing";
 import { UpgradeTree } from "./components/upgrade-tree";
 import { ItemList } from "./components/item-list";
+import { QuestForest } from "./quest-tree";
 
 function App() {
   const clearQuestProgress = (): QuestProgress => {
@@ -61,42 +62,29 @@ function App() {
 
     // Skip if quests are all hidden
     if (omittedItems !== "quest") {
-      // Only look at focused quests if any are selected
-      if (focusQuests.length > 0) {
-        focusQuests.forEach((questName) => {
-          const part = quests.find((q) => q.name === questName)?.parts[
-            questProgress[questName]
-          ];
-          part?.deliverItems?.forEach(
-            (item) =>
-              (itemsNeededCopy[item.item] =
-                itemsNeededCopy[item.item] + item.quantity)
-          );
-          part?.dropItems?.forEach(
-            (item) =>
-              (itemsNeededCopy[item.item] =
-                itemsNeededCopy[item.item] + item.quantity)
-          );
-        });
-        return itemsNeededCopy;
+      let questParts: Part[];
+
+      if (!isLimitingQuestDepth || questDepth === 0) {
+        questParts = questForest.findIncompleteQuestParts(completedQuestPartNames);
+      } else {
+        questParts = questForest.findIncompleteQuestParts(completedQuestPartNames, questDepth);
       }
 
-      quests.forEach((quest) => {
-        quest.parts.forEach((part, i) => {
-          if (questProgress[quest.name] > i) {
-            return;
-          }
-          part.deliverItems?.forEach((item) => {
-            itemsNeededCopy[item.item] =
-              itemsNeededCopy[item.item] + item.quantity;
-          });
+      questParts.forEach(part => {
+        part.deliverItems?.forEach((item) => {
+          itemsNeededCopy[item.item] =
+            itemsNeededCopy[item.item] + item.quantity;
+        });
 
-          part.dropItems?.forEach((item) => {
-            itemsNeededCopy[item.item] =
-              itemsNeededCopy[item.item] + item.quantity;
-          });
+        part.dropItems?.forEach((item) => {
+          itemsNeededCopy[item.item] =
+            itemsNeededCopy[item.item] + item.quantity;
         });
       });
+
+      if (focusQuests.length > 0) {
+        return itemsNeededCopy;
+      }
     }
 
     // Skip if upgrades are all hidden
@@ -164,6 +152,8 @@ function App() {
       window.localStorage.removeItem("showCompleted");
       window.localStorage.removeItem("focusQuests");
       window.localStorage.removeItem("omittedItems");
+      window.localStorage.removeItem("questDepth");
+      window.localStorage.removeItem("isLimitingQuestDepth");
       window.location.href =
         "https://matthewsbar.github.io/cycle-frontier-item-tracker/";
     }
@@ -191,12 +181,92 @@ function App() {
   const [questProgress, setQuestProgress] = useState<QuestProgress>(
     getLocalQuestData()
   );
+
+  const generateQuestForest = (): QuestForest => {
+    if (focusQuests.length > 0) {
+      return QuestForest.new(new Set(focusQuests));
+    }
+    return QuestForest.new();
+  };
+
+  const [questForest, setQuestForest] = useState<QuestForest>(
+    generateQuestForest()
+  );
+
+  const generateCompletedQuestPartNames = (): Set<MissionName> => {
+    const completedQuestPartNames = new Set<MissionName>();
+
+    quests.forEach(quest => {
+      quest.parts.forEach((part, index) => {
+        if (questProgress[quest.name] > index) {
+          completedQuestPartNames.add(part.name);
+        }
+      });
+    });
+
+    return completedQuestPartNames;
+  }
+
+  const [completedQuestPartNames, setCompletedQuestPartNames] = useState<Set<MissionName>>(
+    generateCompletedQuestPartNames()
+  );
+
   const [upgradeProgress, setUpgradeProgress] = useState<UpgradeProgress>(
     getLocalUpgradeData()
   );
 
   const getLocalOmittedData = (): ItemSource => {
     return localStorage.getItem("omittedItems") as ItemSource;
+  };
+
+  const getLocalIsLimitingQuestDepthData = (): boolean => {
+    const localQuestListDepthChecked = localStorage.getItem("isLimitingQuestDepth");
+    if (localQuestListDepthChecked) {
+      return JSON.parse(localQuestListDepthChecked);
+    }
+
+    return false;
+  };
+
+  const [isLimitingQuestDepth, setIsLimitingQuestDepth] = useState<boolean>(
+    getLocalIsLimitingQuestDepthData()
+  );
+
+  const getLocalQuestListDepthData = (): number => {
+    const localQuestListDepth = localStorage.getItem("questDepth");
+    if (localQuestListDepth) {
+      return +localQuestListDepth;
+    }
+
+    return 0;
+  }
+
+  const [questDepth, setQuestDepth] = useState<number>(
+    getLocalQuestListDepthData()
+  );
+
+  const handleIsLimitingQuestDepthChange = (isLimitingQuestDepth: boolean) => {
+    if (isLimitingQuestDepth) {
+      localStorage.setItem("isLimitingQuestDepth", "true");
+
+      const localQuestListDepthData = getLocalQuestListDepthData();
+
+      if (!localQuestListDepthData) {
+        setQuestDepth(5);
+      } else {
+        setQuestDepth(localQuestListDepthData)
+      }
+    } else {
+      localStorage.removeItem("isLimitingQuestDepth");
+      setQuestDepth(0);
+    }
+
+    setIsLimitingQuestDepth(isLimitingQuestDepth);
+  };
+
+  const handleChangeQuestDepth = (questDepth: number) => {
+    setQuestDepth(questDepth < 1 ? 1 : questDepth);
+    localStorage.setItem("questDepth", `${questDepth}`);
   };
 
   const handleSetOmittedItems = (
@@ -224,14 +294,19 @@ function App() {
   const [viewMode, setViewMode] = useState<ViewMode>("quest");
 
   useEffect(() => {
-    setItemsNeeded(countItemsNeeded());
+    setCompletedQuestPartNames(generateCompletedQuestPartNames());
+    setQuestForest(generateQuestForest());
     window.localStorage.setItem("questProgress", JSON.stringify(questProgress));
+    window.localStorage.setItem("focusQuests", JSON.stringify(focusQuests));
+  }, [questProgress, focusQuests]);
+
+  useEffect(() => {
+    setItemsNeeded(countItemsNeeded());
     window.localStorage.setItem(
       "upgradeProgress",
       JSON.stringify(upgradeProgress)
     );
-    window.localStorage.setItem("focusQuests", JSON.stringify(focusQuests));
-  }, [questProgress, upgradeProgress, omittedItems, focusQuests]);
+  }, [questForest, upgradeProgress, omittedItems, questDepth]);
 
   // Track the width of the window so we can know if the below condition should be triggered
   useEffect(() => {
@@ -398,6 +473,10 @@ function App() {
                 itemsNeeded={itemsNeeded}
                 focusQuests={focusQuests}
                 omittedItems={omittedItems}
+                questDepth={questDepth}
+                handleChangeQuestDepth={handleChangeQuestDepth}
+                isLimitingQuestDepth={isLimitingQuestDepth}
+                handleIsLimitingQuestDepthChange={handleIsLimitingQuestDepthChange}
               />
             </div>
           </div>
@@ -409,6 +488,10 @@ function App() {
               itemsNeeded={itemsNeeded}
               focusQuests={focusQuests}
               omittedItems={omittedItems}
+              questDepth={questDepth}
+              handleChangeQuestDepth={handleChangeQuestDepth}
+              isLimitingQuestDepth={isLimitingQuestDepth}
+              handleIsLimitingQuestDepthChange={handleIsLimitingQuestDepthChange}
             />
           </div>
         </div>

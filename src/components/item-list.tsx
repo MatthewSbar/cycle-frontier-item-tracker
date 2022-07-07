@@ -8,6 +8,10 @@ type Props = {
   questProgress: QuestProgress;
   focusQuests: string[];
   omittedItems: ItemSource | null;
+  questDepth: number;
+  handleChangeQuestDepth(depth: number): void;
+  isLimitingQuestDepth: boolean;
+  handleIsLimitingQuestDepthChange(isLimitingQuestDepth: boolean): void;
 };
 
 export const ItemList = ({
@@ -17,6 +21,10 @@ export const ItemList = ({
   questProgress,
   focusQuests,
   omittedItems,
+  questDepth,
+  handleChangeQuestDepth,
+  isLimitingQuestDepth,
+  handleIsLimitingQuestDepthChange,
 }: Props) => {
   return (
     <div>
@@ -27,6 +35,24 @@ export const ItemList = ({
           placeholder="Search for items"
         />
       </div>
+      <div className="limit-quest-depth-checkbox-wrapper">
+        <input
+          type="checkbox"
+          checked={isLimitingQuestDepth}
+          onChange={() => handleIsLimitingQuestDepthChange(!isLimitingQuestDepth)}
+        />
+        <label>Limit quest item depth</label>
+      </div>
+      { isLimitingQuestDepth && (
+        <div className="limit-quest-depth-wrapper">
+          <label>Depth:</label>
+          <input
+            type="number"
+            value={questDepth}
+            onChange={(e) => handleChangeQuestDepth(+e.target.value)}
+          />
+        </div>
+      )}
       <div>💀🗑️ = Item must be dead dropped</div>
       <hr />
 
