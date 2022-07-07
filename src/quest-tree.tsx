@@ -2,10 +2,7 @@ import { quests } from "./data";
 import { MissionName, Part, Quest } from "./types";
 
 export class QuestForest {
-  private constructor(
-    private roots: QuestTree[]
-  ) {
-  }
+  private constructor(private roots: QuestTree[]) {}
 
   /** Builds a quest forest from the {@link quests} data in data.tsx */
   static new(): QuestForest {
@@ -15,17 +12,16 @@ export class QuestForest {
     const questTreeMap = new Map<MissionName, QuestTree>();
 
     // populate the quest tree map with empty quest trees
-    questsCopy.forEach(quest => {
-      quest.parts.forEach(part => {
+    questsCopy.forEach((quest) => {
+      quest.parts.forEach((part) => {
         const questTree = new QuestTree(part);
         questTreeMap.set(part.name, questTree);
       });
     });
 
     // populate each quest tree with associated child trees
-    questsCopy.forEach(quest => {
-      quest.parts.forEach(part => {
-
+    questsCopy.forEach((quest) => {
+      quest.parts.forEach((part) => {
         // Can safely assert the type here since we did a full loop above
         const currentTree = questTreeMap.get(part.name) as QuestTree;
 
@@ -48,32 +44,31 @@ export class QuestForest {
    * @param completeQuestParts - A set of completed quest part name
    * @param depth
    */
-  findIncompleteQuestParts(completeQuestParts: Set<MissionName>, depth = Number.MAX_SAFE_INTEGER): Part[] {
-    const isQuestPartComplete = (part: Part) => !completeQuestParts.has(part.name);
+  findIncompleteQuestParts(
+    completeQuestParts: Set<MissionName>,
+    depth = Number.MAX_SAFE_INTEGER
+  ): Part[] {
+    const isQuestPartComplete = (part: Part) =>
+      !completeQuestParts.has(part.name);
 
     return this.roots
-      .map(root => root.findFirsts(isQuestPartComplete))
+      .map((root) => root.findFirsts(isQuestPartComplete))
       .flat()
-      .map(incompleteQuestTree => incompleteQuestTree.getParts(depth))
+      .map((incompleteQuestTree) => incompleteQuestTree.getParts(depth))
       .flat();
   }
 }
 
 class QuestTree {
-
-  constructor(
-    public part: Part,
-    public subtrees: QuestTree[] = []
-  ) {
-  }
+  constructor(public part: Part, public subtrees: QuestTree[] = []) {}
 
   getParts(depth = Number.MAX_SAFE_INTEGER): Part[] {
     if (depth <= 1) {
-      return [ this.part ];
+      return [this.part];
     }
 
     return this.subtrees
-      .map(subtree => subtree.getParts(depth - 1))
+      .map((subtree) => subtree.getParts(depth - 1))
       .flat()
       .concat(this.part);
   }
@@ -84,12 +79,9 @@ class QuestTree {
    */
   findFirsts(condition: (part: Part) => boolean): QuestTree[] {
     if (condition(this.part)) {
-      return [ this ];
+      return [this];
     }
 
-    return this.subtrees
-      .map(subtree => subtree.findFirsts(condition))
-      .flat();
+    return this.subtrees.map((subtree) => subtree.findFirsts(condition)).flat();
   }
-
 }
