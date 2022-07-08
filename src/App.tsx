@@ -431,6 +431,8 @@ function App() {
                   itemsNeeded={itemsNeeded}
                   focusQuests={focusQuests}
                   omittedItems={omittedItems}
+                  questForest={questForest}
+                  completedQuestPartNames={completedQuestPartNames}
                   questDepth={questDepth}
                   handleChangeQuestDepth={handleChangeQuestDepth}
                   isLimitingQuestDepth={isLimitingQuestDepth}
@@ -448,6 +450,8 @@ function App() {
                 itemsNeeded={itemsNeeded}
                 focusQuests={focusQuests}
                 omittedItems={omittedItems}
+                questForest={questForest}
+                completedQuestPartNames={completedQuestPartNames}
                 questDepth={questDepth}
                 handleChangeQuestDepth={handleChangeQuestDepth}
                 isLimitingQuestDepth={isLimitingQuestDepth}

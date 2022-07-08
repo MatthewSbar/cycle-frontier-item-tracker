@@ -1,5 +1,6 @@
 import {quests} from "../data";
-import {ItemName, ItemSource, QuestProgress} from "../types";
+import {ItemName, ItemSource, MissionName, Quest, QuestProgress} from "../types";
+import {QuestForest} from "../quest-tree";
 
 type Props = {
   itemsNeeded: Record<ItemName, number>;
@@ -8,6 +9,8 @@ type Props = {
   questProgress: QuestProgress;
   focusQuests: string[];
   omittedItems: ItemSource | null;
+  questForest: QuestForest;
+  completedQuestPartNames: Set<MissionName>;
   questDepth: number;
   handleChangeQuestDepth(depth: number): void;
   isLimitingQuestDepth: boolean;
@@ -21,25 +24,34 @@ export const ItemList = ({
   questProgress,
   focusQuests,
   omittedItems,
+  questForest,
+  completedQuestPartNames,
   questDepth,
   handleChangeQuestDepth,
   isLimitingQuestDepth,
   handleIsLimitingQuestDepthChange,
 }: Props) => {
 
+  const partNameQuestNameMap = new Map<MissionName, Quest>();
+
+  quests.forEach(quest => {
+    quest.parts.forEach(part => {
+      partNameQuestNameMap.set(part.name, quest);
+    });
+  });
+
   const getFocusedDepthLimitedQuestParts = (): { questName: string, partNumber: number }[] => {
-    return focusQuests
-      .map((questName) => {
-        const quest = quests.find(quest => quest.name === questName);
 
-        const partNumbers = new Array(questDepth)
-          .fill(null)
-          .map((_, index) => questProgress[questName] + index + 1)
-          .filter(partNumber => partNumber <= (quest?.parts?.length ?? 0));
+    const parts = questForest.findIncompleteQuestParts(completedQuestPartNames, questDepth).reverse();
 
-        return partNumbers.map(partNumber => ({ questName, partNumber }));
-      })
-      .flat();
+    return parts.map((part, index) => {
+      const quest = partNameQuestNameMap.get(part.name);
+
+      return {
+        questName: quest?.name ?? '',
+        partNumber: (quest?.parts?.findIndex(_part => _part.name === part.name) ?? 0) + 1
+      };
+    });
   };
 
   return (
