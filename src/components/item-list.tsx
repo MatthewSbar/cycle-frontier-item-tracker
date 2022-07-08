@@ -57,7 +57,10 @@ export const ItemList = ({
       <hr />
 
       {omittedItems === "quest" ? (
-        <div>Items needed for quests are currently hidden.</div>
+        <div>
+          Items needed for quests are currently hidden.
+          <hr />
+        </div>
       ) : focusQuests.length > 0 ? (
         <div>
           Only showing items from:
@@ -71,10 +74,11 @@ export const ItemList = ({
         </div>
       ) : null}
       {omittedItems === "upgrade" ? (
-        <div>Items needed for upgrades are currently hidden.</div>
+        <div>
+          Items needed for upgrades are currently hidden.
+          <hr />
+        </div>
       ) : null}
-      {omittedItems ||
-        (omittedItems === "quest" && focusQuests.length > 0 && <hr />)}
       {Object.keys(itemsNeeded)
         .filter((key) => itemsNeeded[key as ItemName] > 0)
         .sort()
@@ -85,7 +89,7 @@ export const ItemList = ({
           ) {
             return (
               <div key={key}>
-                {key}: {itemsNeeded[key as ItemName]}{" "}
+                {key}: {itemsNeeded[key as ItemName].toLocaleString()}{" "}
                 {quests
                   .filter(
                     (quest) => quest.parts.length > questProgress[quest.name]

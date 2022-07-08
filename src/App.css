@@ -192,8 +192,8 @@ footer {
 .item-list {
   border-left: 1px solid #838383;
   padding-left: 32px;
-  max-width: 262px;
-  width: 262px;
+  max-width: 308px;
+  width: 308px;
 }
 
 .inactive {
@@ -244,14 +244,7 @@ footer {
 
 .main-content {
   flex-grow: 1;
-}
-
-.item-list-button {
-  display: none;
-}
-
-.item-list-mobile {
-  display: none;
+  width: 100%;
 }
 
 .material-symbols-outlined {
@@ -271,29 +264,13 @@ footer {
   display: flex;
 }
 
-.main-nav i {
-  font-style: normal;
-  font-weight: 100;
-  margin-left: 0.5rem;
-}
-
-.main-nav i.toggled {
-  opacity: 0.75;
-}
-
 .completed {
   opacity: 0.5;
 }
 
-/* Adds the 'slashed-eye' effect  */
-.main-nav i.toggled::before {
-  content: "";
-  width: 22px;
-  height: 16px;
-  border-bottom: 2px solid #dbdbdb;
-  position: absolute;
-  transform: translate(-7px, 1px) rotate(-45deg);
-  user-select: none;
+.eye {
+  font-size: 18px;
+  margin-left: 8px;
 }
 
 @media (max-width: 1200px) {
@@ -322,17 +299,12 @@ footer {
     font-size: 24px;
   }
 
-  .item-list-button {
-    display: block;
-  }
-
   .item-list {
-    display: none;
-  }
-
-  .item-list-show {
-    display: block;
     border-left: none;
     padding: 0;
+  }
+
+  .eye {
+    font-size: 16px;
   }
 }

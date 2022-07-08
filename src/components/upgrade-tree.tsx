@@ -1,6 +1,6 @@
 import { upgrades } from "../data";
 import { Upgrade, UpgradeProgress } from "../types";
-import { Checkmark } from "./checkmark";
+import { Icon } from "./icon";
 
 type Props = {
   upgrade: Upgrade;
@@ -28,7 +28,7 @@ export const UpgradeTree = ({
   };
 
   const upgradeCompleted = (): boolean => {
-    return upgrade.stages.every((stage, i) => stageCompleted(i));
+    return upgrade.stages.every((_stage, i) => stageCompleted(i));
   };
 
   const stageCompleted = (stage: number): boolean => {
@@ -49,33 +49,21 @@ export const UpgradeTree = ({
   return (
     <>
       <h3>{name}</h3>
-      <div key={upgrade.tree} className="quest-listing tree">
+      <div
+        key={upgrade.tree}
+        className={`quest-listing tree ${
+          upgradeCompleted() ? "completed" : null
+        }`}
+      >
         {upgrade.stages.map(
           (stage, i) =>
             (!stageCompleted(i) || showCompleted) && (
               <div key={`${upgrade.tree}stage${i}`}>
                 <details>
-                  <summary>
-                    <h4>
-                      Tier {i + 1}
-                      {upgradeProgress[upgrade.tree][i] ===
-                        upgrades.find((u) => u.tree === upgrade.tree)?.stages[i]
-                          .levels.length && (
-                        <Checkmark offsetLeft={8} offsetTop={0} fontSize={16} />
-                      )}
-                    </h4>
-                    {i === 0 &&
-                      upgrade.stages.every(
-                        (s, j) =>
-                          s.levels.length === upgradeProgress[upgrade.tree][j]
-                      ) && (
-                        <Checkmark
-                          offsetTop={-40}
-                          offsetLeft={-100}
-                          fontSize={32}
-                        />
-                      )}
-
+                  <summary
+                    className={stageCompleted(i) ? "completed" : undefined}
+                  >
+                    <h4>Tier {i + 1}</h4>
                     <br />
                     <span className="inline-flex">
                       Levels completed:{" "}
@@ -152,14 +140,8 @@ export const UpgradeTree = ({
                       (level, j) =>
                         (!levelCompleted(i, j) || showCompleted) && (
                           <li key={j}>
-                            level {j + 1}
-                            {levelCompleted(i, j) && (
-                              <Checkmark
-                                offsetLeft={-70}
-                                offsetTop={0}
-                                fontSize={20}
-                              />
-                            )}
+                            {levelCompleted(i, j) && <Icon name="done" />}level{" "}
+                            {j + 1}
                             <ul>
                               {level.items.map((item, k) => (
                                 <li key={`${upgrade.tree}stage${i}item${k}`}>
@@ -175,6 +157,7 @@ export const UpgradeTree = ({
               </div>
             )
         )}
+        {upgradeCompleted() ? <Icon name="done" /> : null}
       </div>
     </>
   );
