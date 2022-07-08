@@ -1,4 +1,3 @@
-import React from "react";
 import { QuestForest } from "./quest-tree";
 import { MissionName } from "./types";
 import { quests } from "./data";

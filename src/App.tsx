@@ -12,50 +12,23 @@ import { quests, upgrades, items } from "./data";
 import { QuestListing } from "./components/quest-listing";
 import { UpgradeTree } from "./components/upgrade-tree";
 import { ItemList } from "./components/item-list";
+import { Icon } from "./components/icon";
+import {
+  getLocalFocusData,
+  getLocalHideData,
+  getLocalOmittedData,
+  getLocalQuestData,
+  getLocalUpgradeData,
+} from "./common/util";
+import { Footer } from "./components/footer";
 
 function App() {
-  const clearQuestProgress = (): QuestProgress => {
-    const allQuests: QuestProgress = {};
-
-    quests.forEach((quest) => {
-      allQuests[quest.name] = 0;
-    });
-
-    return allQuests;
-  };
-
-  const clearUpgradeProgress = (): UpgradeProgress => {
-    const allUpgrades: UpgradeProgress = {
-      Quarters: [],
-      "Generate Kmarks": [],
-      "Kmark Passive Cap": [],
-      "Generate Aurum": [],
-      "Aurum Passive Cap": [],
-      "Supply Crate": [],
-      Stash: [],
-      "Safe Pockets": [],
-      Workbench: [],
-    };
-
-    upgrades.forEach((upgrade) => {
-      allUpgrades[upgrade.tree] = upgrade.stages.map((stage) => 0);
-    });
-
-    allUpgrades.Quarters = [1];
-
-    return allUpgrades;
-  };
-
-  const getLocalFocusData = (): string[] => {
-    const localData = localStorage.getItem("focusQuests");
-    if (!localData) {
-      return [];
-    }
-    return JSON.parse(localData) as string[];
-  };
-
   const [focusQuests, setFocusQuests] = useState<string[]>(getLocalFocusData());
 
+  /**
+   * The main algorithm the app runs on to count items needed
+   * @returns A map of item names to quantity needed
+   */
   const countItemsNeeded = (): Record<ItemName, number> => {
     const itemsNeededCopy: Record<ItemName, number> = { ...items };
 
@@ -121,28 +94,21 @@ function App() {
     return itemsNeededCopy;
   };
 
-  const getLocalQuestData = (): QuestProgress => {
-    const localData = localStorage.getItem("questProgress");
-    if (localData) {
-      return JSON.parse(localData) as QuestProgress;
-    }
-    return clearQuestProgress();
-  };
-
-  const getLocalHideData = (): boolean => {
-    const localData = localStorage.getItem("showCompleted") === "show";
-    if (!localData) {
-      return true;
-    }
-    return localStorage.getItem("showCompleted") === "show";
-  };
-
+  /**
+   * A campaign is considered complete if every part of every quest is complete
+   * @param campaign
+   * @returns true if provided campaign is complete
+   */
   const campaignComplete = (campaign: Faction): boolean => {
     return quests
       .filter((q) => q.campaign === campaign)
       .every((q) => questProgress[q.name] === q.parts.length);
   };
 
+  /**
+   * All quests are considered completed if all campaigns are completed
+   * @returns true if all parts of all quests are completed
+   */
   const allQuestsComplete = (): boolean => {
     return (
       campaignComplete("ICA") &&
@@ -151,32 +117,18 @@ function App() {
     );
   };
 
+  /**
+   * @returns true if every level of every stage of every upgrade is complete
+   */
   const allUpgradesComplete = (): boolean => {
     return upgrades.every((u) =>
       u.stages.every((s, i) => upgradeProgress[u.tree][i] === s.levels.length)
     );
   };
 
-  const flushLocalData = () => {
-    if (window.confirm("Are you sure you want to remove all your data?")) {
-      window.localStorage.removeItem("questProgress");
-      window.localStorage.removeItem("upgradeProgress");
-      window.localStorage.removeItem("showCompleted");
-      window.localStorage.removeItem("focusQuests");
-      window.localStorage.removeItem("omittedItems");
-      window.location.href =
-        "https://matthewsbar.github.io/cycle-frontier-item-tracker/";
-    }
-  };
-
-  const getLocalUpgradeData = (): UpgradeProgress => {
-    const localData = localStorage.getItem("upgradeProgress");
-    if (localData) {
-      return JSON.parse(localData) as UpgradeProgress;
-    }
-    return clearUpgradeProgress();
-  };
-
+  /**
+   * Click handler for "show completed" setting. If enabled, hides the quests and upgrades stages which are completed.
+   */
   const handleToggleShowCompleted = () => {
     const newState = !showCompleted;
     setShowCompleted(newState);
@@ -184,21 +136,12 @@ function App() {
   };
   const [width, setWidth] = useState(window.innerWidth);
 
-  const updateWidth = () => {
-    setWidth(window.innerWidth);
-  };
-
-  const [questProgress, setQuestProgress] = useState<QuestProgress>(
-    getLocalQuestData()
-  );
-  const [upgradeProgress, setUpgradeProgress] = useState<UpgradeProgress>(
-    getLocalUpgradeData()
-  );
-
-  const getLocalOmittedData = (): ItemSource => {
-    return localStorage.getItem("omittedItems") as ItemSource;
-  };
-
+  /**
+   * Click handler for setting omitted items. Omitted items are either quests, upgrades, or neither. If a category of items are omitted, they're not included in the items list.
+   * @param e click event
+   * @param newState The new toggle value
+   * @returns
+   */
   const handleSetOmittedItems = (
     e: React.MouseEvent<HTMLElement, MouseEvent>,
     newState: string
@@ -213,6 +156,12 @@ function App() {
     localStorage.setItem("omittedItems", newState);
   };
 
+  const [questProgress, setQuestProgress] = useState<QuestProgress>(
+    getLocalQuestData()
+  );
+  const [upgradeProgress, setUpgradeProgress] = useState<UpgradeProgress>(
+    getLocalUpgradeData()
+  );
   const [omittedItems, setOmittedItems] = useState<ItemSource>(
     getLocalOmittedData()
   );
@@ -223,17 +172,33 @@ function App() {
   const [search, setSearch] = useState<string>("");
   const [viewMode, setViewMode] = useState<ViewMode>("quest");
 
+  // Count items needed when quests, upgrades, omitted items, or focus quests change
   useEffect(() => {
     setItemsNeeded(countItemsNeeded());
+  }, [questProgress, upgradeProgress, omittedItems, focusQuests]);
+
+  // Sync quest progress to localStorage
+  useEffect(() => {
     window.localStorage.setItem("questProgress", JSON.stringify(questProgress));
+  }, [questProgress]);
+
+  // Sync upgrade progress to localStorage
+  useEffect(() => {
     window.localStorage.setItem(
       "upgradeProgress",
       JSON.stringify(upgradeProgress)
     );
+  }, [upgradeProgress]);
+
+  // Sync focus quests to localStorage
+  useEffect(() => {
     window.localStorage.setItem("focusQuests", JSON.stringify(focusQuests));
-  }, [questProgress, upgradeProgress, omittedItems, focusQuests]);
+  }, [focusQuests]);
 
   // Track the width of the window so we can know if the below condition should be triggered
+  const updateWidth = () => {
+    setWidth(window.innerWidth);
+  };
   useEffect(() => {
     window.addEventListener("resize", updateWidth);
     return () => window.removeEventListener("resize", updateWidth);
@@ -261,37 +226,43 @@ function App() {
                   className={viewMode !== "quest" ? "inactive" : undefined}
                 >
                   Missions
-                  <i
-                    title={"Toggle items"}
-                    onClick={(e) => handleSetOmittedItems(e, "quest")}
-                    className={omittedItems === "quest" ? "toggled" : undefined}
-                  >
-                    👁
-                  </i>
+                  <span onClick={(e) => handleSetOmittedItems(e, "quest")}>
+                    <Icon
+                      name={
+                        omittedItems === "quest"
+                          ? "visibility_off"
+                          : "visibility"
+                      }
+                      classes={["eye"]}
+                    />
+                  </span>
                 </h2>
                 <h2
                   onClick={() => setViewMode("upgrade")}
                   className={viewMode !== "upgrade" ? "inactive" : undefined}
                 >
                   Quarters
-                  <i
-                    title={"Toggle items"}
-                    onClick={(e) => handleSetOmittedItems(e, "upgrade")}
-                    className={
-                      omittedItems === "upgrade" ? "toggled" : undefined
-                    }
+                  <span onClick={(e) => handleSetOmittedItems(e, "upgrade")}>
+                    <Icon
+                      name={
+                        omittedItems === "upgrade"
+                          ? "visibility_off"
+                          : "visibility"
+                      }
+                      classes={["eye"]}
+                    />
+                  </span>
+                </h2>
+                {width <= 768 && (
+                  <h2
+                    className={`item-list-button ${
+                      viewMode !== "items" ? "inactive" : undefined
+                    }`}
+                    onClick={() => setViewMode("items")}
                   >
-                    👁
-                  </i>
-                </h2>
-                <h2
-                  className={`item-list-button ${
-                    viewMode !== "items" ? "inactive" : undefined
-                  }`}
-                  onClick={() => setViewMode("items")}
-                >
-                  Items
-                </h2>
+                    Items
+                  </h2>
+                )}
               </div>
               <div className="main-nav">
                 <h2 onClick={() => handleToggleShowCompleted()}>
@@ -391,6 +362,20 @@ function App() {
                 viewMode === "items" ? "item-list-show" : undefined
               }`}
             >
+              {viewMode === "items" && width <= 768 && (
+                <ItemList
+                  questProgress={questProgress}
+                  search={search}
+                  setSearch={setSearch}
+                  itemsNeeded={itemsNeeded}
+                  focusQuests={focusQuests}
+                  omittedItems={omittedItems}
+                />
+              )}
+            </div>
+          </div>
+          {width > 768 && (
+            <div className={`item-list item-list-desktop`}>
               <ItemList
                 questProgress={questProgress}
                 search={search}
@@ -400,31 +385,11 @@ function App() {
                 omittedItems={omittedItems}
               />
             </div>
-          </div>
-          <div className={`item-list item-list-desktop`}>
-            <ItemList
-              questProgress={questProgress}
-              search={search}
-              setSearch={setSearch}
-              itemsNeeded={itemsNeeded}
-              focusQuests={focusQuests}
-              omittedItems={omittedItems}
-            />
-          </div>
+          )}
         </div>
         <hr />
       </main>
-
-      <footer className="footer">
-        <a href="https://github.com/MatthewSbar/cycle-frontier-item-tracker">
-          Github
-        </a>{" "}
-        · <a href="https://www.patreon.com/Vedgy">Patreon</a> ·{" "}
-        <a href="https://vedgy.bandcamp.com/">Check out my mixtape</a> ·{" "}
-        <button className="delete-button" onClick={() => flushLocalData()}>
-          🚽 Flush local data
-        </button>
-      </footer>
+      <Footer />
     </>
   );
 }

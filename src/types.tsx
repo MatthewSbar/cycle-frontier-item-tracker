@@ -23,6 +23,17 @@ export type ItemHandin = {
   dropLocation?: DropLocation;
 };
 
+export type IconName =
+  | "fast_rewind"
+  | "remove"
+  | "add"
+  | "fast_forward"
+  | "star"
+  | "grade"
+  | "done"
+  | "visibility"
+  | "visibility_off";
+
 type DropLocation =
   | "Swamp Camp"
   | "Gate C"

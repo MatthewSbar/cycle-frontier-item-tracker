@@ -1,23 +1,25 @@
 # The Cycle: Frontier - Item Tracker
 
-This app is designed to keep track of what items are needed for quests and upgrades in The Cycle: Frontier. Once you know how many of everything you need, you know what you can rest easy selling or giving to your friends. It also serves as a comprehensive quest objective list. It was built using create-react-app with Typescript. Data is stored in local browser storage. While this app is open source, I do not give anyone permission to fork or reuse this code for purposes other than education or contributing to this project.
+This app is designed to keep track of what items are needed for missions and upgrades in The Cycle: Frontier. Once you know how many of everything you need, you know what you can rest easy selling or giving to your friends. It also serves as a comprehensive mission objective list. It was built using create-react-app with Typescript. Data is stored in local browser storage. While this app is open source, I do not give anyone permission to fork or reuse this code for purposes other than education or contributing to this project.
 
 ## Known issues.
 
-- Some items may have incorrect names. Let me know if an item doesn't use its in-game name.
+- Some quantities or items may be incorrect - if you see a discrepancy, please submit an issue or PR.
 
 ## Upcoming features
 
 - Icons and rarity for items
-- A way to show only items needed for the next N steps of an upgrade or quest
+- A way to show only items needed for the next N steps of an upgrade or mission
 
 ## Support this project
 
-Consider supporting me via [Patreon](https://www.patreon.com/Vedgy)
+There are no ads in this app because ads suck ass. If this saved you a headache or hours of organizing/maintaining a spreadsheet, consider supporting me via [Patreon](https://www.patreon.com/Vedgy).
 
 ## Pull Requests and issues
 
 Feel free to submit pull requests if you know your way around JSON/React and Github issues if you don't.
+
+Try to lint your PRs before submitting by running `npx prettier --write .`.
 
 ## Legal Stuff
 

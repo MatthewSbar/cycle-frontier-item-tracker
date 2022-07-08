@@ -1,4 +1,4 @@
-import { MissionName, Quest, Upgrade } from "./types";
+import { Quest, Upgrade } from "./types";
 
 export const quests: Quest[] = [
   {

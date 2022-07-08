@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { quests } from "../data";
 import { Quest, QuestProgress } from "../types";
-import { Checkmark } from "./checkmark";
+import { Icon } from "./icon";
 
 type Props = {
   quest: Quest;
@@ -92,9 +92,7 @@ export const QuestListing = ({
               onClick={() => handleQuestPartChange(0)}
               disabled={questProgress[quest.name] === 0}
             >
-              <span className="material-symbols-outlined negative">
-                fast_rewind
-              </span>
+              <Icon name="fast_rewind" classes={["negative"]} />
             </button>
             <button
               onClick={() =>
@@ -102,7 +100,7 @@ export const QuestListing = ({
               }
               disabled={questProgress[quest.name] === 0}
             >
-              <span className="material-symbols-outlined negative">remove</span>
+              <Icon name="remove" classes={["negative"]} />
             </button>
             <span className="upgrade-level">
               {questProgress[quest.name]} /{" "}
@@ -114,30 +112,26 @@ export const QuestListing = ({
               }
               disabled={questCompleted()}
             >
-              <span className="material-symbols-outlined positive">add</span>
+              <Icon name="add" classes={["positive"]} />
             </button>
             <button
               onClick={(e) => maxQuest(e, quest.name)}
               disabled={questCompleted()}
             >
-              <span className="material-symbols-outlined positive">
-                fast_forward
-              </span>
+              <Icon name="fast_forward" classes={["positive"]} />
             </button>
           </div>
           <div>
             {!questCompleted() && (
               <button onClick={() => handleFocusToggle()}>
                 {isFocused() ? (
-                  <span className="material-symbols-outlined star">star</span>
+                  <Icon name="star" classes={["star"]} />
                 ) : (
-                  <span className="material-symbols-outlined">grade</span>
+                  <Icon name="grade" />
                 )}
               </button>
             )}
-            {questCompleted() && (
-              <span className="material-symbols-outlined">done</span>
-            )}
+            {questCompleted() && <Icon name="done" />}
           </div>
         </summary>
         <br />
@@ -149,31 +143,21 @@ export const QuestListing = ({
                 <ul className="task-list">
                   {part.description && (
                     <li>
-                      {partCompleted(i) ? (
-                        <span className="material-symbols-outlined">done</span>
-                      ) : null}
+                      {partCompleted(i) ? <Icon name="done" /> : null}
                       {part.description}
                     </li>
                   )}
                   {part.deliverItems &&
                     part.deliverItems.map((item, j) => (
                       <li key={`${quest.name}${item.item}${j}`}>
-                        {partCompleted(i) ? (
-                          <span className="material-symbols-outlined">
-                            done
-                          </span>
-                        ) : null}
+                        {partCompleted(i) ? <Icon name="done" /> : null}
                         Deliver {item.quantity} {item.item}
                       </li>
                     ))}
                   {part.dropItems &&
                     part.dropItems.map((item, j) => (
                       <li key={`${quest.name}${item.item}${j}`}>
-                        {partCompleted(i) ? (
-                          <span className="material-symbols-outlined">
-                            done
-                          </span>
-                        ) : null}
+                        {partCompleted(i) ? <Icon name="done" /> : null}
                         Drop {item.quantity} {item.item} at {item.dropLocation}
                       </li>
                     ))}
