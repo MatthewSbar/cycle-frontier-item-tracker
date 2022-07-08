@@ -1,5 +1,5 @@
-import { quests } from "../data";
-import { ItemName, ItemSource, QuestProgress } from "../types";
+import {quests} from "../data";
+import {ItemName, ItemSource, QuestProgress} from "../types";
 
 type Props = {
   itemsNeeded: Record<ItemName, number>;
@@ -26,6 +26,22 @@ export const ItemList = ({
   isLimitingQuestDepth,
   handleIsLimitingQuestDepthChange,
 }: Props) => {
+
+  const getFocusedDepthLimitedQuestParts = (): { questName: string, partNumber: number }[] => {
+    return focusQuests
+      .map((questName) => {
+        const quest = quests.find(quest => quest.name === questName);
+
+        const partNumbers = new Array(questDepth)
+          .fill(null)
+          .map((_, index) => questProgress[questName] + index + 1)
+          .filter(partNumber => partNumber <= (quest?.parts?.length ?? 0));
+
+        return partNumbers.map(partNumber => ({ questName, partNumber }));
+      })
+      .flat();
+  };
+
   return (
     <div>
       <div className="search-wrapper">
@@ -65,7 +81,12 @@ export const ItemList = ({
         <div>
           Only showing items from:
           <ul className="quest-list">
-            {focusQuests.map((questName) => (
+            {isLimitingQuestDepth && getFocusedDepthLimitedQuestParts().map(({ questName, partNumber }) => (
+              <li key={questName + partNumber}>
+                {questName} - part {partNumber}
+              </li>
+            ))}
+            {!isLimitingQuestDepth && focusQuests.map((questName) => (
               <li key={questName}>
                 {questName} - part {questProgress[questName] + 1}
               </li>
