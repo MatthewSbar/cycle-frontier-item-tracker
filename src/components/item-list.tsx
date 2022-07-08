@@ -1,6 +1,7 @@
 import {quests} from "../data";
 import {ItemName, ItemSource, MissionName, Quest, QuestProgress} from "../types";
 import {QuestForest} from "../quest-tree";
+import {useState} from "react";
 
 type Props = {
   itemsNeeded: Record<ItemName, number>;
@@ -32,13 +33,21 @@ export const ItemList = ({
   handleIsLimitingQuestDepthChange,
 }: Props) => {
 
-  const partNameQuestNameMap = new Map<MissionName, Quest>();
+  const initializePartNameQuestNameMap = (): Map<MissionName, Quest> => {
+    const partNameQuestNameMap = new Map<MissionName, Quest>();
 
-  quests.forEach(quest => {
-    quest.parts.forEach(part => {
-      partNameQuestNameMap.set(part.name, quest);
+    quests.forEach(quest => {
+      quest.parts.forEach(part => {
+        partNameQuestNameMap.set(part.name, quest);
+      });
     });
-  });
+
+    return partNameQuestNameMap;
+  };
+
+  let [partNameQuestNameMap] = useState<Map<MissionName, Quest>>(
+    initializePartNameQuestNameMap()
+  );
 
   const getFocusedDepthLimitedQuestParts = (): { questName: string, partNumber: number }[] => {
 
