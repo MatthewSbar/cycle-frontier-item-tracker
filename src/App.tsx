@@ -158,7 +158,7 @@ function App() {
       const localQuestListDepthData = getLocalQuestListDepthData();
 
       if (!localQuestListDepthData) {
-        setQuestDepth(5);
+        setQuestDepth(3);
       } else {
         setQuestDepth(localQuestListDepthData)
       }

@@ -51,9 +51,11 @@ export const ItemList = ({
 
   const getFocusedDepthLimitedQuestParts = (): { questName: string, partNumber: number }[] => {
 
-    const parts = questForest.findIncompleteQuestParts(completedQuestPartNames, questDepth).reverse();
+    const parts = !isLimitingQuestDepth
+      ? questForest.findIncompleteQuestParts(completedQuestPartNames)
+      : questForest.findIncompleteQuestParts(completedQuestPartNames, questDepth);
 
-    return parts.map((part, index) => {
+    return parts.reverse().map((part, index) => {
       const quest = partNameQuestNameMap.get(part.name);
 
       return {
@@ -102,14 +104,9 @@ export const ItemList = ({
         <div>
           Only showing items from:
           <ul className="quest-list">
-            {isLimitingQuestDepth && getFocusedDepthLimitedQuestParts().map(({ questName, partNumber }) => (
+            {getFocusedDepthLimitedQuestParts().map(({ questName, partNumber }) => (
               <li key={questName + partNumber}>
                 {questName} - part {partNumber}
-              </li>
-            ))}
-            {!isLimitingQuestDepth && focusQuests.map((questName) => (
-              <li key={questName}>
-                {questName} - part {questProgress[questName] + 1}
               </li>
             ))}
           </ul>
