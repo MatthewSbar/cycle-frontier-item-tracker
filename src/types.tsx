@@ -7,14 +7,15 @@ export type Quest = {
 export type Faction = "Korolev" | "Osiris" | "ICA";
 
 export type ViewMode = "quest" | "upgrade" | "items";
+
 export type ItemSource = "quest" | "upgrade" | null;
 
 export type Part = {
   dropItems?: ItemHandin[];
   deliverItems?: ItemHandin[];
   description?: string;
-  name: MissionName;
-  requires: MissionName | null;
+  name: PartName;
+  requires: PartName | null;
 };
 
 export type ItemHandin = {
@@ -167,12 +168,9 @@ export type QuestProgress = Record<string, number>;
 
 export type UpgradeProgress = Record<UpgradeTree, Record<number, number>>;
 
-export type MissionName =
-  | KorolevMissionName
-  | IcaMissionName
-  | OsirisMissionName;
+export type PartName = KorolevPartName | IcaPartName | OsirisPartName;
 
-export type KorolevMissionName =
+export type KorolevPartName =
   | "Welcome to the Workforce"
   | "Sometimes violence IS the answer"
   | "Spare Parts"
@@ -230,7 +228,7 @@ export type KorolevMissionName =
   | "Show Them How It's Done"
   | "A Pick Me Up";
 
-export type IcaMissionName =
+export type IcaPartName =
   | "Simple Needs"
   | "Don't Forget to Recycle"
   | "Animal Control"
@@ -281,7 +279,7 @@ export type IcaMissionName =
   | "Toxic Love Part 1"
   | "Toxic Love Part 2";
 
-export type OsirisMissionName =
+export type OsirisPartName =
   | "Prove your Worth"
   | "The Real Wetwork"
   | "Fertile Grounds"
@@ -334,3 +332,8 @@ export type OsirisMissionName =
   | "Storm Rider Part 3"
   | "Stimulating Developments Part 1"
   | "Stimulating Developments Part 2";
+
+export type QuestPart = {
+  questName: string;
+  partNumber: number;
+};

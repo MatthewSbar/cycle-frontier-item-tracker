@@ -1,5 +1,5 @@
 import { quests } from "./data";
-import { MissionName, Part, Quest } from "./types";
+import { PartName, Part, Quest } from "./types";
 
 export class QuestForest {
   private constructor(private roots: QuestTree[]) {}
@@ -9,11 +9,11 @@ export class QuestForest {
     let questsCopy = JSON.parse(JSON.stringify(quests)) as Quest[];
 
     if (focusedQuests) {
-      questsCopy = questsCopy.filter(quest => focusedQuests.has(quest.name));
+      questsCopy = questsCopy.filter((quest) => focusedQuests.has(quest.name));
     }
 
     const roots: QuestTree[] = [];
-    const questTreeMap = new Map<MissionName, QuestTree>();
+    const questTreeMap = new Map<PartName, QuestTree>();
 
     // populate the quest tree map with empty quest trees
     questsCopy.forEach((quest) => {
@@ -29,7 +29,10 @@ export class QuestForest {
         // Can safely assert the type here since we did a full loop above
         const currentTree = questTreeMap.get(part.name) as QuestTree;
 
-        if (part.requires === null || (focusedQuests && !questTreeMap.has(part.requires))) {
+        if (
+          part.requires === null ||
+          (focusedQuests && !questTreeMap.has(part.requires))
+        ) {
           roots.push(currentTree);
           return;
         }
@@ -49,7 +52,7 @@ export class QuestForest {
    * @param depth
    */
   findIncompleteQuestParts(
-    completeQuestParts: Set<MissionName>,
+    completeQuestParts: Set<PartName>,
     depth = Number.MAX_SAFE_INTEGER
   ): Part[] {
     const isQuestPartComplete = (part: Part) =>

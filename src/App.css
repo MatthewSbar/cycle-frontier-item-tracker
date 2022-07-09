@@ -133,7 +133,7 @@ footer {
   margin-bottom: 0.2rem;
 }
 
-.limit-quest-depth-checkbox-wrapper input[type=checkbox] {
+.limit-quest-depth-checkbox-wrapper input[type="checkbox"] {
   margin-right: 0.4rem;
 }
 
@@ -141,7 +141,7 @@ footer {
   margin-bottom: 0.2rem;
 }
 
-.limit-quest-depth-wrapper input[type=number] {
+.limit-quest-depth-wrapper input[type="number"] {
   max-width: 3rem;
   margin-left: 0.5rem;
 }

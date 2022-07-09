@@ -1,5 +1,11 @@
 import { quests, upgrades } from "../data";
-import { ItemSource, QuestProgress, UpgradeProgress } from "../types";
+import {
+  ItemSource,
+  PartName,
+  Quest,
+  QuestProgress,
+  UpgradeProgress,
+} from "../types";
 
 export const flushLocalData = () => {
   if (window.confirm("Are you sure you want to remove all your data?")) {
@@ -90,13 +96,27 @@ export const getLocalQuestListDepthData = (): number => {
   }
 
   return 0;
-}
+};
 
 export const getLocalIsLimitingQuestDepthData = (): boolean => {
-  const localQuestListDepthChecked = localStorage.getItem("isLimitingQuestDepth");
+  const localQuestListDepthChecked = localStorage.getItem(
+    "isLimitingQuestDepth"
+  );
   if (localQuestListDepthChecked) {
     return JSON.parse(localQuestListDepthChecked);
   }
 
   return false;
+};
+
+export const initializePartNameQuestNameMap = (): Map<PartName, Quest> => {
+  const partNameQuestNameMap = new Map<PartName, Quest>();
+
+  quests.forEach((quest) => {
+    quest.parts.forEach((part) => {
+      partNameQuestNameMap.set(part.name, quest);
+    });
+  });
+
+  return partNameQuestNameMap;
 };

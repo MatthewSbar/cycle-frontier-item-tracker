@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { quests } from "../data";
 import { Quest, QuestProgress } from "../types";
 import { Icon } from "./icon";
@@ -36,24 +35,19 @@ export const QuestListing = ({
     setQuestProgress(questProgressCopy);
   };
 
-  const questCompleted = (): boolean => {
-    return (
-      questProgress[quest.name] ===
-      quests.find((q) => q.name === quest.name)?.parts.length
-    );
-  };
+  const questCompleted =
+    questProgress[quest.name] ===
+    quests.find((q) => q.name === quest.name)?.parts.length;
 
   const partCompleted = (partNumber: number): boolean => {
     return questProgress[quest.name] > partNumber;
   };
 
-  const isFocused = (): boolean => {
-    return focusQuests.includes(quest.name);
-  };
+  const isFocused = focusQuests.includes(quest.name);
 
   const handleFocusToggle = () => {
     const focusQuestsCopy = [...focusQuests];
-    if (isFocused()) {
+    if (isFocused) {
       setFocusQuests(focusQuestsCopy.filter((q) => q !== quest.name));
     } else {
       focusQuestsCopy.push(quest.name);
@@ -61,25 +55,19 @@ export const QuestListing = ({
     }
   };
 
-  const unfocusQuest = () => {
+  if (questCompleted && isFocused) {
     const focusQuestsCopy = [...focusQuests];
     setFocusQuests(focusQuestsCopy.filter((q) => q !== quest.name));
-  };
+  }
 
-  useEffect(() => {
-    if (questCompleted() && isFocused()) {
-      unfocusQuest();
-    }
-  }, [questProgress[quest.name], focusQuests]);
-
-  if (questCompleted() && !showCompleted) {
+  if (questCompleted && !showCompleted) {
     return null;
   }
 
   return (
     <div
       className={`quest-listing ${quest.campaign.toLocaleLowerCase()} ${
-        questCompleted() ? "completed" : null
+        questCompleted ? "completed" : null
       }`}
     >
       <details>
@@ -110,28 +98,28 @@ export const QuestListing = ({
               onClick={() =>
                 handleQuestPartChange(questProgress[quest.name] + 1)
               }
-              disabled={questCompleted()}
+              disabled={questCompleted}
             >
               <Icon name="add" classes={["positive"]} />
             </button>
             <button
               onClick={(e) => maxQuest(e, quest.name)}
-              disabled={questCompleted()}
+              disabled={questCompleted}
             >
               <Icon name="fast_forward" classes={["positive"]} />
             </button>
           </div>
           <div>
-            {!questCompleted() && (
+            {!questCompleted && (
               <button onClick={() => handleFocusToggle()}>
-                {isFocused() ? (
+                {isFocused ? (
                   <Icon name="star" classes={["star"]} />
                 ) : (
                   <Icon name="grade" />
                 )}
               </button>
             )}
-            {questCompleted() && <Icon name="done" />}
+            {questCompleted && <Icon name="done" />}
           </div>
         </summary>
         <br />

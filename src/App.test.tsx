@@ -1,13 +1,13 @@
 import { QuestForest } from "./quest-tree";
-import { MissionName } from "./types";
+import { PartName } from "./types";
 import { quests } from "./data";
 
 test("quest forest", () => {
   const questForest = QuestForest.new();
 
-  const completeQuestPartNames = new Set<MissionName>();
+  const completeQuestPartNames = new Set<PartName>();
 
-  // test that the three starter quests are returned when there are no missions marked complete
+  // test that the three starter quests are returned when there are no parts marked complete
   const starterQuestParts = questForest.findIncompleteQuestParts(
     completeQuestPartNames,
     1
