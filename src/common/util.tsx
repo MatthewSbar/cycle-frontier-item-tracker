@@ -8,6 +8,8 @@ export const flushLocalData = () => {
     window.localStorage.removeItem("showCompleted");
     window.localStorage.removeItem("focusQuests");
     window.localStorage.removeItem("omittedItems");
+    window.localStorage.removeItem("questDepth");
+    window.localStorage.removeItem("isLimitingQuestDepth");
     window.location.href =
       "https://matthewsbar.github.io/cycle-frontier-item-tracker/";
   }
@@ -79,4 +81,22 @@ export const getLocalFocusData = (): string[] => {
     return [];
   }
   return JSON.parse(localData) as string[];
+};
+
+export const getLocalQuestListDepthData = (): number => {
+  const localQuestListDepth = localStorage.getItem("questDepth");
+  if (localQuestListDepth) {
+    return +localQuestListDepth;
+  }
+
+  return 0;
+}
+
+export const getLocalIsLimitingQuestDepthData = (): boolean => {
+  const localQuestListDepthChecked = localStorage.getItem("isLimitingQuestDepth");
+  if (localQuestListDepthChecked) {
+    return JSON.parse(localQuestListDepthChecked);
+  }
+
+  return false;
 };

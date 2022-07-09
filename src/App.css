@@ -129,6 +129,23 @@ footer {
   flex-direction: column;
 }
 
+.limit-quest-depth-checkbox-wrapper {
+  margin-bottom: 0.2rem;
+}
+
+.limit-quest-depth-checkbox-wrapper input[type=checkbox] {
+  margin-right: 0.4rem;
+}
+
+.limit-quest-depth-wrapper {
+  margin-bottom: 0.2rem;
+}
+
+.limit-quest-depth-wrapper input[type=number] {
+  max-width: 3rem;
+  margin-left: 0.5rem;
+}
+
 .quest-list {
   list-style-type: circle;
 }

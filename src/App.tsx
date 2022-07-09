@@ -7,6 +7,8 @@ import {
   UpgradeProgress,
   ViewMode,
   Faction,
+  MissionName,
+  Part,
 } from "./types";
 import { quests, upgrades, items } from "./data";
 import { QuestListing } from "./components/quest-listing";
@@ -16,11 +18,14 @@ import { Icon } from "./components/icon";
 import {
   getLocalFocusData,
   getLocalHideData,
+  getLocalIsLimitingQuestDepthData,
   getLocalOmittedData,
   getLocalQuestData,
+  getLocalQuestListDepthData,
   getLocalUpgradeData,
 } from "./common/util";
 import { Footer } from "./components/footer";
+import { QuestForest } from "./quest-tree";
 
 function App() {
   const [focusQuests, setFocusQuests] = useState<string[]>(getLocalFocusData());
@@ -34,42 +39,25 @@ function App() {
 
     // Skip if quests are all hidden
     if (omittedItems !== "quest") {
-      // Only look at focused quests if any are selected
-      if (focusQuests.length > 0) {
-        focusQuests.forEach((questName) => {
-          const part = quests.find((q) => q.name === questName)?.parts[
-            questProgress[questName]
-          ];
-          part?.deliverItems?.forEach(
-            (item) =>
-              (itemsNeededCopy[item.item] =
-                itemsNeededCopy[item.item] + item.quantity)
-          );
-          part?.dropItems?.forEach(
-            (item) =>
-              (itemsNeededCopy[item.item] =
-                itemsNeededCopy[item.item] + item.quantity)
-          );
+      const questParts = !isLimitingQuestDepth
+        ? questForest.findIncompleteQuestParts(completedQuestPartNames)
+        : questForest.findIncompleteQuestParts(completedQuestPartNames, questDepth);
+
+      questParts.forEach(part => {
+        part.deliverItems?.forEach((item) => {
+          itemsNeededCopy[item.item] =
+            itemsNeededCopy[item.item] + item.quantity;
         });
-        return itemsNeededCopy;
-      }
 
-      quests.forEach((quest) => {
-        quest.parts.forEach((part, i) => {
-          if (questProgress[quest.name] > i) {
-            return;
-          }
-          part.deliverItems?.forEach((item) => {
-            itemsNeededCopy[item.item] =
-              itemsNeededCopy[item.item] + item.quantity;
-          });
-
-          part.dropItems?.forEach((item) => {
-            itemsNeededCopy[item.item] =
-              itemsNeededCopy[item.item] + item.quantity;
-          });
+        part.dropItems?.forEach((item) => {
+          itemsNeededCopy[item.item] =
+            itemsNeededCopy[item.item] + item.quantity;
         });
       });
+
+      if (focusQuests.length > 0) {
+        return itemsNeededCopy;
+      }
     }
 
     // Skip if upgrades are all hidden
@@ -136,6 +124,61 @@ function App() {
   };
   const [width, setWidth] = useState(window.innerWidth);
 
+  const generateQuestForest = (): QuestForest => {
+    if (focusQuests.length > 0) {
+      return QuestForest.new(new Set(focusQuests));
+    }
+    return QuestForest.new();
+  };
+
+  const generateCompletedQuestPartNames = (): Set<MissionName> => {
+    const completedQuestPartNames = new Set<MissionName>();
+
+    quests.forEach(quest => {
+      quest.parts.forEach((part, index) => {
+        if (questProgress[quest.name] > index) {
+          completedQuestPartNames.add(part.name);
+        }
+      });
+    });
+
+    return completedQuestPartNames;
+  }
+
+  /**
+   * Click handler for the "Limit quest item depth" checkbox.
+   *  If enabled, the questDepth number input is displayed & given a default value if there is no local data for questDepth.
+   *  Otherwise, hide questDepth input & set questDepth to 0 (disabling depth limit)
+   * @param isLimitingQuestDepth the new value of the checkbox
+   */
+  const handleIsLimitingQuestDepthChange = (isLimitingQuestDepth: boolean) => {
+    if (isLimitingQuestDepth) {
+      localStorage.setItem("isLimitingQuestDepth", "true");
+
+      const localQuestListDepthData = getLocalQuestListDepthData();
+
+      if (!localQuestListDepthData) {
+        setQuestDepth(3);
+      } else {
+        setQuestDepth(localQuestListDepthData)
+      }
+    } else {
+      localStorage.removeItem("isLimitingQuestDepth");
+      setQuestDepth(0);
+    }
+
+    setIsLimitingQuestDepth(isLimitingQuestDepth);
+  };
+
+  /**
+   * Input event handler for the questDepth number input.
+   * @param questDepth the new value of the input
+   */
+  const handleChangeQuestDepth = (questDepth: number) => {
+    setQuestDepth(questDepth < 1 ? 1 : questDepth);
+    localStorage.setItem("questDepth", `${questDepth}`);
+  };
+
   /**
    * Click handler for setting omitted items. Omitted items are either quests, upgrades, or neither. If a category of items are omitted, they're not included in the items list.
    * @param e click event
@@ -156,8 +199,20 @@ function App() {
     localStorage.setItem("omittedItems", newState);
   };
 
+  const [isLimitingQuestDepth, setIsLimitingQuestDepth] = useState<boolean>(
+    getLocalIsLimitingQuestDepthData()
+  );
+  const [questDepth, setQuestDepth] = useState<number>(
+    getLocalQuestListDepthData()
+  );
   const [questProgress, setQuestProgress] = useState<QuestProgress>(
     getLocalQuestData()
+  );
+  const [questForest, setQuestForest] = useState<QuestForest>(
+    generateQuestForest()
+  );
+  const [completedQuestPartNames, setCompletedQuestPartNames] = useState<Set<MissionName>>(
+    generateCompletedQuestPartNames()
   );
   const [upgradeProgress, setUpgradeProgress] = useState<UpgradeProgress>(
     getLocalUpgradeData()
@@ -172,10 +227,16 @@ function App() {
   const [search, setSearch] = useState<string>("");
   const [viewMode, setViewMode] = useState<ViewMode>("quest");
 
-  // Count items needed when quests, upgrades, omitted items, or focus quests change
+  // Regenerate QuestForest when questProgress or focusQuests are changed
+  useEffect(() => {
+    setCompletedQuestPartNames(generateCompletedQuestPartNames());
+    setQuestForest(generateQuestForest());
+  }, [questProgress, focusQuests]);
+
+  // Count items needed when questForest, upgrades, omitted items, or questDepth change
   useEffect(() => {
     setItemsNeeded(countItemsNeeded());
-  }, [questProgress, upgradeProgress, omittedItems, focusQuests]);
+  }, [questForest, upgradeProgress, omittedItems, questDepth]);
 
   // Sync quest progress to localStorage
   useEffect(() => {
@@ -370,6 +431,12 @@ function App() {
                   itemsNeeded={itemsNeeded}
                   focusQuests={focusQuests}
                   omittedItems={omittedItems}
+                  questForest={questForest}
+                  completedQuestPartNames={completedQuestPartNames}
+                  questDepth={questDepth}
+                  handleChangeQuestDepth={handleChangeQuestDepth}
+                  isLimitingQuestDepth={isLimitingQuestDepth}
+                  handleIsLimitingQuestDepthChange={handleIsLimitingQuestDepthChange}
                 />
               )}
             </div>
@@ -383,6 +450,12 @@ function App() {
                 itemsNeeded={itemsNeeded}
                 focusQuests={focusQuests}
                 omittedItems={omittedItems}
+                questForest={questForest}
+                completedQuestPartNames={completedQuestPartNames}
+                questDepth={questDepth}
+                handleChangeQuestDepth={handleChangeQuestDepth}
+                isLimitingQuestDepth={isLimitingQuestDepth}
+                handleIsLimitingQuestDepthChange={handleIsLimitingQuestDepthChange}
               />
             </div>
           )}

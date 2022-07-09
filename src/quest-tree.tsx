@@ -5,8 +5,12 @@ export class QuestForest {
   private constructor(private roots: QuestTree[]) {}
 
   /** Builds a quest forest from the {@link quests} data in data.tsx */
-  static new(): QuestForest {
-    const questsCopy = JSON.parse(JSON.stringify(quests)) as Quest[];
+  static new(focusedQuests?: Set<string>): QuestForest {
+    let questsCopy = JSON.parse(JSON.stringify(quests)) as Quest[];
+
+    if (focusedQuests) {
+      questsCopy = questsCopy.filter(quest => focusedQuests.has(quest.name));
+    }
 
     const roots: QuestTree[] = [];
     const questTreeMap = new Map<MissionName, QuestTree>();
@@ -25,14 +29,14 @@ export class QuestForest {
         // Can safely assert the type here since we did a full loop above
         const currentTree = questTreeMap.get(part.name) as QuestTree;
 
-        if (part.requires === null) {
+        if (part.requires === null || (focusedQuests && !questTreeMap.has(part.requires))) {
           roots.push(currentTree);
           return;
         }
 
         const parentTree = questTreeMap.get(part.requires) as QuestTree;
 
-        parentTree.subtrees.push(currentTree);
+        parentTree?.subtrees?.push(currentTree);
       });
     });
 
@@ -55,7 +59,8 @@ export class QuestForest {
       .map((root) => root.findFirsts(isQuestPartComplete))
       .flat()
       .map((incompleteQuestTree) => incompleteQuestTree.getParts(depth))
-      .flat();
+      .flat()
+      .filter((part) => !completeQuestParts.has(part.name));
   }
 }
 

@@ -1,5 +1,7 @@
-import { quests } from "../data";
-import { ItemName, ItemSource, QuestProgress } from "../types";
+import {quests} from "../data";
+import {ItemName, ItemSource, MissionName, Quest, QuestProgress} from "../types";
+import {QuestForest} from "../quest-tree";
+import {useState} from "react";
 
 type Props = {
   itemsNeeded: Record<ItemName, number>;
@@ -8,6 +10,12 @@ type Props = {
   questProgress: QuestProgress;
   focusQuests: string[];
   omittedItems: ItemSource | null;
+  questForest: QuestForest;
+  completedQuestPartNames: Set<MissionName>;
+  questDepth: number;
+  handleChangeQuestDepth(depth: number): void;
+  isLimitingQuestDepth: boolean;
+  handleIsLimitingQuestDepthChange(isLimitingQuestDepth: boolean): void;
 };
 
 export const ItemList = ({
@@ -17,7 +25,46 @@ export const ItemList = ({
   questProgress,
   focusQuests,
   omittedItems,
+  questForest,
+  completedQuestPartNames,
+  questDepth,
+  handleChangeQuestDepth,
+  isLimitingQuestDepth,
+  handleIsLimitingQuestDepthChange,
 }: Props) => {
+
+  const initializePartNameQuestNameMap = (): Map<MissionName, Quest> => {
+    const partNameQuestNameMap = new Map<MissionName, Quest>();
+
+    quests.forEach(quest => {
+      quest.parts.forEach(part => {
+        partNameQuestNameMap.set(part.name, quest);
+      });
+    });
+
+    return partNameQuestNameMap;
+  };
+
+  let [partNameQuestNameMap] = useState<Map<MissionName, Quest>>(
+    initializePartNameQuestNameMap()
+  );
+
+  const getFocusedDepthLimitedQuestParts = (): { questName: string, partNumber: number }[] => {
+
+    const parts = !isLimitingQuestDepth
+      ? questForest.findIncompleteQuestParts(completedQuestPartNames)
+      : questForest.findIncompleteQuestParts(completedQuestPartNames, questDepth);
+
+    return parts.reverse().map((part, index) => {
+      const quest = partNameQuestNameMap.get(part.name);
+
+      return {
+        questName: quest?.name ?? '',
+        partNumber: (quest?.parts?.findIndex(_part => _part.name === part.name) ?? 0) + 1
+      };
+    });
+  };
+
   return (
     <div>
       <div className="search-wrapper">
@@ -27,6 +74,24 @@ export const ItemList = ({
           placeholder="Search for items"
         />
       </div>
+      <div className="limit-quest-depth-checkbox-wrapper">
+        <input
+          type="checkbox"
+          checked={isLimitingQuestDepth}
+          onChange={() => handleIsLimitingQuestDepthChange(!isLimitingQuestDepth)}
+        />
+        <label>Limit quest item depth</label>
+      </div>
+      { isLimitingQuestDepth && (
+        <div className="limit-quest-depth-wrapper">
+          <label>Depth:</label>
+          <input
+            type="number"
+            value={questDepth}
+            onChange={(e) => handleChangeQuestDepth(+e.target.value)}
+          />
+        </div>
+      )}
       <div>💀🗑️ = Item must be dead dropped</div>
       <hr />
 
@@ -39,9 +104,9 @@ export const ItemList = ({
         <div>
           Only showing items from:
           <ul className="quest-list">
-            {focusQuests.map((questName) => (
-              <li key={questName}>
-                {questName} - part {questProgress[questName] + 1}
+            {getFocusedDepthLimitedQuestParts().map(({ questName, partNumber }) => (
+              <li key={questName + partNumber}>
+                {questName} - part {partNumber}
               </li>
             ))}
           </ul>
