@@ -154,7 +154,7 @@ function App() {
   const [width, setWidth] = useState(window.innerWidth);
 
   /**
-   * Click handler for the "Limit quest item depth" checkbox.
+   * Click handler for the "Limit mission item depth" checkbox.
    *  If enabled, the questDepth number input is displayed & given a default value if there is no local data for questDepth.
    *  Otherwise, hide questDepth input & set questDepth to 0 (disabling depth limit)
    * @param isLimitingQuestDepth the new value of the checkbox

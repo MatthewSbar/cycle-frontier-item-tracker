@@ -81,7 +81,7 @@ export const ItemList = ({
                 handleIsLimitingQuestDepthChange(!isLimitingQuestDepth)
               }
             />
-            Limit quest item depth
+            Limit mission item depth
           </label>
           {isLimitingQuestDepth && (
             <div className="limit-quest-depth-wrapper">
