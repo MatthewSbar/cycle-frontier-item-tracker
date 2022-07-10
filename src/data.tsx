@@ -1474,7 +1474,7 @@ export const quests: Quest[] = [
       {
         name: "Field Research Part 3",
         requires: "Old Bones",
-        description: "Kill 1 Player with an Orsirus weapon.",
+        description: "Kill 1 Player with an Osiris weapon.",
       },
       {
         name: "Field Research Part 4",
