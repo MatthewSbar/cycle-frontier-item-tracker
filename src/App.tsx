@@ -9,7 +9,6 @@ import {
   PartName,
 } from "./types";
 import { quests, upgrades, items } from "./data";
-import { UpgradeTree } from "./components/upgrade-tree";
 import { ItemList } from "./components/item-list";
 import { Icon } from "./components/icon";
 import {
