@@ -13,8 +13,6 @@ import { initializePartNameQuestNameMap } from "../common/util";
 
 type Props = {
   itemsNeeded: Record<ItemName, number>;
-  search: string;
-  setSearch(query: string): void;
   questProgress: QuestProgress;
   focusQuests: string[];
   omittedItems: ItemSource | null;
@@ -28,8 +26,6 @@ type Props = {
 
 export const ItemList = ({
   itemsNeeded,
-  search,
-  setSearch,
   questProgress,
   focusQuests,
   omittedItems,
@@ -43,6 +39,7 @@ export const ItemList = ({
   let [partNameQuestNameMap] = useState<Map<PartName, Quest>>(
     initializePartNameQuestNameMap()
   );
+  const [search, setSearch] = useState<string>("");
 
   const getFocusedDepthLimitedQuestParts = (): QuestPart[] => {
     return (
@@ -118,9 +115,11 @@ export const ItemList = ({
                     </li>
                   )
                 )
-              : focusQuests.map((quest) => {
+              : focusQuests.map((quest, i) => {
                   return (
-                    <li>{`${quest} - part ${questProgress[quest] + 1}`}</li>
+                    <li key={quest + i}>{`${quest} - part ${
+                      questProgress[quest] + 1
+                    }`}</li>
                   );
                 })}
           </ul>

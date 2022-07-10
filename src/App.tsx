@@ -6,12 +6,9 @@ import {
   QuestProgress,
   UpgradeProgress,
   ViewMode,
-  Faction,
   PartName,
 } from "./types";
 import { quests, upgrades, items } from "./data";
-import { QuestListing } from "./components/quest-listing";
-import { UpgradeTree } from "./components/upgrade-tree";
 import { ItemList } from "./components/item-list";
 import { Icon } from "./components/icon";
 import {
@@ -25,6 +22,8 @@ import {
 } from "./common/util";
 import { Footer } from "./components/footer";
 import { QuestForest } from "./quest-tree";
+import { QuestView } from "./components/quest-view";
+import { UpgradeView } from "./components/upgrade-view";
 
 function App() {
   const [focusQuests, setFocusQuests] = useState<string[]>(getLocalFocusData());
@@ -50,7 +49,6 @@ function App() {
     getLocalOmittedData()
   );
   const [showCompleted, setShowCompleted] = useState(getLocalHideData());
-  const [search, setSearch] = useState<string>("");
   const [viewMode, setViewMode] = useState<ViewMode>("quest");
   const [questProgress, setQuestProgress] = useState<QuestProgress>(
     getLocalQuestData()
@@ -144,38 +142,6 @@ function App() {
   const [itemsNeeded, setItemsNeeded] = useState<Record<ItemName, number>>(
     countItemsNeeded()
   );
-
-  /**
-   * A campaign is considered complete if every part of every quest is complete
-   * @param campaign
-   * @returns true if provided campaign is complete
-   */
-  const campaignComplete = (campaign: Faction): boolean => {
-    return quests
-      .filter((q) => q.campaign === campaign)
-      .every((q) => questProgress[q.name] === q.parts.length);
-  };
-
-  /**
-   * All quests are considered completed if all campaigns are completed
-   * @returns true if all parts of all quests are completed
-   */
-  const allQuestsComplete = (): boolean => {
-    return (
-      campaignComplete("ICA") &&
-      campaignComplete("Korolev") &&
-      campaignComplete("Osiris")
-    );
-  };
-
-  /**
-   * @returns true if every level of every stage of every upgrade is complete
-   */
-  const allUpgradesComplete = (): boolean => {
-    return upgrades.every((u) =>
-      u.stages.every((s, i) => upgradeProgress[u.tree][i] === s.levels.length)
-    );
-  };
 
   /**
    * Click handler for "show completed" setting. If enabled, hides the quests and upgrades stages which are completed.
@@ -363,86 +329,22 @@ function App() {
                 </a>
               </div>
             </nav>
-            {viewMode === "quest" && (showCompleted || !allQuestsComplete()) && (
-              <div className="quest-columns">
-                <div className="quests">
-                  {(!campaignComplete("Korolev") || showCompleted) && (
-                    <h3>Korolev</h3>
-                  )}
-                  {quests
-                    .filter((quest) => quest.campaign === "Korolev")
-                    .map((quest) => (
-                      <QuestListing
-                        key={quest.name}
-                        quest={quest}
-                        questProgress={questProgress}
-                        setQuestProgress={setQuestProgress}
-                        showCompleted={showCompleted}
-                        setFocusQuests={setFocusQuests}
-                        focusQuests={focusQuests}
-                      />
-                    ))}
-                </div>
-                <div className="quests">
-                  {(!campaignComplete("Osiris") || showCompleted) && (
-                    <h3>Osiris</h3>
-                  )}
-                  {quests
-                    .filter((quest) => quest.campaign === "Osiris")
-                    .map((quest) => (
-                      <QuestListing
-                        key={quest.name}
-                        quest={quest}
-                        questProgress={questProgress}
-                        setQuestProgress={setQuestProgress}
-                        showCompleted={showCompleted}
-                        setFocusQuests={setFocusQuests}
-                        focusQuests={focusQuests}
-                      />
-                    ))}
-                </div>
-                <div className="quests">
-                  {(!campaignComplete("ICA") || showCompleted) && <h3>ICA</h3>}
-                  {quests
-                    .filter((quest) => quest.campaign === "ICA")
-                    .map((quest) => (
-                      <QuestListing
-                        key={quest.name}
-                        quest={quest}
-                        questProgress={questProgress}
-                        setQuestProgress={setQuestProgress}
-                        showCompleted={showCompleted}
-                        setFocusQuests={setFocusQuests}
-                        focusQuests={focusQuests}
-                      />
-                    ))}
-                </div>
-              </div>
+            {viewMode === "quest" && (
+              <QuestView
+                questProgress={questProgress}
+                showCompleted={showCompleted}
+                setQuestProgress={setQuestProgress}
+                setFocusQuests={setFocusQuests}
+                focusQuests={focusQuests}
+              />
             )}
-            {viewMode === "quest" && !showCompleted && allQuestsComplete() && (
-              <div>Damn, you did all the quests. Nice.</div>
+            {viewMode === "upgrade" && (
+              <UpgradeView
+                upgradeProgress={upgradeProgress}
+                setUpgradeProgress={setUpgradeProgress}
+                showCompleted={showCompleted}
+              />
             )}
-            {viewMode === "upgrade" &&
-              (showCompleted || !allUpgradesComplete()) && (
-                <div className="upgrade-grid">
-                  {upgrades.map((upgrade) => (
-                    <div key={upgrade.tree} className="upgrade-column">
-                      <UpgradeTree
-                        upgrade={upgrade}
-                        upgradeProgress={upgradeProgress}
-                        setUpgradeProgress={setUpgradeProgress}
-                        showCompleted={showCompleted}
-                        name={upgrade.tree}
-                      />
-                    </div>
-                  ))}
-                </div>
-              )}
-            {viewMode === "upgrade" &&
-              !showCompleted &&
-              allUpgradesComplete() && (
-                <div>Damn, you got all the upgrades. Nice.</div>
-              )}
             <div
               className={`item-list item-list-mobile ${
                 viewMode === "items" ? "item-list-show" : undefined
@@ -451,8 +353,6 @@ function App() {
               {viewMode === "items" && width <= 768 && (
                 <ItemList
                   questProgress={questProgress}
-                  search={search}
-                  setSearch={setSearch}
                   itemsNeeded={itemsNeeded}
                   focusQuests={focusQuests}
                   omittedItems={omittedItems}
@@ -472,8 +372,6 @@ function App() {
             <div className={`item-list item-list-desktop`}>
               <ItemList
                 questProgress={questProgress}
-                search={search}
-                setSearch={setSearch}
                 itemsNeeded={itemsNeeded}
                 focusQuests={focusQuests}
                 omittedItems={omittedItems}
