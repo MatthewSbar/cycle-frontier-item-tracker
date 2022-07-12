@@ -2840,10 +2840,10 @@ export const upgrades: Upgrade[] = [
             items: [
               {
                 item: "Pure Veltecite",
-                quantity: 1,
+                quantity: 2,
               },
               {
-                item: "Strider Flesh",
+                item: "Heavy Strider Flesh",
                 quantity: 12,
               },
               {
