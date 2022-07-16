@@ -273,6 +273,26 @@ footer {
   margin-left: 8px;
 }
 
+.uncommon {
+  color: rgb(121, 239, 73);
+}
+
+.rare {
+  color: rgb(8, 195, 243);
+}
+
+.epic {
+  color: rgb(118, 37, 168);
+}
+
+.exotic {
+  color: rgb(239, 44, 77);
+}
+
+.legendary {
+  color: rgb(236, 145, 53);
+}
+
 @media (max-width: 1200px) {
   nav {
     flex-wrap: wrap;

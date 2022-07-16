@@ -1,4 +1,4 @@
-import {ItemName, ItemRarity, Quest, Upgrade} from "./types";
+import { ItemName, ItemRarity, Quest, Upgrade } from "./types";
 
 export const quests: Quest[] = [
   {

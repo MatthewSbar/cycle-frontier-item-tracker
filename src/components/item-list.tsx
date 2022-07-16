@@ -10,6 +10,7 @@ import {
 import { QuestForest } from "../quest-tree";
 import { useState } from "react";
 import { initializePartNameQuestNameMap } from "../common/util";
+import { Item } from "./item";
 
 type Props = {
   itemsNeeded: Record<ItemName, number>;
@@ -144,7 +145,7 @@ export const ItemList = ({
         .sort()
         .map((key) => (
           <div key={key}>
-            {key}: {itemsNeeded[key as ItemName].toLocaleString()}{" "}
+            <Item name={key as ItemName}/>: {itemsNeeded[key as ItemName].toLocaleString()}{" "}
             {quests
               .filter((quest) => quest.parts.length > questProgress[quest.name])
               .some((quest) =>
