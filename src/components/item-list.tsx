@@ -9,8 +9,8 @@ import {
 } from "../types";
 import { QuestForest } from "../quest-tree";
 import { useState } from "react";
-import { initializePartNameQuestNameMap } from "../common/util";
-import { Item } from "./item";
+import { initializePartNameQuestNameMap, itemRaritySorter } from "../common/util";
+import { ItemChip } from "./item-chip";
 
 type Props = {
   itemsNeeded: Record<ItemName, number>;
@@ -135,26 +135,27 @@ export const ItemList = ({
       ) : null}
       <div>💀🗑️ = Item must be dead dropped</div>
       <hr />
-      {Object.keys(itemsNeeded)
-        .filter((key) => itemsNeeded[key as ItemName] > 0)
+      {(Object.keys(itemsNeeded) as ItemName[])
+        .filter((key) => itemsNeeded[key] > 0)
         .filter(
           (key) =>
             search === "" ||
             key.toLocaleLowerCase().includes(search.toLocaleLowerCase())
         )
-        .sort()
-        .map((key) => (
-          <div key={key}>
-            <Item name={key as ItemName}/>: {itemsNeeded[key as ItemName].toLocaleString()}{" "}
-            {quests
-              .filter((quest) => quest.parts.length > questProgress[quest.name])
-              .some((quest) =>
-                quest.parts.some((part) =>
-                  part.dropItems?.some((item) => item.item === key)
-                )
-              )
-              ? "💀🗑️"
-              : null}
+        .sort(itemRaritySorter)
+        .map((itemName) => (
+          <div key={itemName} className="item-list-item">
+            <ItemChip
+              name={itemName}
+              count={itemsNeeded[itemName]}
+              deadDrop={quests
+                .filter((quest) => quest.parts.length > questProgress[quest.name])
+                .some((quest) =>
+                  quest.parts.some((part) =>
+                    part.dropItems?.some((item) => item.item === itemName)
+                  )
+                )}
+            />
           </div>
         ))}
 

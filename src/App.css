@@ -273,24 +273,39 @@ footer {
   margin-left: 8px;
 }
 
-.uncommon {
-  color: rgb(121, 239, 73);
+.item-list-item {
+  margin-bottom: 2px;
 }
 
-.rare {
-  color: rgb(8, 195, 243);
+.item-chip {
+  border-radius: 1rem;
+  padding: 0 0.5rem;
+  white-space: nowrap;
 }
 
-.epic {
-  color: rgb(118, 37, 168);
+.item-chip.common {
+  background-color: #bbb;
+  color: black;
 }
 
-.exotic {
-  color: rgb(239, 44, 77);
+.item-chip.uncommon {
+  background-color: rgb(29, 101, 7);
 }
 
-.legendary {
-  color: rgb(236, 145, 53);
+.item-chip.rare {
+  background-color: rgb(47, 116, 133);
+}
+
+.item-chip.epic {
+  background-color: rgb(71, 34, 100);
+}
+
+.item-chip.exotic {
+  background-color: rgb(124, 31, 44);
+}
+
+.item-chip.legendary {
+  background-color: rgb(145, 87, 24);
 }
 
 @media (max-width: 1200px) {

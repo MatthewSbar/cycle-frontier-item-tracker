@@ -1,7 +1,7 @@
 import { quests } from "../data";
 import { Quest, QuestProgress } from "../types";
 import { Icon } from "./icon";
-import { Item } from "./item";
+import { ItemChip } from "./item-chip";
 
 type Props = {
   quest: Quest;
@@ -140,14 +140,14 @@ export const QuestListing = ({
                     part.deliverItems.map((item, j) => (
                       <li key={`${quest.name}${item.item}${j}`}>
                         {partCompleted(i) ? <Icon name="done" /> : null}
-                        <span>Deliver {item.quantity} <Item name={item.item}/></span>
+                        <span>Deliver {item.quantity} <ItemChip name={item.item}/></span>
                       </li>
                     ))}
                   {part.dropItems &&
                     part.dropItems.map((item, j) => (
                       <li key={`${quest.name}${item.item}${j}`}>
                         {partCompleted(i) ? <Icon name="done" /> : null}
-                        <span>Drop {item.quantity} <Item name={item.item}/> at {item.dropLocation}</span>
+                        <span>Drop {item.quantity} <ItemChip name={item.item}/> at {item.dropLocation}</span>
                       </li>
                     ))}
                 </ul>
