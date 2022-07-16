@@ -47,7 +47,7 @@ export class QuestForest {
   }
 
   /**
-   * returns the first incomplete quest parts found in the tree, up to a certain depth, or until the end of the tree if depth is null.
+   * returns the first incomplete quest parts found in the tree, up to a certain depth, or until the end of the tree if depth is not specified.
    * @param completeQuestParts - A set of completed quest part name
    * @param depth
    */
