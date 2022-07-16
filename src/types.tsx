@@ -139,6 +139,14 @@ export type ItemName =
   | "Autoloader"
   | "Kmarks";
 
+export type ItemRarity =
+  | "Common"
+  | "Uncommon"
+  | "Rare"
+  | "Epic"
+  | "Exotic"
+  | "Legendary";
+
 type UpgradeTree =
   | "Generate Kmarks"
   | "Kmark Passive Cap"
