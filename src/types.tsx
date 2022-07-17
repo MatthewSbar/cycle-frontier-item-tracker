@@ -156,7 +156,7 @@ export enum ItemRarityEnum {
   Legendary
 }
 
-type UpgradeTree =
+export type UpgradeTreeName =
   | "Generate Kmarks"
   | "Kmark Passive Cap"
   | "Generate Aurum"
@@ -167,7 +167,7 @@ type UpgradeTree =
   | "Workbench"
   | "Quarters";
 
-type UpgradeLevel = {
+export type UpgradeLevel = {
   items: ItemHandin[];
   kMarks: number;
 };
@@ -177,13 +177,13 @@ type Stage = {
 };
 
 export type Upgrade = {
-  tree: UpgradeTree;
+  tree: UpgradeTreeName;
   stages: Stage[];
 };
 
 export type QuestProgress = Record<string, number>;
 
-export type UpgradeProgress = Record<UpgradeTree, Record<number, number>>;
+export type UpgradeProgress = Record<UpgradeTreeName, Record<number, number>>;
 
 export type PartName = KorolevPartName | IcaPartName | OsirisPartName;
 

@@ -41,7 +41,7 @@ export const getLocalQuestData = (): QuestProgress => {
   return clearQuestProgress();
 };
 
-const clearUpgradeProgress = (): UpgradeProgress => {
+export const clearUpgradeProgress = (): UpgradeProgress => {
   const allUpgrades: UpgradeProgress = {
     Quarters: [],
     "Generate Kmarks": [],
