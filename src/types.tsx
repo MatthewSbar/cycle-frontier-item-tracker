@@ -147,6 +147,15 @@ export type ItemRarity =
   | "Exotic"
   | "Legendary";
 
+export enum ItemRarityEnum {
+  Common,
+  Uncommon,
+  Rare,
+  Epic,
+  Exotic,
+  Legendary
+}
+
 export type UpgradeTreeName =
   | "Generate Kmarks"
   | "Kmark Passive Cap"

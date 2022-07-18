@@ -1,5 +1,7 @@
-import { quests, upgrades } from "../data";
+import { itemRarity, quests, upgrades } from "../data";
 import {
+  ItemName,
+  ItemRarityEnum,
   ItemSource,
   PartName,
   Quest,
@@ -119,4 +121,17 @@ export const initializePartNameQuestNameMap = (): Map<PartName, Quest> => {
   });
 
   return partNameQuestNameMap;
+};
+
+export const itemRaritySorter = (a: ItemName, b: ItemName): number => {
+  const itemRarityA = itemRarity[a];
+  const itemRarityB = itemRarity[b];
+
+  const diff = ItemRarityEnum[itemRarityA] - ItemRarityEnum[itemRarityB];
+
+  if (diff === 0) {
+    return a.localeCompare(b);
+  }
+
+  return diff;
 };

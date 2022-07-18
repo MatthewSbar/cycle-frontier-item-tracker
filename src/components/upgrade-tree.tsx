@@ -1,6 +1,7 @@
 import { upgrades } from "../data";
 import { Upgrade, UpgradeProgress } from "../types";
 import { Icon } from "./icon";
+import { ItemChip } from "./item-chip";
 
 type Props = {
   upgrade: Upgrade;
@@ -145,7 +146,7 @@ export const UpgradeTree = ({
                             <ul>
                               {level.items.map((item, k) => (
                                 <li key={`${upgrade.tree}stage${i}item${k}`}>
-                                  {item.quantity} {item.item}
+                                  <span>{item.quantity} <ItemChip name={item.item}/></span>
                                 </li>
                               ))}
                             </ul>
