@@ -66,7 +66,7 @@ export const quests: Quest[] = [
         deliverItems: [
           {
             item: "Altered Nickel",
-            quantity: 10,
+            quantity: 6,
           },
           {
             item: "Cloudy Veltecite",
@@ -148,7 +148,7 @@ export const quests: Quest[] = [
           },
           {
             item: "Optic Glass",
-            quantity: 5,
+            quantity: 3,
           },
         ],
       },
@@ -223,6 +223,52 @@ export const quests: Quest[] = [
     ],
   },
   {
+    name: "Uncharted Territory",
+    campaign: "Korolev",
+    parts: [
+      {
+        name: "Uncharted Territory Part 1",
+        requires: "Miners' Strike",
+        description: "Visit Hay Fields. Kill 5 creatures at Hay Fields",
+      },
+      {
+        name: "Uncharted Territory Part 2",
+        requires: "Uncharted Territory Part 1",
+        deliverItems: [
+          {
+            item: "Aluminum Scrap",
+            quantity: 3,
+          },
+        ],
+      },
+      {
+        name: "Uncharted Territory Part 3",
+        requires: "Uncharted Territory Part 2",
+        description: "Visit Nutrition Farms Warehouse.",
+        deliverItems: [
+          {
+            item: "Brittle Titan Ore",
+            quantity: 6,
+          },
+          {
+            item: "Salvaged Insulation",
+            quantity: 3,
+          },
+        ],
+      },
+      {
+        name: "Uncharted Territory Part 4",
+        requires: "Uncharted Territory Part 3",
+        deliverItems: [
+          {
+            item: "Nutritional Bar",
+            quantity: 3,
+          },
+        ],
+      },
+    ],
+  },
+  {
     name: "Veltecite for the Masses",
     campaign: "Korolev",
     parts: [
@@ -232,7 +278,7 @@ export const quests: Quest[] = [
         deliverItems: [
           {
             item: "Clear Veltecite",
-            quantity: 7,
+            quantity: 3,
           },
           {
             item: "Optic Glass",
@@ -303,7 +349,7 @@ export const quests: Quest[] = [
         name: "Stormbringer",
         requires: "Site Seeing",
         description:
-          "Kill 15 Creatured with the PKR Maelstrom. Kill 2 Players with the PKR Maelstrom.",
+          "Kill 15 Creatured with the PKR Maelstrom. Kill 1 Players with the PKR Maelstrom.",
       },
       {
         name: "The Missing Engineer",
@@ -380,7 +426,7 @@ export const quests: Quest[] = [
       {
         name: "Show Them How It's Done",
         requires: "Time for More Work? Part 2",
-        description: "Kill 3 Players with an SMG.",
+        description: "Kill 2 Players with an SMG.",
       },
       {
         name: "A Pick Me Up",
@@ -425,7 +471,7 @@ export const quests: Quest[] = [
       {
         name: "Don't Dig Too Deep",
         requires: "Shopping List",
-        description: "Visit Dig Site. Kill 6 Creatures at Dig Site.",
+        description: "Visit Dig Site. Kill 10 Creatures at Dig Site.",
         deliverItems: [
           {
             item: "Spinal Base",
@@ -524,6 +570,116 @@ export const quests: Quest[] = [
             quantity: 1,
           },
         ],
+      },
+    ],
+  },
+  {
+    name: "In a Deep Dark Hole",
+    campaign: "Korolev",
+    parts: [
+      {
+        name: "In a Deep Dark Hole Part 1",
+        requires: "Lab Heist",
+        description: "Kill 10 Creatures",
+      },
+      {
+        name: "In a Deep Dark Hole Part 2",
+        requires: "In a Deep Dark Hole Part 1",
+        description: "Collect 1 Chief Engineer's Personal Diary.",
+      },
+      {
+        name: "In a Deep Dark Hole Part 3",
+        requires: "In a Deep Dark Hole Part 2",
+        dropItems: [
+          {
+            item: "Spine Briar",
+            quantity: 5,
+            dropLocation: "Korolev Island HQ",
+          },
+        ],
+      },
+      {
+        name: "In a Deep Dark Hole Part 4",
+        requires: "In a Deep Dark Hole Part 3",
+        description: "Kill 3 Prospectors with Korolev Weapons",
+      },
+      {
+        name: "In a Deep Dark Hole Part 5",
+        requires: "In a Deep Dark Hole Part 4",
+        description: "Visit Geologist. Collect 8 Tharis Iron Sample",
+      },
+      {
+        name: "In a Deep Dark Hole Part 6",
+        requires: "In a Deep Dark Hole Part 5",
+        description:
+          "Find the first Mining Machine. Find the second Mining Machine. Find the third Mining Machine.",
+      },
+      {
+        name: "In a Deep Dark Hole Part 7",
+        requires: "In a Deep Dark Hole Part 6",
+        deliverItems: [
+          {
+            item: "Tharis Iron",
+            quantity: 5,
+          },
+          {
+            item: "Teratomorphic Crystal Core",
+            quantity: 5,
+          },
+        ],
+      },
+      {
+        name: "In a Deep Dark Hole Part 8",
+        requires: "In a Deep Dark Hole Part 7",
+        description:
+          "Kill 5 Creatures at Sparkling Waters. Collect 1 Pure Tharis Iron Nugget",
+      },
+      {
+        name: "In a Deep Dark Hole Part 9",
+        requires: "In a Deep Dark Hole Part 8",
+        deliverItems: [
+          {
+            item: "Pure Tharis Iron",
+            quantity: 5,
+          },
+          {
+            item: "Teratomorphic Crystal Core",
+            quantity: 5,
+          },
+        ],
+      },
+      {
+        name: "In a Deep Dark Hole Part 10",
+        requires: "In a Deep Dark Hole Part 9",
+        description:
+          "Kill 5 Creatures at Korolev Decks. Kill 5 Creatures at The Descent. Kill 5 Creatures at Storm Pillar.",
+      },
+      {
+        name: "In a Deep Dark Hole Part 11",
+        requires: "In a Deep Dark Hole Part 10",
+        description: "Collect 1 Mining Party Medical Files",
+      },
+      {
+        name: "In a Deep Dark Hole Part 12",
+        requires: "In a Deep Dark Hole Part 11",
+        dropItems: [
+          {
+            item: "Letium",
+            quantity: 12,
+            dropLocation: "East Collection Point",
+          },
+          {
+            item: "Letium",
+            quantity: 12,
+            dropLocation: "Gate C",
+          },
+        ],
+      },
+      {
+        name: "In a Deep Dark Hole Part 13",
+        requires: "In a Deep Dark Hole Part 12",
+        description:
+          "Visit the Storm Pillar on Tharis Island. Find The Tharis Files. Stash The Tharis Files in the Korolev Core Outpost Dead Drop",
       },
     ],
   },
@@ -705,7 +861,12 @@ export const quests: Quest[] = [
       {
         name: "The Test Run",
         requires: "Unlimited Power",
-        description: "Find a Letium Gas Vent. Deliver 10 Flaked Letium",
+        deliverItems: [
+          {
+            item: "Letium",
+            quantity: 15,
+          },
+        ],
       },
     ],
   },
@@ -908,6 +1069,7 @@ export const quests: Quest[] = [
       {
         name: "Doing the Work Part 6",
         requires: "Doing the Work Part 5",
+        description: "Visit the Power Facility Loot Room at Dig Site.",
         dropItems: [
           {
             item: "Valuable Data Drive",
@@ -994,20 +1156,20 @@ export const quests: Quest[] = [
         ],
       },
       {
-        name: "Plan B Part 1",
+        name: "Project Fireball Part 3",
         requires: "Project Fireball Part 2",
         description:
           "Visit Power Plant Office. Enter Power Plant Office. Deliver Notes on Meteor Experiment 1.",
       },
       {
-        name: "Plan B Part 2",
-        requires: "Plan B Part 1",
+        name: "Project Fireball Part 4",
+        requires: "Project Fireball Part 3",
         description:
           "Enter Geothermal Plant Office. Deliver notes on Meteor Experiment - 2.",
       },
       {
-        name: "Project Fireball Part 3",
-        requires: "Plan B Part 2",
+        name: "Project Fireball Part 5",
+        requires: "Project Fireball Part 4",
         description: "Kill 3 Players with an Assault Rifle",
         deliverItems: [
           {
@@ -1017,14 +1179,14 @@ export const quests: Quest[] = [
         ],
       },
       {
-        name: "Project Fireball Part 4",
-        requires: "Project Fireball Part 3",
+        name: "Project Fireball Part 6",
+        requires: "Project Fireball Part 5",
         description:
           "Kill 10 Creatures at the Lake. Kill 10 Creatures at Starport",
       },
       {
-        name: "Project Fireball Part 5",
-        requires: "Project Fireball Part 4",
+        name: "Project Fireball Part 7",
+        requires: "Project Fireball Part 6",
         dropItems: [
           {
             item: "Miniature Reactor",
@@ -1042,6 +1204,149 @@ export const quests: Quest[] = [
             dropLocation: "Stockpile",
           },
         ],
+      },
+    ],
+  },
+  {
+    name: "Race to the Bottom",
+    campaign: "ICA",
+    parts: [
+      {
+        name: "Race to the Bottom Part 1",
+        requires: "Project Fireball Part 7",
+        description:
+          "Find the Colonist Group in the Cave of Stars. Find the Colonist Group in the Korolev Quarry. Find the Colonist Group in the Sparkling Water.",
+      },
+      {
+        name: "Race to the Bottom Part 2",
+        requires: "Race to the Bottom Part 1",
+        description: "Kill 3 Creatures at Atrium. Collect 1 Colonist Item",
+      },
+      {
+        name: "Race to the Bottom Part 3",
+        requires: "Race to the Bottom Part 2",
+        description:
+          "Visit Osiris Holo-Map. Deposit 1 Tharis Caverns Holo-Map Tharis Caverns Holo-Map at Pinnacle Lab Dead Drop.",
+      },
+      {
+        name: "Race to the Bottom Part 4",
+        requires: "Race to the Bottom Part 3",
+        description:
+          "Kill 3 Marauders on Tharis Island during a Storm. Kill 3 Prospectors on Crescent Falls. Kill 3 Prospectors on Bright Sands.",
+      },
+      {
+        name: "Race to the Bottom Part 5",
+        requires: "Race to the Bottom Part 4",
+        deliverItems: [
+          {
+            item: "Teratomorphic Crystal Core",
+            quantity: 5,
+          },
+          {
+            item: "Tharis Iron",
+            quantity: 5,
+          },
+          {
+            item: "Biological Sampler",
+            quantity: 5,
+          },
+        ],
+      },
+      {
+        name: "Race to the Bottom Part 6",
+        requires: "Race to the Bottom Part 5",
+        description: "Collect 1 Vintage Camera.",
+      },
+      {
+        name: "Race to the Bottom Part 7",
+        requires: "Race to the Bottom Part 6",
+        description:
+          "Kill 10 Creatures on Tharis Island. Kill 2 Prospectors on Tharis Island.",
+      },
+      {
+        name: "Race to the Bottom Part 8",
+        requires: "Race to the Bottom Part 7",
+        description: "Collect 1 Osiris Door Fragment.",
+      },
+      {
+        name: "Race to the Bottom Part 9",
+        requires: "Race to the Bottom Part 8",
+        dropItems: [
+          {
+            item: "Tharis Iron",
+            quantity: 1,
+            dropLocation: "Korolev Island HQ",
+          },
+        ],
+      },
+      {
+        name: "Race to the Bottom Part 10",
+        requires: "Race to the Bottom Part 9",
+        description:
+          "Visit Analysis Tool. Collect 1 Advanced Analysis Toolkit.",
+      },
+      {
+        name: "Race to the Bottom Part 11",
+        requires: "Race to the Bottom Part 10",
+        description: "Kill 3 Prospectors with a Shotgun on Tharis Island.",
+      },
+      {
+        name: "Race to the Bottom Part 12",
+        requires: "Race to the Bottom Part 11",
+        dropItems: [
+          {
+            item: "Derelict Explosives",
+            quantity: 4,
+            dropLocation: "Osiris Research Center",
+          },
+          {
+            item: "Oil Tank",
+            quantity: 12,
+            dropLocation: "Osiris Research Center",
+          },
+          {
+            item: "Derelict Explosives",
+            quantity: 6,
+            dropLocation: "Korolev Island HQ",
+          },
+        ],
+      },
+      {
+        name: "Race to the Bottom Part 13",
+        requires: "Race to the Bottom Part 12",
+        description:
+          "Visit Osiris Chief Engineer at The Pit. Collect 1 Osiris Engineer Scanner.",
+      },
+      {
+        name: "Race to the Bottom Part 14",
+        requires: "Race to the Bottom Part 13",
+        description: "Kill 3 Prospectors with an ICA weapon on Tharis Island.",
+        deliverItems: [
+          {
+            item: "Charged Tharis Iron Ingot",
+            quantity: 5,
+          },
+        ],
+      },
+      {
+        name: "Race to the Bottom Part 15",
+        requires: "Race to the Bottom Part 14",
+        deliverItems: [
+          {
+            item: "Oil Tank",
+            quantity: 18,
+          },
+          {
+            item: "Old Currency",
+            quantity: 30000,
+          },
+        ],
+      },
+      {
+        name: "Race to the Bottom Part 16",
+        requires: "Race to the Bottom Part 15",
+        description:
+          "Visit Osiris Head Scientist. Collect 1 Osiris Helmet Recorder.",
       },
     ],
   },
@@ -1148,7 +1453,7 @@ export const quests: Quest[] = [
         name: "Private Business Part 2",
         requires: "Private Business Part 1",
         description:
-          "Kill 8 Creatures at Base Camp. Kill 8 Creatures at Power Plant. Kill 8 Creatures at Water Facility.",
+          "Kill 10 Creatures at Base Camp. Kill 10 Creatures at Power Plant. Kill 10 Creatures at Water Facility.",
       },
       {
         name: "Private Business Part 3",
@@ -1203,14 +1508,14 @@ export const quests: Quest[] = [
         ],
       },
       {
-        name: "Abandoned Oil Field",
+        name: "Back to Basics? Part 3",
         requires: "Back to Basics? Part 2",
         description:
           "Visit the Abandoned Oil Field. Kill 5 creatures at Abandoned Oil Field. Deliver Old Oil Pump Parts.",
       },
       {
-        name: "Back to Basics? Part 3",
-        requires: "Abandoned Oil Field",
+        name: "Back to Basics? Part 4",
+        requires: "Back to Basics? Part 3",
         deliverItems: [
           {
             item: "Metallic Alloys",
@@ -1227,8 +1532,8 @@ export const quests: Quest[] = [
         ],
       },
       {
-        name: "Back to Basics? Part 4",
-        requires: "Back to Basics? Part 3",
+        name: "Back to Basics? Part 5",
+        requires: "Back to Basics? Part 4",
         description: "Kill 8 Marauders.",
         deliverItems: [
           {
@@ -1238,8 +1543,8 @@ export const quests: Quest[] = [
         ],
       },
       {
-        name: "Back to Basics? Part 5",
-        requires: "Back to Basics? Part 4",
+        name: "Back to Basics? Part 6",
+        requires: "Back to Basics? Part 5",
         deliverItems: [
           {
             item: "Circuit Board",
@@ -1256,13 +1561,13 @@ export const quests: Quest[] = [
         ],
       },
       {
-        name: "Back to Basics? Part 6",
-        requires: "Back to Basics? Part 5",
-        description: "Kill 6 Players with an ICA weapon.",
-      },
-      {
         name: "Back to Basics? Part 7",
         requires: "Back to Basics? Part 6",
+        description: "Kill 5 Players with an ICA weapon.",
+      },
+      {
+        name: "Back to Basics? Part 8",
+        requires: "Back to Basics? Part 7",
         deliverItems: [
           {
             item: "Miniature Reactor",
@@ -1270,7 +1575,7 @@ export const quests: Quest[] = [
           },
           {
             item: "Smart Mesh",
-            quantity: 8,
+            quantity: 6,
           },
           {
             item: "Gyroscope",
@@ -1294,7 +1599,7 @@ export const quests: Quest[] = [
           },
           {
             item: "Copper Wire",
-            quantity: 15,
+            quantity: 9,
           },
           {
             item: "Pure Veltecite",
@@ -1464,7 +1769,7 @@ export const quests: Quest[] = [
         name: "Field Research Part 2",
         requires: "Field Research Part 1",
         description:
-          "Visit Lake. Kill 10 Striders at Lake. Kill 3 Rattlers at Lake.",
+          "Visit Lake. Kill 7 Striders at Lake. Kill 3 Rattlers at Lake.",
       },
       {
         name: "Old Bones",
@@ -1506,7 +1811,7 @@ export const quests: Quest[] = [
       {
         name: "Field Research Part 6",
         requires: "Field Research Part 5",
-        description: "Kill 3 Players with an SMG.",
+        description: "Kill 1 Players with an SMG.",
       },
       {
         name: "Field Research Part 7",
@@ -1536,6 +1841,33 @@ export const quests: Quest[] = [
             dropLocation: "Garage Office",
           },
         ],
+      },
+    ],
+  },
+  {
+    name: "A Whole New Ecosystem",
+    campaign: "Osiris",
+    parts: [
+      {
+        name: "A Whole New Ecosystem Part 1",
+        requires: "Field Research Part 4",
+        description: "Visit Starport Landing Pad. Visit Pumpkin Fields.",
+      },
+      {
+        name: "A Whole New Ecosystem Part 2",
+        requires: "A Whole New Ecosystem Part 1",
+        description: "Visit Fallen Tree.",
+        deliverItems: [
+          {
+            item: "Pale Ivy Blossom",
+            quantity: 3,
+          },
+        ],
+      },
+      {
+        name: "A Whole New Ecosystem Part 3",
+        requires: "A Whole New Ecosystem Part 2",
+        description: "Visit Skeleton. Kill 5 Creatures at Skeleton.",
       },
     ],
   },
@@ -1602,7 +1934,7 @@ export const quests: Quest[] = [
       {
         name: "Lost Knowledge Part 2",
         requires: "Crashed Osiris Freighter",
-        description: "Visit Favela. Kill 3 Players with an Osiris Weapon.",
+        description: "Visit Favela. Kill 2 Players with an Osiris Weapon.",
       },
       {
         name: "Lost Knowledge Part 3",
@@ -1620,6 +1952,171 @@ export const quests: Quest[] = [
         name: "Lost Scientist",
         requires: "Lost Knowledge Part 3",
         description: "Find the lost scientist. Deliver his notebook.",
+      },
+    ],
+  },
+  {
+    name: "The Progenitor Device",
+    campaign: "Osiris",
+    parts: [
+      {
+        name: "The Progenitor Device Part 1",
+        requires: "Lost Scientist",
+        description: "Investigate what happened to the Osiris Researchers",
+      },
+      {
+        name: "The Progenitor Device Part 2",
+        requires: "The Progenitor Device Part 1",
+        description: "Kill 15 Creatures at Tharis Island.",
+        deliverItems: [
+          {
+            item: "Spine Briar",
+            quantity: 5,
+          },
+        ],
+      },
+      {
+        name: "The Progenitor Device Part 3",
+        requires: "The Progenitor Device Part 2",
+        description:
+          "Collect Korolev Data Drive #473-D. Collect Korolev Notes.",
+      },
+      {
+        name: "The Progenitor Device Part 4",
+        requires: "The Progenitor Device Part 3",
+        description:
+          "Visit Surveyor Pod 1. Visit Surveyor Pod 2. Visit Surveyor Pod 3.",
+      },
+      {
+        name: "The Progenitor Device Part 5",
+        requires: "The Progenitor Device Part 4",
+        description: "Kill 1 Crusher at Jungle Thermal Ponds.",
+        deliverItems: [
+          {
+            item: "Crusher Hide",
+            quantity: 1,
+            dropLocation: "Osiris Labs",
+          },
+        ],
+      },
+      {
+        name: "The Progenitor Device Part 6",
+        requires: "The Progenitor Device Part 5",
+        deliverItems: [
+          {
+            item: "Spine Briar",
+            quantity: 5,
+            dropLocation: "Fulfillment Center",
+          },
+        ],
+      },
+      {
+        name: "The Progenitor Device Part 7",
+        requires: "The Progenitor Device Part 6",
+        description:
+          "Kill 5 Creatures at Cave of Stars. Collect 1 Mysterious Glowing Contraption.",
+      },
+      {
+        name: "The Progenitor Device Part 8",
+        requires: "The Progenitor Device Part 7",
+        deliverItems: [
+          {
+            item: "Teratomorphic Crystal Core",
+            quantity: 5,
+          },
+        ],
+      },
+      {
+        name: "The Progenitor Device Part 9",
+        requires: "The Progenitor Device Part 8",
+        description:
+          "Find the Cave Marking at Storm Pillar. Find the Cave Marking at The Descent. Find the Cave Marking in the Canyons.",
+      },
+      {
+        name: "The Progenitor Device Part 10",
+        requires: "The Progenitor Device Part 9",
+        deliverItems: [
+          {
+            item: "Tharis Iron",
+            quantity: 5,
+          },
+          {
+            item: "Pure Tharis Iron",
+            quantity: 1,
+          },
+        ],
+      },
+      {
+        name: "The Progenitor Device Part 11",
+        requires: "The Progenitor Device Part 10",
+        description: "Kill 10 Creatures on Tharis Island during a Storm",
+        deliverItems: [
+          {
+            item: "Charged Spinal Base",
+            quantity: 5,
+          },
+          {
+            item: "Glowy Brightcap Mushroom",
+            quantity: 5,
+          },
+        ],
+      },
+      {
+        name: "The Progenitor Device Part 12",
+        requires: "The Progenitor Device Part 11",
+        description: "Collect 5 Cultist Ritual Item.",
+      },
+      {
+        name: "The Progenitor Device Part 13",
+        requires: "The Progenitor Device Part 12",
+        description: "Visit The Forge Console.",
+      },
+      {
+        name: "The Progenitor Device Part 14",
+        requires: "The Progenitor Device Part 13",
+        description: "Kill 5 Prospectors.",
+        deliverItems: [
+          {
+            item: "Tharis Iron Ingot",
+            quantity: 1,
+          },
+        ],
+      },
+      {
+        name: "The Progenitor Device Part 15",
+        requires: "The Progenitor Device Part 14",
+        description: "Visit The Forge. Collect 1 Cultist Scribblings.",
+      },
+      {
+        name: "The Progenitor Device Part 16",
+        requires: "The Progenitor Device Part 15",
+        description: "Kill 10 Creatures at Crusher Caverns.",
+        dropItems: [
+          {
+            item: "Savage Marauder Flesh",
+            quantity: 3,
+            dropLocation: "Server Room",
+          },
+          {
+            item: "Mature Rattler Eyes",
+            quantity: 5,
+            dropLocation: "Server Room",
+          },
+        ],
+      },
+      {
+        name: "The Progenitor Device Part 17",
+        requires: "The Progenitor Device Part 16",
+        deliverItems: [
+          {
+            item: "Huge Forged Backpack",
+            quantity: 1,
+          },
+          {
+            item: "Charged Tharis Iron Ingot",
+            quantity: 1,
+          },
+        ],
       },
     ],
   },
@@ -2029,7 +2526,7 @@ export const quests: Quest[] = [
       {
         name: "Orbital Repairs Part 2",
         requires: "Orbital Repairs Part 1",
-        description: "Kill 6 Players with an Osiris weapon.",
+        description: "Kill 5 Players with an Osiris weapon.",
       },
       {
         name: "Orbital Repairs Part 3",
@@ -2179,8 +2676,8 @@ export const upgrades: Upgrade[] = [
           {
             items: [
               {
-                item: "Fusion Cartridge Batteries",
-                quantity: 14,
+                item: "Print Resin",
+                quantity: 9,
               },
               {
                 item: "Interactive Screen",
@@ -2196,12 +2693,12 @@ export const upgrades: Upgrade[] = [
           {
             items: [
               {
-                item: "Print Resin",
-                quantity: 16,
+                item: "Progenitor Composite",
+                quantity: 32,
               },
               {
-                item: "Zero Systems CPU",
-                quantity: 20,
+                item: "Smart Mesh",
+                quantity: 12,
               },
               {
                 item: "Crusher Hide",
@@ -2213,12 +2710,12 @@ export const upgrades: Upgrade[] = [
           {
             items: [
               {
-                item: "Smart Mesh",
+                item: "Spine Briar",
                 quantity: 14,
               },
               {
-                item: "Master Unit CPU",
-                quantity: 1,
+                item: "Letium",
+                quantity: 150,
               },
               {
                 item: "Crusher Flesh",
@@ -2230,12 +2727,12 @@ export const upgrades: Upgrade[] = [
           {
             items: [
               {
-                item: "Elite Crusher Heart",
-                quantity: 2,
+                item: "Abyss Alloy",
+                quantity: 1,
               },
               {
-                item: "Letium",
-                quantity: 150,
+                item: "Elite Crusher Heart",
+                quantity: 2,
               },
               {
                 item: "Oil Tank",
@@ -2349,7 +2846,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 6,
               },
             ],
-            kMarks: 4690,
+            kMarks: 3964,
           },
           {
             items: [
@@ -2366,7 +2863,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 8,
               },
             ],
-            kMarks: 6566,
+            kMarks: 4690,
           },
           {
             items: [
@@ -2379,7 +2876,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 9,
               },
             ],
-            kMarks: 9193,
+            kMarks: 5549,
           },
           {
             items: [
@@ -2396,7 +2893,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 11,
               },
             ],
-            kMarks: 12870,
+            kMarks: 6566,
           },
           {
             items: [
@@ -2413,7 +2910,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 14,
               },
             ],
-            kMarks: 18018,
+            kMarks: 7769,
           },
         ],
       },
@@ -2434,7 +2931,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 17,
               },
             ],
-            kMarks: 25226,
+            kMarks: 9192,
           },
           {
             items: [
@@ -2451,7 +2948,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 21,
               },
             ],
-            kMarks: 35316,
+            kMarks: 10875,
           },
           {
             items: [
@@ -2468,7 +2965,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 26,
               },
             ],
-            kMarks: 49442,
+            kMarks: 12869,
           },
           {
             items: [
@@ -2485,7 +2982,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 31,
               },
             ],
-            kMarks: 69219,
+            kMarks: 15227,
           },
           {
             items: [
@@ -2502,7 +2999,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 38,
               },
             ],
-            kMarks: 96907,
+            kMarks: 18016,
           },
         ],
       },
@@ -2511,7 +3008,7 @@ export const upgrades: Upgrade[] = [
           {
             items: [
               {
-                item: "Interactive Screen",
+                item: "Shard Slicer",
                 quantity: 10,
               },
               {
@@ -2523,13 +3020,13 @@ export const upgrades: Upgrade[] = [
                 quantity: 58,
               },
             ],
-            kMarks: 135670,
+            kMarks: 25223,
           },
           {
             items: [
               {
-                item: "Shard Slicer",
-                quantity: 11,
+                item: "Master Unit CPU",
+                quantity: 1,
               },
               {
                 item: "Dustbloom",
@@ -2540,13 +3037,13 @@ export const upgrades: Upgrade[] = [
                 quantity: 86,
               },
             ],
-            kMarks: 189938,
+            kMarks: 35312,
           },
           {
             items: [
               {
-                item: "Master Unit CPU",
-                quantity: 1,
+                item: "Spine Briar",
+                quantity: 2,
               },
               {
                 item: "Pure Focus Crystal",
@@ -2557,7 +3054,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 130,
               },
             ],
-            kMarks: 265913,
+            kMarks: 49437,
           },
           {
             items: [
@@ -2566,11 +3063,15 @@ export const upgrades: Upgrade[] = [
                 quantity: 1,
               },
               {
+                item: "Progenitor Composite",
+                quantity: 4,
+              },
+              {
                 item: "Osiris Scrip",
                 quantity: 195,
               },
             ],
-            kMarks: 189938,
+            kMarks: 69212,
           },
           {
             items: [
@@ -2583,7 +3084,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 292,
               },
             ],
-            kMarks: 521189,
+            kMarks: 96897,
           },
         ],
       },
@@ -2605,7 +3106,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 1,
               },
             ],
-            kMarks: 870,
+            kMarks: 872,
           },
           {
             items: [
@@ -2615,10 +3116,10 @@ export const upgrades: Upgrade[] = [
               },
               {
                 item: "Korolev Scrip",
-                quantity: 2,
+                quantity: 5,
               },
             ],
-            kMarks: 1400,
+            kMarks: 1221,
           },
           {
             items: [
@@ -2635,7 +3136,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 2,
               },
             ],
-            kMarks: 2200,
+            kMarks: 1709,
           },
           {
             items: [
@@ -2652,7 +3153,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 3,
               },
             ],
-            kMarks: 3400,
+            kMarks: 2393,
           },
         ],
       },
@@ -2673,7 +3174,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 3,
               },
             ],
-            kMarks: 4300,
+            kMarks: 2393,
           },
           {
             items: [
@@ -2690,7 +3191,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 5,
               },
             ],
-            kMarks: 5400,
+            kMarks: 3350,
           },
           {
             items: [
@@ -2707,7 +3208,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 8,
               },
             ],
-            kMarks: 8600,
+            kMarks: 4690,
           },
           {
             items: [
@@ -2724,7 +3225,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 11,
               },
             ],
-            kMarks: 10400,
+            kMarks: 6566,
           },
           {
             items: [
@@ -2741,7 +3242,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 17,
               },
             ],
-            kMarks: 14000,
+            kMarks: 9192,
           },
         ],
       },
@@ -2762,7 +3263,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 17,
               },
             ],
-            kMarks: 17000,
+            kMarks: 9192,
           },
           {
             items: [
@@ -2779,7 +3280,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 21,
               },
             ],
-            kMarks: 21400,
+            kMarks: 10876,
           },
           {
             items: [
@@ -2796,7 +3297,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 26,
               },
             ],
-            kMarks: 34000,
+            kMarks: 12869,
           },
           {
             items: [
@@ -2813,7 +3314,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 31,
               },
             ],
-            kMarks: 53500,
+            kMarks: 15227,
           },
           {
             items: [
@@ -2830,7 +3331,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 38,
               },
             ],
-            kMarks: 67000,
+            kMarks: 18016,
           },
         ],
       },
@@ -2851,13 +3352,13 @@ export const upgrades: Upgrade[] = [
                 quantity: 58,
               },
             ],
-            kMarks: 84500,
+            kMarks: 25223,
           },
           {
             items: [
               {
-                item: "Smart Mesh",
-                quantity: 11,
+                item: "Meteor Core",
+                quantity: 4,
               },
               {
                 item: "Shard Slicer",
@@ -2868,13 +3369,13 @@ export const upgrades: Upgrade[] = [
                 quantity: 86,
               },
             ],
-            kMarks: 133500,
+            kMarks: 35312,
           },
           {
             items: [
               {
-                item: "Meteor Core",
-                quantity: 4,
+                item: "Progenitor Composite",
+                quantity: 3,
               },
               {
                 item: "Portable Lab",
@@ -2885,13 +3386,13 @@ export const upgrades: Upgrade[] = [
                 quantity: 130,
               },
             ],
-            kMarks: 211000,
+            kMarks: 49437,
           },
           {
             items: [
               {
-                item: "Letium",
-                quantity: 107,
+                item: "Charged Tharis Iron Ingot",
+                quantity: 2,
               },
               {
                 item: "Pure Focus Crystal",
@@ -2902,20 +3403,24 @@ export const upgrades: Upgrade[] = [
                 quantity: 195,
               },
             ],
-            kMarks: 870,
+            kMarks: 69212,
           },
           {
             items: [
               {
-                item: "Oil Tank",
-                quantity: 38,
+                item: "Veltecite Heart",
+                quantity: 1,
+              },
+              {
+                item: "Tharis Iron Ingot",
+                quantity: 5,
               },
               {
                 item: "Korolev Scrip",
                 quantity: 292,
               },
             ],
-            kMarks: 527000,
+            kMarks: 96897,
           },
         ],
       },
@@ -3171,6 +3676,10 @@ export const upgrades: Upgrade[] = [
                 quantity: 6,
               },
               {
+                item: "Teratomorphic Crystal Core",
+                quantity: 18,
+              },
+              {
                 item: "Osiris Scrip",
                 quantity: 38,
               },
@@ -3248,8 +3757,8 @@ export const upgrades: Upgrade[] = [
           {
             items: [
               {
-                item: "Elite Crusher Heart",
-                quantity: 3,
+                item: "Abyss Alloy",
+                quantity: 1,
               },
               {
                 item: "Osiris Scrip",
@@ -3533,6 +4042,10 @@ export const upgrades: Upgrade[] = [
                 quantity: 135,
               },
               {
+                item: "Progenitor Composite",
+                quantity: 5,
+              },
+              {
                 item: "ICA Scrip",
                 quantity: 86,
               },
@@ -3546,6 +4059,10 @@ export const upgrades: Upgrade[] = [
                 quantity: 53,
               },
               {
+                item: "Tharis Iron Ingot",
+                quantity: 5,
+              },
+              {
                 item: "ICA Scrip",
                 quantity: 130,
               },
@@ -3557,6 +4074,10 @@ export const upgrades: Upgrade[] = [
               {
                 item: "Elite Crusher Heart",
                 quantity: 2,
+              },
+              {
+                item: "Progenitor Slag",
+                quantity: 6,
               },
               {
                 item: "ICA Scrip",
@@ -3611,7 +4132,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 2,
               },
             ],
-            kMarks: 2180,
+            kMarks: 1378,
           },
         ],
       },
@@ -3629,10 +4150,10 @@ export const upgrades: Upgrade[] = [
               },
               {
                 item: "ICA Scrip",
-                quantity: 3,
+                quantity: 2,
               },
             ],
-            kMarks: 5451,
+            kMarks: 2177,
           },
           {
             items: [
@@ -3649,7 +4170,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 5,
               },
             ],
-            kMarks: 13626,
+            kMarks: 5434,
           },
         ],
       },
@@ -3670,7 +4191,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 11,
               },
             ],
-            kMarks: 34066,
+            kMarks: 13566,
           },
           {
             items: [
@@ -3684,10 +4205,10 @@ export const upgrades: Upgrade[] = [
               },
               {
                 item: "ICA Scrip",
-                quantity: 17,
+                quantity: 26,
               },
             ],
-            kMarks: 85165,
+            kMarks: 33867,
           },
         ],
       },
@@ -3700,15 +4221,15 @@ export const upgrades: Upgrade[] = [
                 quantity: 6,
               },
               {
-                item: "Co-TEC MultiTool",
-                quantity: 8,
+                item: "Spine Briar",
+                quantity: 5,
               },
               {
                 item: "ICA Scrip",
-                quantity: 38,
+                quantity: 58,
               },
             ],
-            kMarks: 212913,
+            kMarks: 84545,
           },
           {
             items: [
@@ -3722,10 +4243,10 @@ export const upgrades: Upgrade[] = [
               },
               {
                 item: "ICA Scrip",
-                quantity: 86,
+                quantity: 130,
               },
             ],
-            kMarks: 532283,
+            kMarks: 211058,
           },
         ],
       },
@@ -3968,8 +4489,8 @@ export const upgrades: Upgrade[] = [
           {
             items: [
               {
-                item: "Autoloader",
-                quantity: 2,
+                item: "Progenitor Composite",
+                quantity: 4,
               },
               {
                 item: "Master Unit CPU",
@@ -3985,8 +4506,8 @@ export const upgrades: Upgrade[] = [
           {
             items: [
               {
-                item: "Pure Focus Crystal",
-                quantity: 3,
+                item: "Tharis Iron Ingot",
+                quantity: 5,
               },
               {
                 item: "Veltecite Heart",
@@ -4012,7 +4533,7 @@ export const upgrades: Upgrade[] = [
             items: [
               {
                 item: "Textiles",
-                quantity: 2,
+                quantity: 5,
               },
               {
                 item: "Korolev Scrip",
@@ -4053,8 +4574,8 @@ export const upgrades: Upgrade[] = [
                 quantity: 8,
               },
               {
-                item: "Resin Gun",
-                quantity: 12,
+                item: "Miniature Reactor",
+                quantity: 4,
               },
               {
                 item: "Korolev Scrip",
@@ -4070,12 +4591,12 @@ export const upgrades: Upgrade[] = [
           {
             items: [
               {
-                item: "Smart Mesh",
-                quantity: 8,
+                item: "Portable Lab",
+                quantity: 1,
               },
               {
-                item: "Miniature Reactor",
-                quantity: 6,
+                item: "Meteor Core",
+                quantity: 3,
               },
               {
                 item: "Korolev Scrip",
@@ -4091,11 +4612,7 @@ export const upgrades: Upgrade[] = [
           {
             items: [
               {
-                item: "Portable Lab",
-                quantity: 2,
-              },
-              {
-                item: "Meteor Core",
+                item: "Progenitor Slag",
                 quantity: 4,
               },
               {
@@ -4168,7 +4685,7 @@ export const upgrades: Upgrade[] = [
                 quantity: 2,
               },
               {
-                item: "Resin Gun",
+                item: "Print Resin",
                 quantity: 1,
               },
               {
@@ -4278,8 +4795,8 @@ export const upgrades: Upgrade[] = [
                 quantity: 2,
               },
               {
-                item: "Optic Glass",
-                quantity: 24,
+                item: "Teratomorphic Crystal Core",
+                quantity: 18,
               },
               {
                 item: "ICA Scrip",
@@ -4308,7 +4825,7 @@ export const upgrades: Upgrade[] = [
           {
             items: [
               {
-                item: "Portable Lab",
+                item: "Charged Tharis Iron Ingot",
                 quantity: 2,
               },
               {
@@ -4364,6 +4881,7 @@ export const items = {
   "Toxic Glands": 0,
   "Marauder Flesh": 0,
   "Rattler Eyes": 0,
+  "Mature Rattler Eyes": 0,
   "Strider Flesh": 0,
   "Unique Data Drive": 0,
   "Print Resin": 0,
@@ -4416,6 +4934,16 @@ export const items = {
   "Nutritional Bar": 0,
   Autoloader: 0,
   Kmarks: 0,
+  "Progenitor Composite": 0,
+  "Progenitor Slag": 0,
+  "Spine Briar": 0,
+  "Abyss Alloy": 0,
+  "Tharis Iron": 0,
+  "Pure Tharis Iron": 0,
+  "Tharis Iron Ingot": 0,
+  "Charged Tharis Iron Ingot": 0,
+  "Teratomorphic Crystal Core": 0,
+  "Huge Forged Backpack": 0,
 };
 
 export const itemRarity: Record<ItemName, ItemRarity> = {
@@ -4454,6 +4982,7 @@ export const itemRarity: Record<ItemName, ItemRarity> = {
   "Toxic Glands": "Common",
   "Marauder Flesh": "Rare",
   "Rattler Eyes": "Uncommon",
+  "Mature Rattler Eyes": "Rare",
   "Strider Flesh": "Uncommon",
   "Unique Data Drive": "Legendary",
   "Print Resin": "Uncommon",
@@ -4506,4 +5035,14 @@ export const itemRarity: Record<ItemName, ItemRarity> = {
   "Nutritional Bar": "Common",
   Autoloader: "Epic",
   Kmarks: "Common",
-}
+  "Progenitor Composite": "Common",
+  "Progenitor Slag": "Exotic",
+  "Spine Briar": "Rare",
+  "Abyss Alloy": "Legendary",
+  "Tharis Iron Ingot": "Epic",
+  "Charged Tharis Iron Ingot": "Exotic",
+  "Teratomorphic Crystal Core": "Uncommon",
+  "Tharis Iron": "Rare",
+  "Pure Tharis Iron": "Epic",
+  "Huge Forged Backpack": "Epic",
+};

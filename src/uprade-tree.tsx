@@ -1,9 +1,13 @@
-import { Upgrade, UpgradeLevel, UpgradeProgress, UpgradeTreeName } from "./types";
+import {
+  Upgrade,
+  UpgradeLevel,
+  UpgradeProgress,
+  UpgradeTreeName,
+} from "./types";
 import { upgrades } from "./data";
 
 export class UpgradeForest {
-  private constructor(private roots: UpgradeTree[]) {
-  }
+  private constructor(private roots: UpgradeTree[]) {}
 
   /** Builds an upgrade forest from the {@link upgrades} data in data.tsx */
   static new(): UpgradeForest {
@@ -11,17 +15,17 @@ export class UpgradeForest {
 
     const baseNodes: UpgradeTree[] = [];
 
-    upgradesCopy.forEach(upgradeTree => {
+    upgradesCopy.forEach((upgradeTree) => {
       const levels: UpgradeLevel[] = upgradeTree.stages
-        .map(stage => stage.levels)
+        .map((stage) => stage.levels)
         .flat();
 
       let previousNode: UpgradeTree;
 
-      levels.forEach(level => {
+      levels.forEach((level) => {
         const node = new UpgradeTree(upgradeTree.tree, level, null);
 
-        if (typeof previousNode === 'undefined') {
+        if (typeof previousNode === "undefined") {
           baseNodes.push(node);
         } else {
           previousNode.subtree = node;
@@ -43,19 +47,22 @@ export class UpgradeForest {
     upgradeProgress: UpgradeProgress,
     depth = Number.MAX_SAFE_INTEGER
   ): UpgradeLevel[] {
-
     return this.roots
-      .map(root => root.findFirst(upgradeProgress))
-      .map(rootRelativeToProgress =>
-        rootRelativeToProgress?.getLevels(depth) ?? []
+      .map((root) => root.findFirst(upgradeProgress))
+      .map(
+        (rootRelativeToProgress) =>
+          rootRelativeToProgress?.getLevels(depth) ?? []
       )
       .flat();
   }
 }
 
 class UpgradeTree {
-  constructor(public treeName: UpgradeTreeName, public level: UpgradeLevel, public subtree: UpgradeTree | null) {
-  }
+  constructor(
+    public treeName: UpgradeTreeName,
+    public level: UpgradeLevel,
+    public subtree: UpgradeTree | null
+  ) {}
 
   /**
    * Find the first incomplete upgrade in the tree based on upgradeProgress
@@ -64,7 +71,7 @@ class UpgradeTree {
   findFirst(upgradeProgress: UpgradeProgress): UpgradeTree | null {
     const progress = upgradeProgress[this.treeName];
 
-    const upgrade = upgrades.find(upgrade => upgrade.tree === this.treeName);
+    const upgrade = upgrades.find((upgrade) => upgrade.tree === this.treeName);
     const stageCount = upgrade?.stages?.length ?? 0;
 
     let startingDepth = 0;
@@ -101,16 +108,16 @@ class UpgradeTree {
       return this;
     }
 
-    return this.subtree?.getTree(depth  - 1) ?? this;
+    return this.subtree?.getTree(depth - 1) ?? this;
   }
 
   getLevels(depth: number): UpgradeLevel[] {
     if (depth <= 1) {
-      return [ this.level ];
+      return [this.level];
     }
 
     const subLevels = this.subtree?.getLevels(depth - 1) ?? [];
 
-    return [ this.level ].concat(subLevels);
+    return [this.level].concat(subLevels);
   }
 }

@@ -72,58 +72,51 @@ test("quest forest", () => {
 });
 
 test("upgrade forest infinite depth", () => {
-
   // test infinite depth with no completed upgrades (should return all upgrades except the first quarters upgrade)
   const upgradeForest = UpgradeForest.new();
   const upgradeProgress = clearUpgradeProgress();
 
-  const allUpgradeLevels = upgradeForest.findIncompleteUpgradeLevels(upgradeProgress);
+  const allUpgradeLevels =
+    upgradeForest.findIncompleteUpgradeLevels(upgradeProgress);
 
-  const allUpgradeLevelCount = upgrades
-    .map(upgrade =>
-      upgrade.stages.map(stage => stage.levels).flat()
-    )
-    .flat()
-    .length - 1;
+  const allUpgradeLevelCount =
+    upgrades
+      .map((upgrade) => upgrade.stages.map((stage) => stage.levels).flat())
+      .flat().length - 1;
 
   expect(allUpgradeLevels.length).toEqual(allUpgradeLevelCount);
-
 });
 
 test("upgrade forest first level upgrades", () => {
-
   // tests that the first upgrades for all trees return properly
   const upgradeForest = UpgradeForest.new();
   const upgradeProgress = clearUpgradeProgress();
 
-  const originalFirstLevelUpgrades = upgrades
-    .map(upgrade => {
-      if (upgrade.tree === "Quarters") {
-        return upgrade.stages[0].levels[1]
-      }
-      return upgrade.stages[0].levels[0];
-    });
+  const originalFirstLevelUpgrades = upgrades.map((upgrade) => {
+    if (upgrade.tree === "Quarters") {
+      return upgrade.stages[0].levels[1];
+    }
+    return upgrade.stages[0].levels[0];
+  });
 
-  const firstLevelUpgrades = upgradeForest.findIncompleteUpgradeLevels(upgradeProgress, 1);
+  const firstLevelUpgrades = upgradeForest.findIncompleteUpgradeLevels(
+    upgradeProgress,
+    1
+  );
 
-  expect(
-    JSON.stringify(originalFirstLevelUpgrades)
-  ).toEqual(
+  expect(JSON.stringify(originalFirstLevelUpgrades)).toEqual(
     JSON.stringify(firstLevelUpgrades)
   );
 });
 
 test("upgrade forest first three level upgrades", () => {
-
   // tests that the first three upgrades for all trees return properly
   const upgradeForest = UpgradeForest.new();
   const upgradeProgress = clearUpgradeProgress();
 
   const originalFirstThreeLevelUpgrades = upgrades
-    .map(upgrade => {
-      const levels = upgrade.stages
-        .map(stages => stages.levels)
-        .flat();
+    .map((upgrade) => {
+      const levels = upgrade.stages.map((stages) => stages.levels).flat();
 
       if (upgrade.tree === "Quarters") {
         return levels.slice(1, 4);
@@ -132,45 +125,43 @@ test("upgrade forest first three level upgrades", () => {
     })
     .flat();
 
-  const firstThreeLevelUpgrades = upgradeForest.findIncompleteUpgradeLevels(upgradeProgress, 3);
+  const firstThreeLevelUpgrades = upgradeForest.findIncompleteUpgradeLevels(
+    upgradeProgress,
+    3
+  );
 
-  expect(
-    JSON.stringify(originalFirstThreeLevelUpgrades)
-  ).toEqual(
+  expect(JSON.stringify(originalFirstThreeLevelUpgrades)).toEqual(
     JSON.stringify(firstThreeLevelUpgrades)
   );
 });
 
 test("upgrade forest with progress", () => {
-
   // in this test, everything is maxed except for Generate Kmarks, which is only missing 1 upgrade.
   const upgradeForest = UpgradeForest.new();
   const upgradeProgress = {
-    "Quarters": [ 10 ],
-    "Generate Kmarks": [ 5, 5, 5, 4 ],
-    "Kmark Passive Cap": [ 4, 5, 5, 5 ],
-    "Generate Aurum": [ 5, 5, 5, 5 ],
-    "Aurum Passive Cap": [ 4, 5, 5, 5 ],
-    "Supply Crate": [ 2, 2, 2, 2 ],
-    "Stash": [ 3, 3, 3, 3, 3 ],
-    "Safe Pockets": [ 1, 1, 1, 1, 1 ],
-    "Workbench": [ 3, 3, 3, 3 ]
-  }
+    Quarters: [10],
+    "Generate Kmarks": [5, 5, 5, 4],
+    "Kmark Passive Cap": [4, 5, 5, 5],
+    "Generate Aurum": [5, 5, 5, 5],
+    "Aurum Passive Cap": [4, 5, 5, 5],
+    "Supply Crate": [2, 2, 2, 2],
+    Stash: [3, 3, 3, 3, 3],
+    "Safe Pockets": [1, 1, 1, 1, 1],
+    Workbench: [3, 3, 3, 3],
+  };
 
   const originalLastKmarkUpgrade = upgrades
-    .filter(upgrade => upgrade.tree === "Generate Kmarks")
-    .map(upgrade => upgrade.stages[3].levels.slice(4))
+    .filter((upgrade) => upgrade.tree === "Generate Kmarks")
+    .map((upgrade) => upgrade.stages[3].levels.slice(4))
     .flat();
 
-  expect(
-    JSON.stringify(originalLastKmarkUpgrade)
-  ).toEqual(
+  expect(JSON.stringify(originalLastKmarkUpgrade)).toEqual(
     JSON.stringify(upgradeForest.findIncompleteUpgradeLevels(upgradeProgress))
   );
 
-  expect(
-    JSON.stringify(originalLastKmarkUpgrade)
-  ).toEqual(
-    JSON.stringify(upgradeForest.findIncompleteUpgradeLevels(upgradeProgress, 1))
+  expect(JSON.stringify(originalLastKmarkUpgrade)).toEqual(
+    JSON.stringify(
+      upgradeForest.findIncompleteUpgradeLevels(upgradeProgress, 1)
+    )
   );
 });
